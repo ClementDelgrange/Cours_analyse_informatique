@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="pandoc">
+        <meta name="author" content="Division des enseignements en informatique" />
+        <meta name="dcterms.date" content="2016-01-01" />
+        <title>Analyse avancée</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+		
+        <!-- For syntax highlighting -->
+        <style type="text/css">code{white-space: pre;}</style>
+        <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+        </style>
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+
+	<!-- Styles ENSG-IGN -->
+	<link rel="stylesheet" href="css/ign.css">
+
+        <!-- Printing and PDF exports -->
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script type="text/javascript">
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'reveal.js/css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
+            link.media = 'print';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" type="text/javascript" src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+        <!-- -H/- -include-in-header -->
+    </head>
+    <body>
+        <!-- -B/- -include-before-body -->
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h1>Analyse avancée</h1>
+                    <h3>Division des enseignements en informatique</h3>
+                    <h4>2016</h4>
+                </section>
+
+                <!-- - -toc/- -table-of-contents -->
+
+            <!-- ne pas indenter le $body$ sinon les codes (highlight) vont l'être aussi !!! -->
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="objectifs" class="level2">
+<h2>Objectifs</h2>
+<blockquote>
+<p>L'orienté objet vise à développer des applications évolutives, sans avoir à reprendre tout le code à chaque modification.</p>
+</blockquote>
+</section>
+<section id="objectifs-1" class="level2">
+<h2>Objectifs</h2>
+<ul>
+<li>étudier UML de manière plus poussée</li>
+<li>améliorer les techniques de conception d'application</li>
+<li>découvrir les patrons de conception</li>
+</ul>
+</section>
+</section>
+<section id="les-bases-duml" class="level1">
+<h1>Les bases d'UML</h1>
+<section id="diagramme-de-cas-dutilisation-13" class="level2">
+<h2>Diagramme de cas d'utilisation (1/3)</h2>
+<ul>
+<li>Structurer le besoin</li>
+<li>Eléments de base
+<ul>
+<li>Cas d'utilisation</li>
+<li>Inclusion / extension</li>
+<li>Acteur</li>
+<li>Acteur secondaire</li>
+<li>Système</li>
+</ul></li>
+</ul>
+</section>
+<section id="diagramme-de-cas-dutilisation-23" class="level2">
+<h2>Diagramme de cas d'utilisation (2/3)</h2>
+<figure>
+<img src="img/uml_bases/cas_utilisation/include_extend.png" alt="Relations d&#39;inclusion/extension" /><figcaption>Relations d'inclusion/extension</figcaption>
+</figure>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/cas_utilisation/acteur_generalisation.png" alt="Généralisation d&#39;acteurs" /><figcaption>Généralisation d'acteurs</figcaption>
+</figure>
+</section>
+<section id="diagramme-de-cas-dutilisation-33" class="level2">
+<h2>Diagramme de cas d'utilisation (3/3)</h2>
+<ul>
+<li>Exemple</li>
+</ul>
+<figure>
+<img src="img/uml_bases/cas_utilisation/diagramme_cas_utilisation.png" alt="Diagramme de cas d&#39;utilisation" /><figcaption>Diagramme de cas d'utilisation</figcaption>
+</figure>
+</section>
+<section id="diagramme-dactivité-14" class="level2">
+<h2>Diagramme d'activité (1/4)</h2>
+<ul>
+<li>Décrire le fonctionnement du système lors d'un cas d'utilisation</li>
+<li>Eléments de base
+<ul>
+<li>Activité / transition</li>
+<li>Branchement conditionnel</li>
+<li>Transitions concurrentes</li>
+<li>Etat initial / état final</li>
+</ul></li>
+</ul>
+</section>
+<section id="diagramme-dactivité-24" class="level2">
+<h2>Diagramme d'activité (2/4)</h2>
+<figure>
+<img src="img/uml_bases/activite/condition.png" alt="Branchement conditionnel" /><figcaption>Branchement conditionnel</figcaption>
+</figure>
+</section>
+<section id="diagramme-dactivité-34" class="level2">
+<h2>Diagramme d'activité (3/4)</h2>
+<figure>
+<img src="img/uml_bases/activite/parallele.png" alt="Transitions concurrentes" /><figcaption>Transitions concurrentes</figcaption>
+</figure>
+</section>
+<section id="diagramme-dactivité-44" class="level2">
+<h2>Diagramme d'activité (4/4)</h2>
+<figure>
+<img src="img/uml_bases/activite/couloirs.png" alt="Diagramme d&#39;activité - Traiter une commande" /><figcaption>Diagramme d'activité - Traiter une commande</figcaption>
+</figure>
+</section>
+<section id="diagramme-de-classe-13" class="level2">
+<h2>Diagramme de classe (1/3)</h2>
+<ul>
+<li>Représenter les structures de données</li>
+<li>Eléments de base
+<ul>
+<li>Classe (attributs, méthodes, type, multiplicité...)</li>
+<li>Association, héritage, agrégation, composition</li>
+<li>Classe abstraite</li>
+<li>Classe d'association</li>
+</ul></li>
+</ul>
+</section>
+<section id="diagramme-de-classe-23" class="level2">
+<h2>Diagramme de classe (2/3)</h2>
+<figure>
+<img src="img/uml_bases/classes/association_roles.png" alt="Rôles d&#39;une association" /><figcaption>Rôles d'une association</figcaption>
+</figure>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/classes/classe_association.png" alt="Classe d&#39;association" /><figcaption>Classe d'association</figcaption>
+</figure>
+</section>
+<section id="diagramme-de-classe-33" class="level2">
+<h2>Diagramme de classe (3/3)</h2>
+<figure>
+<img src="img/uml_bases/classes/association_navigabilite_restreinte.png" alt="Association à navigabilité restreinte" /><figcaption>Association à navigabilité restreinte</figcaption>
+</figure>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/classes/composition_agregation.png" alt="Différence composition-agrégation" /><figcaption>Différence composition-agrégation</figcaption>
+</figure>
+</section>
+<section id="principes-oo" class="level2">
+<h2>Principes OO</h2>
+<ul>
+<li>Objets = entité du monde réel, idée, concept</li>
+<li>Classe = type abstrait décrivant la structure d'objets</li>
+<li>Encapsulation = masquer les détails de l'implémentation</li>
+<li>Héritage = créer une classe à partir d'une autre</li>
+<li>Polymorphisme = redéfinir des méthodes</li>
+</ul>
+</section>
+<section id="les-contraintes-ocl-15" class="level2">
+<h2>Les contraintes OCL (1/5)</h2>
+<ul>
+<li>Contexte
+<ul>
+<li>certaines contraintes inexistantes en UML
+<ul>
+<li>ex: une règle de calcul d'un attribut dérivé</li>
+</ul></li>
+<li>expressions litterales sources d'interprétation</li>
+</ul></li>
+<li>Solution = <strong>langage OCL</strong> (Object Constraint Language)
+<ul>
+<li>langage à expressions</li>
+<li><code>{expression OCL}</code></li>
+<li>attachable à n'importe quel élément du modèle</li>
+</ul></li>
+</ul>
+</section>
+<section id="les-contraintes-ocl-25" class="level2">
+<h2>Les contraintes OCL (2/5)</h2>
+<figure>
+<img src="img/uml_avance/ocl_motivation-1.png" alt="Contrainte OCL vs note manuscrite" /><figcaption>Contrainte OCL vs note manuscrite</figcaption>
+</figure>
+</section>
+<section id="les-contraintes-ocl-35" class="level2">
+<h2>Les contraintes OCL (3/5)</h2>
+<figure>
+<img src="img/uml_avance/ocl_motivation-2.png" alt="Contrainte OCL vs note manuscrite" /><figcaption>Contrainte OCL vs note manuscrite</figcaption>
+</figure>
+</section>
+<section id="les-contraintes-ocl-45" class="level2">
+<h2>Les contraintes OCL (4/5)</h2>
+<ul>
+<li>Contrainte structurelle :</li>
+</ul>
+<figure>
+<img src="img/uml_avance/ocl_xor.png" alt="Contrainte OCL xor" /><figcaption>Contrainte OCL xor</figcaption>
+</figure>
+</section>
+<section id="les-contraintes-ocl-55" class="level2">
+<h2>Les contraintes OCL (5/5)</h2>
+<ul>
+<li>Pré et post-conditions :</li>
+</ul>
+<figure>
+<img src="img/uml_avance/ocl_pre-post.png" alt="Contraintes OCL pre-condition et post-condition" /><figcaption>Contraintes OCL pre-condition et post-condition</figcaption>
+</figure>
+</section>
+<section id="les-stéréotypes" class="level2">
+<h2>Les stéréotypes</h2>
+<ul>
+<li>Raison d'être
+<ul>
+<li>extension des concepts décrits par UML (le <em>métamodèle</em>)</li>
+<li>définition de nouveaux éléments réutilisables</li>
+</ul></li>
+<li>Symbole
+<ul>
+<li><code>&lt;&lt; nom du stéréotype&gt;&gt;</code></li>
+</ul></li>
+<li>Exemple : énumération</li>
+</ul>
+</section>
+<section id="les-stéréotypes-22" class="level2">
+<h2>Les stéréotypes (2/2)</h2>
+<ul>
+<li>Quelques stéréotypes définis dans le langage UML :
+<ul>
+<li><code>&lt;&lt;enumeration&gt;&gt;</code> : classe listant les valeurs possibles d'un type donné</li>
+<li><code>&lt;&lt;interface&gt;&gt;</code> : classe de description d'un service offert par une classe</li>
+<li><code>&lt;&lt;acteur&gt;&gt;</code> : classe modélisant un ensemble de rôles joués par un acteur</li>
+<li><code>&lt;&lt;exception&gt;&gt;</code> : classe modélisant un cas particulier de signal</li>
+<li><code>&lt;&lt;utilitaire&gt;&gt;</code> : classe réduite au concept de module, non instanciable</li>
+</ul></li>
+</ul>
+</section>
+<section id="la-notion-dinterface-12" class="level2">
+<h2>La notion d'interface (1/2)</h2>
+<ul>
+<li>L'année dernière :
+<ul>
+<li><em>L'interface est la partie visible des objets. Par défaut, les attributs d'une classe se doivent d'être cachés de l'extérieur</em>.</li>
+</ul></li>
+</ul>
+<p><br/></p>
+<ul>
+<li>Nouvelle définition :</li>
+</ul>
+<blockquote>
+<p>Une interface est définie comme la spécification des opérations visibles d'une classe.</p>
+</blockquote>
+</section>
+<section id="la-notion-dinterface-22" class="level2">
+<h2>La notion d'interface (2/2)</h2>
+<ul>
+<li>Interface :
+<ul>
+<li>uniquement des méthodes</li>
+<li>réalisée par la classe qui implémente les méthodes (<strong>lien de réalisation</strong>)</li>
+</ul></li>
+</ul>
+<p><br/></p>
+<figure>
+<img src="img/uml_avance/symbole_interface.png" alt="Représentation d&#39;une interface" /><figcaption>Représentation d'une interface</figcaption>
+</figure>
+</section>
+<section id="interfaces---exemple-1" class="level2">
+<h2>Interfaces - Exemple 1</h2>
+<figure>
+<img src="img/uml_avance/interfaces_exemple.png" alt="Utilisation d&#39;interfaces" /><figcaption>Utilisation d'interfaces</figcaption>
+</figure>
+</section>
+<section id="interfaces---exemple-2" class="level2">
+<h2>Interfaces - Exemple 2</h2>
+<figure>
+<img src="img/uml_avance/interfaces_exemple-2.png" alt="Utilisation d&#39;interfaces" /><figcaption>Utilisation d'interfaces</figcaption>
+</figure>
+</section>
+<section id="interfaces-couplage-fortfaible" class="level2">
+<h2>Interfaces : couplage fort/faible</h2>
+<p><br/></p>
+<ul>
+<li><strong>Couplage faible</strong> : fait de lier une classe à une interface</li>
+</ul>
+<p><br/></p>
+<ul>
+<li><strong>Couplace fort</strong> : fait de lier une classe à une autre classe</li>
+</ul>
+</section>
+<section id="exercice" class="level2">
+<h2>Exercice</h2>
+<ul>
+<li>Modélisation d'un GPS grand public de navigation pour une voiture
+<ul>
+<li>Diagramme de cas d'utilisation</li>
+<li>Diagramme de classes</li>
+<li>Diagramme d'activité</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="conception-orientée-objet" class="level1">
+<h1>Conception orientée objet</h1>
+<section id="principes-oo-1" class="level2">
+<h2>Principes OO</h2>
+<ul>
+<li>5 principes l'orientée objet
+<ul>
+<li><strong>S</strong>ingle responsibility principle</li>
+<li><strong>O</strong>pen close principle</li>
+<li><strong>L</strong>iskov substitution principle</li>
+<li><strong>I</strong>nterface segregation principle</li>
+<li><strong>D</strong>ependency inversion principle</li>
+</ul></li>
+</ul>
+</section>
+<section id="principe-de-responsabilité-unique-13" class="level2">
+<h2>Principe de responsabilité unique (1/3)</h2>
+<blockquote>
+<p>Une classe ne doit posséder qu'une et une seule raison de changer.</p>
+</blockquote>
+<ul>
+<li>Objectifs :
+<ul>
+<li>éviter la rigidité du code</li>
+<li>flexibilité des évolutions</li>
+</ul></li>
+</ul>
+</section>
+<section id="principe-de-responsabilité-unique-23" class="level2">
+<h2>Principe de responsabilité unique (2/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/single_responsability_principle-1.png" alt="Principe de responsabilité unique non respecté" /><figcaption>Principe de responsabilité unique non respecté</figcaption>
+</figure>
+</section>
+<section id="principe-de-responsabilité-unique-33" class="level2">
+<h2>Principe de responsabilité unique (3/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/single_responsability_principle-2.png" alt="Principe de responsabilité unique respecté" /><figcaption>Principe de responsabilité unique respecté</figcaption>
+</figure>
+</section>
+<section id="principe-douverturefermeture-13" class="level2">
+<h2>Principe d'ouverture/fermeture (1/3)</h2>
+<blockquote>
+<p>Une classe doit être ouvert aux extensions mais fermées aux modifications.</p>
+</blockquote>
+<ul>
+<li>Objectif :
+<ul>
+<li>permettre les ajouts de fonctionnalités...</li>
+<li>...sans avoir à modifier le code</li>
+<li>maintenance facilité</li>
+</ul></li>
+</ul>
+</section>
+<section id="principe-douverturefermeture-23" class="level2">
+<h2>Principe d'ouverture/fermeture (2/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/open_close_principle-1.png" alt="Principe d&#39;ouverture/fermeture non respecté" /><figcaption>Principe d'ouverture/fermeture non respecté</figcaption>
+</figure>
+</section>
+<section id="principe-douverturefermeture-33" class="level2">
+<h2>Principe d'ouverture/fermeture (3/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/open_close_principle-2.png" alt="Principe d&#39;ouverture/fermeture respecté" /><figcaption>Principe d'ouverture/fermeture respecté</figcaption>
+</figure>
+</section>
+<section id="principe-de-substitution-de-liskov-13" class="level2">
+<h2>Principe de substitution de Liskov (1/3)</h2>
+<blockquote>
+<p>Les sous-classes doivent pouvoir remplacer leur classe de base.</p>
+</blockquote>
+<ul>
+<li>Objectifs :
+<ul>
+<li>pouvoir utiliser <em>inconsciemment</em> des objets dérivés d'une classe mère et de ses classes filles</li>
+<li>souplesse et adaptabilité du code</li>
+</ul></li>
+<li>=&gt; Héritage = spécialisation</li>
+</ul>
+</section>
+<section id="principe-de-substitution-de-liskov-23" class="level2">
+<h2>Principe de substitution de Liskov (2/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/liskov_principle-1.png" alt="Principe de Liskov non respecté" /><figcaption>Principe de Liskov non respecté</figcaption>
+</figure>
+</section>
+<section id="principe-de-substitution-de-liskov-33" class="level2">
+<h2>Principe de substitution de Liskov (3/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/liskov_principle-2.png" alt="Principe de Liskov respecté" /><figcaption>Principe de Liskov respecté</figcaption>
+</figure>
+</section>
+<section id="principe-de-séparation-des-interfaces-13" class="level2">
+<h2>Principe de séparation des interfaces (1/3)</h2>
+<blockquote>
+<p>Plusieurs interfaces client spécifiques valent mieux qu'une seule interface générale. Les classes clientes ne doivent pas être forcées de dépendre d'interfaces qu'elles n'utilisent pas.</p>
+</blockquote>
+<ul>
+<li>Objectifs :
+<ul>
+<li>faciliter maintenance</li>
+<li>faciliter redéploiement</li>
+</ul></li>
+<li>=&gt; Multiplication d'interfaces petites et très spécifiques</li>
+</ul>
+</section>
+<section id="principe-de-séparation-des-interfaces-23" class="level2">
+<h2>Principe de séparation des interfaces (2/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/interface_segregation_principle-1.png" alt="Principe de séparation des interfaces non respecté" /><figcaption>Principe de séparation des interfaces non respecté</figcaption>
+</figure>
+</section>
+<section id="principe-de-séparation-des-interfaces-33" class="level2">
+<h2>Principe de séparation des interfaces (3/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/interface_segregation_principle-2.png" alt="Principe de séparation des interfaces respecté" /><figcaption>Principe de séparation des interfaces respecté</figcaption>
+</figure>
+</section>
+<section id="principe-dinversion-des-dépendances-13" class="level2">
+<h2>Principe d'inversion des dépendances (1/3)</h2>
+<blockquote>
+<p>Dépendez des abstractions, ne dépendez pas des concrétisations.</p>
+</blockquote>
+<ul>
+<li>Objectifs :
+<ul>
+<li>permettre modification des objets</li>
+<li>limiter couplages entre objets</li>
+</ul></li>
+<li>=&gt; Modules de bas niveau doivent interagir avec des interfaces de modules de haut niveau</li>
+</ul>
+</section>
+<section id="principe-dinversion-des-dépendances-23" class="level2">
+<h2>Principe d'inversion des dépendances (2/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/dependency_inversion_principle-1.png" alt="Principe d&#39;inversion des dépendances non respecté" /><figcaption>Principe d'inversion des dépendances non respecté</figcaption>
+</figure>
+</section>
+<section id="principe-dinversion-des-dépendances-33" class="level2">
+<h2>Principe d'inversion des dépendances (3/3)</h2>
+<p><br/></p>
+<figure>
+<img src="img/principes_solid/dependency_inversion_principle-2.png" alt="Principe d&#39;inverstion des dépendances respecté" /><figcaption>Principe d'inverstion des dépendances respecté</figcaption>
+</figure>
+</section>
+<section id="en-pratique" class="level2">
+<h2>En pratique</h2>
+<ul>
+<li>Lignes directrices pour concevoir des applications performantes</li>
+<li>D'autant plus pertinent que les programmes évoluent fréquemment</li>
+<li>Dans la pratique...
+<ul>
+<li>toujours séparer ce qui varie de ce qui n'est pas succeptible d'évoluer dans le temps</li>
+<li>c'est en codant, codant, codant... que l'on s'améliore</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="les-patrons-de-conception" class="level1">
+<h1>Les patrons de conception</h1>
+<section id="généralités" class="level2">
+<h2>Généralités</h2>
+<ul>
+<li><em>Design Patterns: Elements of Reusable Object-Oriented Software</em> (Gang of Four, 1995)</li>
+<li>Solutions génériques à des problèmes récurrents</li>
+<li><strong>Patrons de conception</strong> ou <em>design pattern</em></li>
+</ul>
+</section>
+<section id="catégories-de-patrons" class="level2">
+<h2>Catégories de patrons</h2>
+<ul>
+<li>23 patrons rangés en trois catégories :
+<ul>
+<li>5 patrons <strong>de création</strong>, centré sur la création d'objets
+<ul>
+<li><em>Fabrique, Singleton, Prototype...</em></li>
+</ul></li>
+<li>7 patrons <strong>de structuration</strong>, ciblés sur la hiérarchie et les relations entre classes
+<ul>
+<li><em>Adapteur, Facade, Décorateur, Composite...</em></li>
+</ul></li>
+<li>11 patrons <strong>comportementaux</strong>, décrivants des mécanismes astucieux à mettre en oeuvre pour l'exécution des codes
+<ul>
+<li><em>Observateur, Etat,Strategie, Visiteur, Itérateur, Interpréteur...</em></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="caractéristiques-principales" class="level2">
+<h2>Caractéristiques principales</h2>
+<ul>
+<li><em>Nom</em> : augmente le vocabulaire, une idée de solution devient nommée, à ajouter ensuite au catalogue de solutions</li>
+<li><em>Problème</em> : description du contexte et des conditons d’applications du patron de conception</li>
+<li><em>Solution</em> : les éléments de la solution, leurs relations, responsabilités, collaborations; pas de manière précise, mais suggestives...</li>
+<li><em>Conséquences</em> : résultats et compromis issus de l'application de la forme</li>
+</ul>
+</section>
+<section id="pourquoi-utiliser-des-patrons-de-conception" class="level2">
+<h2>Pourquoi utiliser des patrons de conception ?</h2>
+<ul>
+<li>Avantages :
+<ul>
+<li>Respect des principes orientés objets</li>
+<li>Niveau d'abstraction élevé</li>
+<li>Vocabulaire commun</li>
+<li>Catalogue de solutions (=&gt; complexité moins grande)</li>
+<li>Capitalisation de l’expérience</li>
+</ul></li>
+<li>Inconvénients :
+<ul>
+<li>Abstraction parfois difficile à mettre en place</li>
+<li>23 patrons à connaître</li>
+<li>Solutions combinant plusieurs patrons</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-patron-etat" class="level2">
+<h2>Le patron Etat</h2>
+<blockquote>
+<p>Le patron de conception Etat est utilisé pour modifier le comportement d'un objet lorsque son état interne change. Tout se passera comme si l'objet changeait de classe.</p>
+</blockquote>
+<ul>
+<li>Quand l'utiliser ?
+<ul>
+<li>Objet avec un comportement dépendant de son état</li>
+<li>Opération contenant de nombreuses conditions</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-patron-etat---exemple-15" class="level2">
+<h2>Le patron Etat - exemple (1/5)</h2>
+<ul>
+<li>Problème étudié :
+<ul>
+<li>Un système est composé d'une bille et de deux cases (gauche et droite). A l'état initial, la bille se situe dans la case de gauche. A tout moment de la vie du système, l'utilisateur peut déplacer la bille soit à droite soit à gauche. Si la bille se situe déjà dans la case de gauche, l'action de déplacement vers la gauche n'a aucun effet (idem pour la droite).</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/design_pattern/marble.png" alt="Bille - Illustration du problème" /><figcaption>Bille - Illustration du problème</figcaption>
+</figure>
+</section>
+<section id="le-patron-etat---exemple-25" class="level2">
+<h2>Le patron Etat - exemple (2/5)</h2>
+<p><br/></p>
+<figure>
+<img src="img/design_pattern/state_machine_v1.png" alt="Bille v1 - Diagramme d&#39;état-transition" /><figcaption>Bille v1 - Diagramme d'état-transition</figcaption>
+</figure>
+</section>
+<section id="le-patron-etat---exemple-35" class="level2">
+<h2>Le patron Etat - exemple (3/5)</h2>
+<p><br/></p>
+<figure>
+<img src="img/design_pattern/state_class_v1.png" alt="Bille v1 - Diagramme de classes" /><figcaption>Bille v1 - Diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="le-patron-etat---exemple-45" class="level2">
+<h2>Le patron Etat - exemple (4/5)</h2>
+<ul>
+<li>En ajoutant deux cases haut et bas...</li>
+</ul>
+<figure>
+<img src="img/design_pattern/state_machine_v2.png" alt="Bille v2 - Diagramme d&#39;état-transition" /><figcaption>Bille v2 - Diagramme d'état-transition</figcaption>
+</figure>
+</section>
+<section id="le-patron-etat---exemple-55" class="level2">
+<h2>Le patron Etat - exemple (5/5)</h2>
+<figure>
+<img src="img/design_pattern/state_class_v2.png" alt="Bille v2 - Diagramme de classes" /><figcaption>Bille v2 - Diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="modèle-du-patron-etat" class="level2">
+<h2>Modèle du patron Etat</h2>
+<ul>
+<li>Diagramme de classes du patron :</li>
+</ul>
+<figure>
+<img src="img/design_pattern/design_pattern_state.png" alt="Patron de conception Etat" /><figcaption>Patron de conception Etat</figcaption>
+</figure>
+</section>
+<section id="exercice-1" class="level2">
+<h2>Exercice</h2>
+<ul>
+<li>Le démineur</li>
+</ul>
+</section>
+<section id="le-patron-strategie" class="level2">
+<h2>Le patron Strategie</h2>
+<blockquote>
+<p>Le patron de conception Strategie définit une famille d'algorithmes, encapsule chacun d'eux et les rend interchangeables. Stratégie permet à l'algorithme de varier indépendamment des clients qui l'utilisent.</p>
+</blockquote>
+<ul>
+<li>Nombreux points communs avec le patron Etat
+<ul>
+<li>Isoler ce qui varie dans des interfaces</li>
+<li>Utiliser les interfaces</li>
+</ul></li>
+<li>Quand l'utiliser ?
+<ul>
+<li>Plusieurs classes liées diffèrent par un comportement</li>
+<li>Différents algorithmes utilisés pour une problématique donnée</li>
+</ul></li>
+</ul>
+</section>
+<section id="modèle-du-patron-stratégie" class="level2">
+<h2>Modèle du patron Stratégie</h2>
+<p><br/></p>
+<figure>
+<img src="img/design_pattern/design_pattern_strategy.png" alt="Patron de conception Stratégie" /><figcaption>Patron de conception Stratégie</figcaption>
+</figure>
+</section>
+<section id="exercice-2" class="level2">
+<h2>Exercice</h2>
+<ul>
+<li>Problématique : simulation d'une ville / modélisation des habitants
+<ul>
+<li>plusieurs modes de locomotion : marche, vélo, transports en commun</li>
+<li>parcelles d'habitations localisées</li>
+<li>nombreux facteurs de choix d'un lieu d'habitation : temps de transport domicile-travail, proximité avec la nature, proximité des équipements, etc.</li>
+<li>combinaison de facteurs possibles : moins de transport, plus proche des parcs possible, choix moyen</li>
+<li>plusieurs catégories d'habitants :
+<ul>
+<li>l'écolo se déplace en marchant et habite proche des parcs</li>
+<li>le sportif se déplace en vélo et habite proche des parcs</li>
+<li>la famille nombreuse se déplace en transports en commun et tient compte de tout les facteurs pour le choix de son lieu d'habitation</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="exercice---solution" class="level2">
+<h2>Exercice - solution</h2>
+<figure>
+<img src="img/design_pattern/strategy_class-1.png" alt="Modélisation jeu simulation" /><figcaption>Modélisation jeu simulation</figcaption>
+</figure>
+</section>
+<section id="le-patron-observateur" class="level2">
+<h2>Le patron Observateur</h2>
+<blockquote>
+<p>Le patron de conception Observateur permet de notifier et mettre à jour un ensemble d'objets lorsqu'un objet change d'état, et ce sans pour autant avoir besoin de connaître l'ensemble d'objet à informer.</p>
+</blockquote>
+<ul>
+<li>Mise à jour des observateurs via une interface commune</li>
+<li>Quand l'utiliser ?
+<ul>
+<li>Changement d'un objet impactant d'autres objets</li>
+<li>Notifications d'autres objets inconnus</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-patron-observateur---exemple" class="level2">
+<h2>Le patron Observateur - Exemple</h2>
+<p><br/></p>
+<figure>
+<img src="img/design_pattern/observer_illustration.png" alt="Exemple d&#39;utilisation du patron observateur" /><figcaption>Exemple d'utilisation du patron observateur</figcaption>
+</figure>
+</section>
+<section id="modèle-du-patron-observateur" class="level2">
+<h2>Modèle du patron Observateur</h2>
+<p><br/></p>
+<figure>
+<img src="img/design_pattern/design_pattern_observer.png" alt="Patron de conception Stratégie" /><figcaption>Patron de conception Stratégie</figcaption>
+</figure>
+</section>
+<section id="le-patron-observateur---application" class="level2">
+<h2>Le patron Observateur - Application</h2>
+<ul>
+<li>Fils d'actualités dans les réseaux sociaux :</li>
+</ul>
+<figure>
+<img src="img/design_pattern/observer_class.png" alt="Observeur dans les réseaux sociaux" /><figcaption>Observeur dans les réseaux sociaux</figcaption>
+</figure>
+</section>
+<section id="exercice-3" class="level2">
+<h2>Exercice</h2>
+<p>Nous désirons modéliser le fonctionnement d'une montre digitale. La montre comporte un affichage et quatre boutons. Trois modes de fonctionnement sont possibles : affichage de l'heure, chronomètre et réglages.</p>
+<p>Le bouton A est utilisé pour changer de mode, ce qui s'effectue de manière cyclique : heure =&gt; chronomètre =&gt; réglages =&gt; heure...</p>
+<p>Le bouton B est utilisé pour éclairer la montre. Le fonctionnement de ce bouton est identique quel que soit le mode de fonctionnement.</p>
+<p>En mode affichage de l'heure, le bouton C permet de passer d'un affichage de l'heure sur 12 ou 24h. Le bouton D quant à lui est inactif.</p>
+<p>En mode chronomètre, le bouton C permet de lancer le chronomètre et de prendre des temps intermédiaires. Le bouton D est utilisé pour arrêter le chronomètre. Une pression longue sur le bouton D permet de remettre le chronomètre à zéro. Lorsque la montre est en mode chronomètre, l'affichage est divisé en deux. La partie supérieure montre le temps écoulé depuis le déclanchement tandis que la partie inférieure s'arrête sur le dernier temps intermédiaire. Le chronomètre doit pouvoir continuer de fonctionner lorsque l'on change de mode.</p>
+<p>Enfin, en mode réglage, le bouton C permet d'avancer l'heure d'une heure, tandis que le bouton D l'avance d'une minute.</p>
+</section>
+<section id="le-patron-décorateur" class="level2">
+<h2>Le patron Décorateur</h2>
+<blockquote>
+<p>Le patron décorateur facilite les évolutions d'une application en permettant d'ajouter facilement des fonctionnalités. Il utilise une combinaison d'héritage et de composition.</p>
+</blockquote>
+<ul>
+<li>Quand l'utiliser ?
+<ul>
+<li>Ajouter dynamiquement des fonctionnalités à des objets</li>
+<li>Modéliser des fonctionnalités qui peuvent être retirées</li>
+<li>Limiter l'héritage</li>
+</ul></li>
+</ul>
+</section>
+<section id="modèle-du-patron-décorateur" class="level2">
+<h2>Modèle du patron Décorateur</h2>
+<figure>
+<img src="img/design_pattern/design_pattern_decorator.png" alt="Design pattern decorator" /><figcaption>Design pattern decorator</figcaption>
+</figure>
+</section>
+<section id="la-patron-décorateur---exemple-16" class="level2">
+<h2>La patron Décorateur - Exemple (1/6)</h2>
+<ul>
+<li>Problématique :
+<ul>
+<li>Application pour une pizzeria qui a mis en place un nouveau concept : les clients peuvent choisir la taille de leur pizza (une ou deux personnes) et l'ensemble des ingrédients qu'ils souhaitent mettre sur leur pizza. Le pizzaiolo se charge de confectionner la pizza et le logiciel de calculer le prix de la commande.</li>
+</ul></li>
+</ul>
+</section>
+<section id="la-patron-décorateur---exemple-26" class="level2">
+<h2>La patron Décorateur - Exemple (2/6)</h2>
+<figure>
+<img src="img/design_pattern/decorator_class.png" alt="Design pattern decorator" /><figcaption>Design pattern decorator</figcaption>
+</figure>
+</section>
+<section id="la-patron-décorateur---exemple-36" class="level2">
+<h2>La patron Décorateur - Exemple (3/6)</h2>
+<ul>
+<li>Création des classes principales :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">abstract</span> <span class="kw">class</span> Pizza {
+    <span class="kw">public</span> <span class="bu">String</span> description;
+    <span class="kw">public</span> <span class="kw">abstract</span> <span class="dt">double</span> <span class="fu">cout</span>();
+}
+
+<span class="kw">public</span> <span class="kw">class</span> PizzaUnePersonne <span class="kw">extends</span> Pizza {
+    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">cout</span>() { 
+        <span class="kw">return</span> cout = <span class="fl">6.0</span>;
+    }
+    <span class="kw">public</span> <span class="bu">String</span> description = <span class="st">&quot;Pizza une personne&quot;</span>;
+}</code></pre></div>
+</section>
+<section id="la-patron-décorateur---exemple-46" class="level2">
+<h2>La patron Décorateur - Exemple (4/6)</h2>
+<ul>
+<li>Création de la classe abstraite <code>GarniturePizza</code> :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">abstract</span> <span class="kw">class</span> GarniturePizza <span class="kw">extends</span> Pizza {
+    <span class="kw">private</span> Pizza pizza;
+    <span class="kw">public</span> <span class="fu">Garniture</span>(Pizza p) {
+        <span class="kw">this</span>.<span class="fu">pizza</span> = p;
+    }
+}</code></pre></div>
+</section>
+<section id="la-patron-décorateur---exemple-56" class="level2">
+<h2>La patron Décorateur - Exemple (5/6)</h2>
+<ul>
+<li>Création d'une classe de garniture :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Jambon <span class="kw">extends</span> GarniturePizza {
+    <span class="kw">public</span> <span class="fu">Jambon</span>(Pizza p) {
+        <span class="kw">super</span>(p);
+    }
+    <span class="kw">public</span> <span class="bu">String</span> description += <span class="st">&quot;, Jambon&quot;</span>;
+    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">cout</span>() {
+        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">pizza</span>.<span class="fu">cout</span>() + <span class="fl">1.5</span>;
+    }
+}</code></pre></div>
+</section>
+<section id="la-patron-décorateur---exemple-66" class="level2">
+<h2>La patron Décorateur - Exemple (6/6)</h2>
+<ul>
+<li>Instanciation d'une pizza :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">\\ On instancie un objet Pizza
+Pizza pizza1 = <span class="kw">new</span> <span class="fu">PizzaUnePersonne</span>();
+\\ Puis on ajoute des garnitures
+pizza1 = <span class="kw">new</span> <span class="fu">Jambon</span>(pizza1);
+pizza1 = <span class="kw">new</span> <span class="fu">Fromage</span>(pizza1);
+...
+\\ On teste
+<span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(pizza1.<span class="fu">description</span> + <span class="st">&quot; : &quot;</span> + pizza1.<span class="fu">cout</span>());</code></pre></div>
+</section>
+<section id="le-patron-adaptateur-par-lexemple-14" class="level2">
+<h2>Le patron adaptateur par l'exemple (1/4)</h2>
+<ul>
+<li>Problématique :
+<ul>
+<li>Nous réalisons un logiciel de représentation de traces GPS. Ce logiciel comporte un sortie graphique permettant d'afficher les traces dans une IHM.</li>
+<li>Les traces peuvent être des points (une seule mesure GPS) ou des polylignes.</li>
+<li>L'utilisateur de l'IHM doit pouvoir modifier la couleur des traces.</li>
+<li>=&gt; Proposez une modélisation de la partie représentation graphique des données.</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-patron-adaptateur-par-lexemple-24" class="level2">
+<h2>Le patron adaptateur par l'exemple (2/4)</h2>
+<figure>
+<img src="img/design_pattern/adapter_class-0.png" alt="Dessin de traces GPS - diagramme de classes" /><figcaption>Dessin de traces GPS - diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="le-patron-adaptateur-par-lexemple-34" class="level2">
+<h2>Le patron adaptateur par l'exemple (3/4)</h2>
+<ul>
+<li>Problématique (suite) :
+<ul>
+<li>On nous demande de pouvoir intégrer à l'affichage les surfaces des communes (affichage et choix de la couleur).</li>
+<li>La classe Commune a déjà été réalisée et nous est transmise.</li>
+<li>=&gt; Proposez une intégration à votre modèle.</li>
+<li>Les classes existantes pouvant être utilisées ailleurs dans le code, on veillera à respecter le principe d'ouverture/fermeture pour ne pas introduire de disfonctionnement.</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/design_pattern/adapter_classe_commune.png" alt="Classe Commune" /><figcaption>Classe Commune</figcaption>
+</figure>
+</section>
+<section id="le-patron-adaptateur-par-lexemple-44" class="level2">
+<h2>Le patron adaptateur par l'exemple (4/4)</h2>
+<figure>
+<img src="img/design_pattern/adapter_class-1.png" alt="Dessin de traces GPS - diagramme de classes" /><figcaption>Dessin de traces GPS - diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="le-patron-adaptateur" class="level2">
+<h2>Le patron adaptateur</h2>
+<blockquote>
+<p>Le patron de conception adapteur fournit au client l'interface qu'il attend en utilisant les services d'une classe dont l'interface est différente.</p>
+</blockquote>
+<ul>
+<li>Quand l'utiliser ?
+<ul>
+<li>Les noms des fonctions d'une classe à utiliser ne sont pas les bons</li>
+<li>Les paramètres et types de retours du client et de l'utilisateur sont différents</li>
+<li>Une classe cliente ne peut plus être modifiée</li>
+<li>Réutiliser du code ancien dans une nouvelle application</li>
+</ul></li>
+</ul>
+</section>
+<section id="modèle-du-patron-adapteur" class="level2">
+<h2>Modèle du patron adapteur</h2>
+<figure>
+<img src="img/design_pattern/design_pattern_adapter.png" alt="Design pattern adapter" /><figcaption>Design pattern adapter</figcaption>
+</figure>
+</section>
+<section id="le-patron-façade" class="level2">
+<h2>Le patron façade</h2>
+<p>Les principes de conception orienté objet permettent de développer des applications réutilisables et facilement maintenables. Pour ce faire, elles multiplient généralement le nombre de classes et interfaces, petites et très spécifiques.</p>
+<p>Si la maintenabilité du système est garantie, sa complèxité ne fait que croitre. Or bien souvent le client n'utilise qu'une infime partie de code développé. Lui permettre d'utiliser du code simplifié devient alors un enjeu majeur.</p>
+<blockquote>
+<p>Le patron de conception façade fournit une interface simplifiant l'usage d'un sous-système.</p>
+</blockquote>
+</section>
+<section id="modèle-du-patron-façade" class="level2">
+<h2>Modèle du patron façade</h2>
+<p>schéma patron facade</p>
+</section>
+<section id="le-patron-itérateur" class="level2">
+<h2>Le patron itérateur</h2>
+<p>En informatique, un itérateur est un objet permettant de parcourir les éléments contenus dans un autre objet. Souvent cet autre objet est une sctructure de données de type tableau, liste, arbre, etc.</p>
+<p>Remarque : dans le contexte de la programmation sur des bases de données, le terme de curseur est employé à la place d'itérateur.</p>
+<p>L'itérateur dispose de trois fonctionnalités essentielles : accéder à l'élément courant, se déplacer sur l'élément suivant et déterminer si le conteneur a été entièrement parcouru. Disposer d'un itérateur sur une structure de données permet à l'utilisateur de parcourir cette structure sans avoir besoin de connaître les détails de son organisation.</p>
+<p>Cela est très utile lorsque nous souhaitons permettre à une utilisateur de parcourir des données dans un conteneur mais sans avoir à lui en détailler sa structure. Le patron itérateur répond à cette problématique.</p>
+<blockquote>
+<p>Le patron de conception itérateur fournit un moyen d'accéder de façon séquentielle aux éléments d'une collection.</p>
+</blockquote>
+</section>
+<section id="modèle-du-patron-itérateur" class="level2">
+<h2>Modèle du patron itérateur</h2>
+<p>image patron itérateur</p>
+</section>
+<section id="le-patron-composite-par-lexemple" class="level2">
+<h2>Le patron composite par l'exemple</h2>
+<ul>
+<li>Problématique
+<ul>
+<li>Nous cherchons à modéliser un explorateur de fichiers.</li>
+<li>L'arborescence est constitués de fichiers et/ou de répertoires, qui peuvent eux même être composés de fichiers et/ou répertoires.</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-patron-composite-par-lexemple-1" class="level2">
+<h2>Le patron composite par l'exemple</h2>
+<figure>
+<img src="img/design_pattern/composite_classes.png" alt="Arborescence de fichiers" /><figcaption>Arborescence de fichiers</figcaption>
+</figure>
+</section>
+<section id="le-patron-composite" class="level2">
+<h2>Le patron composite</h2>
+<blockquote>
+<p>Le patron de conception composite définit un modèle de structure arborescente pour un ensemble de composants cohérents. Il permet aux clients de traiter de façon uniforme des objets individuels et des compositions d'objets.</p>
+</blockquote>
+<ul>
+<li>Quand l'utiliser ?
+<ul>
+<li>système comportant une hiérarchie avec un nombre de niveaux indéterminés</li>
+<li>système composé d'éléments pouvant eux-même être composés d'éléments de base</li>
+</ul></li>
+<li>Exemples : éléments graphiques d'un logiciel de dessin, structures de document, états composite UML</li>
+</ul>
+</section>
+<section id="modèle-du-patron-composite" class="level2">
+<h2>Modèle du patron composite</h2>
+<figure>
+<img src="img/design_pattern/design_pattern_composite.png" alt="Design pattern composite" /><figcaption>Design pattern composite</figcaption>
+</figure>
+</section>
+<section id="le-patron-fabrique" class="level2">
+<h2>Le patron fabrique</h2>
+<ul>
+<li>Design pattern factory</li>
+<li>Déléguer la création des objet à une autre classe plutôt que d'utiliser des <code>new</code></li>
+</ul>
+</section>
+<section id="modèle-du-patron-fabrique" class="level2">
+<h2>Modèle du patron fabrique</h2>
+</section>
+</section>
+<section id="modèle-vue-contrôleur" class="level1">
+<h1>Modèle-Vue-Contrôleur</h1>
+<section id="mvc-présentation" class="level2">
+<h2>MVC : présentation</h2>
+<ul>
+<li><strong>Modèle / Vue / Contrôleur</strong></li>
+<li>Méthode de conception d'application</li>
+<li>Construction d'interfaces graphiques en Smalltalk-80</li>
+<li>Formes dérivées
+<ul>
+<li>MVVC pour le web</li>
+</ul></li>
+</ul>
+</section>
+<section id="mvc-principe-13" class="level2">
+<h2>MVC : principe (1/3)</h2>
+<ul>
+<li>Séparer les développements en trois types d'objets
+<ul>
+<li><strong>modèle</strong> = la logique métier</li>
+<li><strong>vue</strong> = représentation du modèle</li>
+<li><strong>contrôleur</strong> = réactions de l'interfaces aux actions de l'utilisateur</li>
+</ul></li>
+<li>Faciliter maintenance et réutilisation des IHM</li>
+</ul>
+</section>
+<section id="mvc-principe-23" class="level2">
+<h2>MVC : principe (2/3)</h2>
+<figure>
+<img src="img/mvc/principe-1.png" alt="Principe du MVC" /><figcaption>Principe du MVC</figcaption>
+</figure>
+</section>
+<section id="mvc-principe-33" class="level2">
+<h2>MVC : principe (3/3)</h2>
+<figure>
+<img src="img/mvc/principe-2.png" alt="Un modèle, plusieurs vues, plusieurs contrôleurs" /><figcaption>Un modèle, plusieurs vues, plusieurs contrôleurs</figcaption>
+</figure>
+</section>
+<section id="mvc-exemple" class="level2">
+<h2>MVC : exemple</h2>
+<figure>
+<img src="img/mvc/exemple-1.png" alt="Illustration du MVC" /><figcaption>Illustration du MVC</figcaption>
+</figure>
+</section>
+<section id="mvc-exemple-1" class="level2">
+<h2>MVC : exemple</h2>
+<figure>
+<img src="img/mvc/exemple-2.png" alt="Illustration du MVC" /><figcaption>Illustration du MVC</figcaption>
+</figure>
+</section>
+<section id="mvc-exemple-2" class="level2">
+<h2>MVC : exemple</h2>
+<figure>
+<img src="img/mvc/exemple-3.png" alt="Illustration du MVC" /><figcaption>Illustration du MVC</figcaption>
+</figure>
+</section>
+<section id="mvc-exemple-3" class="level2">
+<h2>MVC : exemple</h2>
+<figure>
+<img src="img/mvc/exemple-4.png" alt="Illustration du MVC" /><figcaption>Illustration du MVC</figcaption>
+</figure>
+</section>
+<section id="mvc-et-patrons-de-conception" class="level2">
+<h2>MVC et patrons de conception</h2>
+<ul>
+<li>MVC antérieur aux patrons de conception</li>
+<li>Mais réexpliquable en terme de patrons
+<ul>
+<li>observateur entre les vues et le modèle</li>
+<li>stratégie entre les vues et les contrôleurs</li>
+<li>composite dans le cas de plusieurs couples vue/contrôleur</li>
+<li>fabrique, décorateur...</li>
+</ul></li>
+</ul>
+</section>
+</section>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
+        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
+
+        <script type="text/javascript">
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                /* mettre une taille en pixel sinon l'overview ne fonctionne plus */
+                width: 1024,
+                height: 768,
+                controls: true,                                 // Display controls in the bottom right corner
+                progress: true,                                 // Display a presentation progress bar
+                history: true,                                  // Push each slide change to the browser history
+                center: false, // Vertical centering of slides
+                minScale: 0.2, // Bounds for smallestpossible content scale
+                maxScale: 1.5, // Bounds for largest possible content scale
+                slideNumber: true, // Display the page number of the current slide
+                autoSlide: 0, // Slide every duration milliseconds
+
+                theme: 'default', // available themes are in /css/theme
+                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    // { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    // { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    /* ne pas activer highlight sinon la colorisation syntaxique ne fonctionne plus ? */
+                    // { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
+                    // { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+                    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <!-- -A/- -include-after-body -->
+        <!-- comme le footer contient des variables, on le met dans le gabarit car
+             les variables ne sont pas interprétées via -A de pandoc -->
+        <div id="slide-ign-footer">
+            <div class="slide-ign-title">Analyse avancée</div>
+            <div class="slide-ign-date">2016</div>
+        </div>
+    </body>
+</html>
+

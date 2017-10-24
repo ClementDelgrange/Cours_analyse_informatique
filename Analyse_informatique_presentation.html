@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="pandoc">
+        <meta name="author" content="Division des enseignements en informatique" />
+        <title>Analyse informatique</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+		
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+
+	<!-- Styles ENSG-IGN -->
+	<link rel="stylesheet" href="css/ign.css">
+
+        <!-- Printing and PDF exports -->
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script type="text/javascript">
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'reveal.js/css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
+            link.media = 'print';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" type="text/javascript" src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+        <!-- -H/- -include-in-header -->
+    </head>
+    <body>
+        <!-- -B/- -include-before-body -->
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h1>Analyse informatique</h1>
+                    <h3>Division des enseignements en informatique</h3>
+                    <h4>janvier 2017</h4>
+                </section>
+
+                <!-- - -toc/- -table-of-contents -->
+
+            <!-- ne pas indenter le $body$ sinon les codes (highlight) vont l'être aussi !!! -->
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="section" class="level2">
+<h2></h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/etapes_prog.png" alt="Grandes étapes de la conception d&#39;une application" /><figcaption>Grandes étapes de la conception d'une application</figcaption>
+</figure>
+</section>
+<section id="motivations" class="level2">
+<h2>Motivations</h2>
+<ul>
+<li>Pas d'usure des logiciels</li>
+<li>Erreurs humaines uniquement</li>
+<li>Obsolescence d'un logiciel causée par
+<ul>
+<li>des logiciels plus performants</li>
+<li>de nouveaux usages</li>
+</ul></li>
+</ul>
+</section>
+<section id="quelques-chiffres" class="level2">
+<h2>Quelques chiffres</h2>
+<p></br></p>
+<ul>
+<li>Coût d'un logiciel :
+<ul>
+<li>maintenance = 53%</li>
+<li>correction bogues = 17%</li>
+</ul></li>
+</ul>
+</section>
+<section id="quelques-chiffres-1" class="level2">
+<h2>Quelques chiffres</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/reussite_projets_info.png" alt="Taux de réussite des projets informatiques en entreprise" /><figcaption>Taux de réussite des projets informatiques en entreprise</figcaption>
+</figure>
+</section>
+<section id="le-besoin" class="level2">
+<h2>Le besoin</h2>
+<p></br></p>
+<ul>
+<li>Outils d'aide à la modélisation pour :
+<ul>
+<li>élaborer la structure des programmes</li>
+<li>s'assurer que les exigences initiales ont bien été respectées</li>
+<li>maintenir les logiciels</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-programme" class="level2">
+<h2>Le programme</h2>
+<p></br></p>
+<ol type="1">
+<li>Programmation orientée objet</li>
+<li>Présentation d'UML</li>
+<li>Etude de plusieurs diagrammes UML</li>
+<li>Cycles de développement</li>
+</ol>
+</section>
+<section id="organisation" class="level2">
+<h2>Organisation</h2>
+<p></br></p>
+<ul>
+<li>4 séances de 3h</li>
+</ul>
+<p></br></p>
+<ul>
+<li>projet à faire à la maison</li>
+</ul>
+</section>
+</section>
+<section id="programmation-orientée-objet" class="level1">
+<h1>Programmation orientée objet</h1>
+<section id="paradigmes-de-programmation" class="level2">
+<h2>Paradigmes de programmation</h2>
+<ul>
+<li>Plusieurs <em>manière</em> de programmer
+<ul>
+<li>programmation impérative : suite d'instructions</li>
+<li>programmation fonctionnelle : composition de fonctions</li>
+<li>programmation orientée objet : définition d'interactions entre structures d'objets</li>
+<li>...</li>
+</ul></li>
+</ul>
+<pre><code>1- faire fondre le beurre
+2- lorsque le beurre est fondu ajouter le chocolat
+3- ajouter les oeufs</code></pre>
+</section>
+<section id="programmation-fonctionnelle" class="level2">
+<h2>Programmation fonctionnelle</h2>
+<ul>
+<li>Apparition dans les années 1960</li>
+<li>Programme découpé en fonctions, elles-mêmes découpées en sous-fonctions...</li>
+<li>Approche <em>descendante</em></li>
+</ul>
+<figure>
+<img src="img/intro_oo/approche_fonctionnelle.png" alt="Découpage d&#39;un programme selon l&#39;approche fonctionnelle" /><figcaption>Découpage d'un programme selon l'approche fonctionnelle</figcaption>
+</figure>
+</section>
+<section id="exemple" class="level2">
+<h2>Exemple</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/mastermind_schema_fonctions.png" alt="Mastermind en fonctionnel" /><figcaption>Mastermind en fonctionnel</figcaption>
+</figure>
+</section>
+<section id="limites-de-la-programmation-fonctionnelle" class="level2">
+<h2>Limites de la programmation fonctionnelle</h2>
+<figure>
+<img src="img/intro_oo/decoupage_fonctionnel.png" alt="Découpage fonctionnel d&#39;une application dédiée à la gestion d&#39;une bibliothèque" /><figcaption>Découpage fonctionnel d'une application dédiée à la gestion d'une bibliothèque</figcaption>
+</figure>
+</section>
+<section id="limites-de-la-programmation-fonctionnelle-1" class="level2">
+<h2>Limites de la programmation fonctionnelle</h2>
+<figure>
+<img src="img/intro_oo/decoupage_fonctionnel_evolution.png" alt="Découpage fonctionnel d&#39;une application - évolution du logiciel" /><figcaption>Découpage fonctionnel d'une application - évolution du logiciel</figcaption>
+</figure>
+</section>
+<section id="programmation-orientée-objet-1" class="level2">
+<h2>Programmation orientée objet</h2>
+<ul>
+<li>Développement dans les années 1980</li>
+<li>Décrit les structures de base du système et leurs interactions</li>
+<li>Approche <em>ascendante</em></li>
+</ul>
+<figure>
+<img src="img/intro_oo/approche_objet.png" alt="Découpage d&#39;un programme selon l&#39;approche orientée objet" /><figcaption>Découpage d'un programme selon l'approche orientée objet</figcaption>
+</figure>
+</section>
+<section id="exemple-1" class="level2">
+<h2>Exemple</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/mastermind_schema_objets.png" alt="Mastermind en orienté objet" /><figcaption>Mastermind en orienté objet</figcaption>
+</figure>
+</section>
+<section id="fonctionnel-vs.-orienté-objet" class="level2">
+<h2>Fonctionnel vs. Orienté objet</h2>
+<p></br></p>
+<ul>
+<li>Approche fonctionnelle plus intuitive</li>
+<li>Approche objet facilement réutilisable et maintenable</li>
+<li>Résolvent les mêmes problèmes</li>
+</ul>
+</section>
+<section id="concepts-de-lorienté-objet---lobjet" class="level2">
+<h2>Concepts de l'orienté objet - l'objet</h2>
+<blockquote>
+<p><strong>Objet</strong> : entité autonome, aux frontières précises, décrit par une collection de propriétés et de traitements associés</p>
+</blockquote>
+<ul>
+<li>Un objet possède une identité, un nom</li>
+<li>Un ensemble d'<strong>attributs</strong> caractérisent l'état de l'objet</li>
+<li>Un ensemble d'<strong>opérations</strong> en définit le comportement</li>
+</ul>
+</section>
+<section id="exemples-dobjets" class="level2">
+<h2>Exemples d'objets</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/objets.png" alt="Exemples d&#39;objets" /><figcaption>Exemples d'objets</figcaption>
+</figure>
+</section>
+<section id="concepts-de-lorienté-objet---la-classe" class="level2">
+<h2>Concepts de l'orienté objet - la classe</h2>
+<blockquote>
+<p><strong>Classe</strong> : type abstrait de donnée destiné à décrire une structure d'objets, caractérisé par des attributs et des méthodes</p>
+</blockquote>
+<ul>
+<li>Objet créé selon le modèle d'une classe
+<ul>
+<li>Objet = <strong>instance</strong> de classe</li>
+</ul></li>
+</ul>
+</section>
+<section id="exemples-de-classes" class="level2">
+<h2>Exemples de classes</h2>
+<p></br></p>
+<ul>
+<li>Point</li>
+<li>Bouton</li>
+<li>Personne</li>
+</ul>
+</section>
+<section id="concepts-de-lorienté-objet---lencapsulation" class="level2">
+<h2>Concepts de l'orienté objet - l'encapsulation</h2>
+<blockquote>
+<p><strong>Encapsulation</strong> : concept qui consiste à masquer les détails de l'implémentation d'un objet à son utilisateur</p>
+</blockquote>
+<ul>
+<li>Partie visible de l'objet appelée <strong>interface</strong></li>
+<li>Garantie l’intégrité des données</li>
+<li>Principe facilitant l’évolution des applications</li>
+</ul>
+</section>
+<section id="exemple-dencapsulation" class="level2">
+<h2>Exemple d'encapsulation</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/encapsulation.png" alt="Le moteur d&#39;une voiture est encapsulé" /><figcaption>Le moteur d'une voiture est encapsulé</figcaption>
+</figure>
+</section>
+<section id="exemple-dencapsulation-1" class="level2">
+<h2>Exemple d'encapsulation</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/encapsulation-2.png" alt="Encapsulation de la gestion d&#39;un nombre complèxe" /><figcaption>Encapsulation de la gestion d'un nombre complèxe</figcaption>
+</figure>
+</section>
+<section id="concepts-de-lorienté-objet---lhéritage" class="level2">
+<h2>Concepts de l'orienté objet - l'héritage</h2>
+<blockquote>
+<p><strong>Héritage</strong> : principe autorisant le création d'une classe dérivée à partir d'une classe existante</p>
+</blockquote>
+<ul>
+<li>Attributs et méthodes de la classe existante transmis à la classe dérivée</li>
+<li>Classe <em>mère</em> / classe <em>fille</em></li>
+<li>Principe encourageant la réutilisation</li>
+</ul>
+</section>
+<section id="exemple-dhéritage" class="level2">
+<h2>Exemple d'héritage</h2>
+<figure>
+<img src="img/intro_oo/heritage.png" alt="La classe Carre hérite de la classe Quadrilatere" /><figcaption>La classe Carre hérite de la classe Quadrilatere</figcaption>
+</figure>
+</section>
+<section id="concepts-de-lorienté-objet---le-polymorphisme" class="level2">
+<h2>Concepts de l'orienté objet - le polymorphisme</h2>
+<blockquote>
+<p><strong>Polymorphisme</strong> : faculté de pouvoir redéfinir dans une classe dérivée les méthodes héritées de la classe parente</p>
+</blockquote>
+<ul>
+<li>Permet une programmation plus générique</li>
+<li>Dans le cas de l’héritage : spécifier un comportement général</li>
+</ul>
+</section>
+<section id="exemple-de-polymorphisme" class="level2">
+<h2>Exemple de polymorphisme</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/polymorphisme.png" alt="Illustration du principe du polymorphisme" /><figcaption>Illustration du principe du polymorphisme</figcaption>
+</figure>
+</section>
+<section id="modélisation-orienté-objet" class="level2">
+<h2>Modélisation orienté objet</h2>
+<ul>
+<li>En résumé, l'approche objet c'est :
+<ul>
+<li>objets, classes, encapsulation, héritage, polymorphisme</li>
+<li>des facilités pour faire évoluer les programmes</li>
+</ul></li>
+<li>Mais :
+<ul>
+<li>pas toujours très intuitif</li>
+<li>quelle représentation pour ces structures/concepts ?</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="présentation-duml" class="level1">
+<h1>Présentation d'UML</h1>
+<section id="naissance-dun-langage-de-modélisation" class="level2">
+<h2>Naissance d'un langage de modélisation</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/historique_langages_prog.png" alt="Historiques des langages de programmation" /><figcaption>Historiques des langages de programmation</figcaption>
+</figure>
+</section>
+<section id="naissance-dun-langage-de-modélisation-1" class="level2">
+<h2>Naissance d'un langage de modélisation</h2>
+<p></br></p>
+<figure>
+<img src="img/intro_oo/historique_methodes_OO.png" alt="La naissance d&#39;UML" /><figcaption>La naissance d'UML</figcaption>
+</figure>
+</section>
+<section id="généralités" class="level2">
+<h2>Généralités</h2>
+<figure>
+<img src="img/logos/logo_UML.jpg" alt="Logo UML" /><figcaption>Logo UML</figcaption>
+</figure>
+<ul>
+<li>Langage graphique de conception orienté objet</li>
+<li>Couvre l'intégralité des systèmes informatiques
+<ul>
+<li>utilisation, conception, déploiement</li>
+</ul></li>
+<li>Compréhensible par l'homme et par la machine</li>
+<li>Standard largement adopté par l'industrie</li>
+</ul>
+</section>
+<section id="les-diagrammes-uml" class="level2">
+<h2>Les diagrammes UML</h2>
+<p></br></p>
+<figure>
+<img src="img/14_diagrammes_UML.png" alt="Les 14 diagrammes UML" /><figcaption>Les 14 diagrammes UML</figcaption>
+</figure>
+</section>
+<section id="les-diagrammes-uml-1" class="level2">
+<h2>Les diagrammes UML</h2>
+<p></br></p>
+<ul>
+<li>14 diagrammes en version 2.5
+<ul>
+<li>7 diagrammes struturels : composants du système et fonctionnalités permises</li>
+<li>7 diagrammes comportementaux : intéractions entre les éléments d'un système</li>
+</ul></li>
+</ul>
+<p></br></p>
+</section>
+<section id="uml" class="level2">
+<h2>UML</h2>
+<p></br></p>
+<ul>
+<li>En résumé, UML c'est :
+<ul>
+<li>un langage graphique de conception orientée objet</li>
+<li>contitué de diagrammes accompagnés d'explications</li>
+<li>pas une méthode</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="le-diagramme-de-cas-dutilisation" class="level1">
+<h1>Le diagramme de cas d'utilisation</h1>
+<section id="le-diagramme-de-cas-dutilisation-1" class="level2">
+<h2>Le diagramme de cas d'utilisation</h2>
+<ul>
+<li><strong>Structurer le besoin de l'utilisateur</strong>
+<ul>
+<li>Représentation des attentes de l'utilisateur</li>
+<li>Définition du périmètre de l'application (=<em>frontière</em>)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/cas_utilisation.png" alt="Diagramme de cas d&#39;utilisation" /><figcaption>Diagramme de cas d'utilisation</figcaption>
+</figure>
+</section>
+<section id="le-cas-dutilisation" class="level2">
+<h2>Le cas d'utilisation</h2>
+<ul>
+<li>Action (=&gt; verbe à l'infinif)</li>
+</ul>
+<figure>
+<img src="img/uml_bases/cas_utilisation/cas_utilisation.png" alt="Cas d&#39;utilisation" /><figcaption>Cas d'utilisation</figcaption>
+</figure>
+<ul>
+<li>Structuration possible en sous-cas d'utilisation
+<ul>
+<li>inclusion = obligatoire</li>
+<li>extension = optionnel</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/cas_utilisation/include_extend.png" alt="Relations d&#39;inclusion/extension" /><figcaption>Relations d'inclusion/extension</figcaption>
+</figure>
+</section>
+<section id="les-acteurs" class="level2">
+<h2>Les acteurs</h2>
+<ul>
+<li>Personne ou système en interaction avec le système</li>
+<li>Identifié</li>
+<li>2 catégories :
+<ul>
+<li>acteur principal : exprime une attente vis à vis du système</li>
+<li>acteur secondaire : est sollicité par le système</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/cas_utilisation/acteur.png" alt="Acteur principal" /><figcaption>Acteur principal</figcaption>
+</figure>
+</section>
+<section id="les-acteurs-1" class="level2">
+<h2>Les acteurs</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/cas_utilisation/acteur_secondaire.png" alt="Acteur secondaire" /><figcaption>Acteur secondaire</figcaption>
+</figure>
+</section>
+<section id="liens-entre-acteurs" class="level2">
+<h2>Liens entre acteurs</h2>
+<ul>
+<li>La généralisation</li>
+</ul>
+<figure>
+<img src="img/uml_bases/cas_utilisation/acteur_generalisation.png" alt="Généralisation d&#39;acteurs" /><figcaption>Généralisation d'acteurs</figcaption>
+</figure>
+</section>
+<section id="exemple-2" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/uml_bases/cas_utilisation/diagramme_cas_utilisation.png" alt="Application de remonté d&#39;informations et de calculs d&#39;itinéraires dans les transports" /><figcaption>Application de remonté d'informations et de calculs d'itinéraires dans les transports</figcaption>
+</figure>
+</section>
+<section id="description-textuelle" class="level2">
+<h2>Description textuelle</h2>
+<ul>
+<li>Nécessaire pour
+<ul>
+<li>Détailler un cas d'utilisation (entrées/sorties...)</li>
+<li>Préciser une chronologie</li>
+</ul></li>
+<li>Comprend
+<ul>
+<li>Identification : nom, objectif, acteurs, dates, responsable</li>
+<li>Description : pré-condition, scénario, post-conditions</li>
+<li>Spécifications non fonctionnelles</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercices" class="level2">
+<h2>Exercices</h2>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-de-classes" class="level1">
+<h1>Le diagramme de classes</h1>
+<section id="diagramme-de-classes" class="level2">
+<h2>Diagramme de classes</h2>
+<ul>
+<li><strong>Représenter les structures de données</strong>
+<ul>
+<li>classes et liens entre classes...</li>
+<li>mise en oeuvre des concepts de l'orienté objet</li>
+<li>modélisation statique</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/classes.png" alt="Diagramme de classes" /><figcaption>Diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="elements-de-bases" class="level2">
+<h2>Elements de bases</h2>
+<ul>
+<li>La classe = structure de données abstraite
+<ul>
+<li>nom (au singulier)</li>
+<li>attributs</li>
+<li>méthodes</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/classes/classe.png" alt="Classe UML" /><figcaption>Classe UML</figcaption>
+</figure>
+<ul>
+<li>L'association</li>
+</ul>
+<figure>
+<img src="img/uml_bases/classes/association.png" alt="Association entre classes" /><figcaption>Association entre classes</figcaption>
+</figure>
+</section>
+<section id="les-attributs" class="level2">
+<h2>Les attributs</h2>
+<ul>
+<li>Visibilité : public (<code>+</code>), privé (<code>-</code>), protégé (<code>#</code>)</li>
+<li>Type : <code>integer</code>, <code>float</code>, <code>string</code>, <code>date</code>, <code>boolean</code>, ...</li>
+<li>Multiplicité : <code>[2]</code>, <code>[3]</code>, <code>[*]</code>...</li>
+<li>Valeur par défaut : <code>=valeur_par_defaut</code></li>
+<li>Attribut dérivé =</li>
+</ul>
+<pre><code>{-, #, +} nom_attribut : type_attribut {[multiplicite]} {=valeur_par_defaut}</code></pre>
+</section>
+<section id="les-attributs-dérivés" class="level2">
+<h2>Les attributs dérivés</h2>
+<ul>
+<li>Dont la valeur dépend des autres attributs
+<ul>
+<li>pas d'affectation</li>
+</ul></li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/classe_rectangle.png" alt="Exemple d&#39;attribut dérivé" /><figcaption>Exemple d'attribut dérivé</figcaption>
+</figure>
+</section>
+<section id="les-méthodes" class="level2">
+<h2>Les méthodes</h2>
+<ul>
+<li>Signature d'une méthode</li>
+</ul>
+<pre><code>{-, #, +} nom_methode ({nom_param1: type_param1, nom_param_2: type_param2, ...}) {: type_retour}</code></pre>
+<figure>
+<img src="img/uml_bases/classes/classe_point.png" alt="Méthode deplacer() de la classe Point" /><figcaption>Méthode <code>deplacer()</code> de la classe Point</figcaption>
+</figure>
+</section>
+<section id="les-associations" class="level2">
+<h2>Les associations</h2>
+<ul>
+<li>Types d'associations
+<ul>
+<li>association (<em>simple</em>)</li>
+<li>héritage</li>
+<li>agrégation</li>
+<li>composition</li>
+</ul></li>
+<li>Cardinalité :
+<ul>
+<li><code>0..1</code></li>
+<li><code>1</code></li>
+<li><code>*</code></li>
+<li><code>1..*</code></li>
+<li><code>M..N</code></li>
+<li><code>N</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="lassociation-simple" class="level2">
+<h2>L'association simple</h2>
+<figure>
+<img src="img/uml_bases/classes/association_roles.png" alt="Rôles d&#39;une association" /><figcaption>Rôles d'une association</figcaption>
+</figure>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/association_navigabilite_restreinte.png" alt="Association à navigabilité restreinte" /><figcaption>Association à navigabilité restreinte</figcaption>
+</figure>
+</section>
+<section id="lhéritage" class="level2">
+<h2>L'héritage</h2>
+<ul>
+<li>Concept orienté objet du même nom</li>
+<li>Attributs et méthodes automatiquement transmis à la classe fille</li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/heritage.png" alt="Relation d&#39;héritage" /><figcaption>Relation d'héritage</figcaption>
+</figure>
+</section>
+<section id="exemples-dhéritage" class="level2">
+<h2>Exemples d'héritage</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/heritage_exemples.png" alt="Exemples d&#39;héritage" /><figcaption>Exemples d'héritage</figcaption>
+</figure>
+</section>
+<section id="agrégation-composition" class="level2">
+<h2>Agrégation-composition</h2>
+<ul>
+<li>Composition = <em>agrégation forte</em></li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/composition_agregation.png" alt="Différence composition-agrégation" /><figcaption>Différence composition-agrégation</figcaption>
+</figure>
+</section>
+<section id="les-classes-associations" class="level2">
+<h2>Les classes associations</h2>
+<ul>
+<li>Classe avec des informations sur une association</li>
+</ul>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/classes/classe_association.png" alt="Classe d&#39;association" /><figcaption>Classe d'association</figcaption>
+</figure>
+</section>
+<section id="les-classes-abstraites" class="level2">
+<h2>Les classes abstraites</h2>
+<ul>
+<li>Classe qui ne peut être instanciée</li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/classes/classe_abstraite.png" alt="Exemple de classe abstraite" /><figcaption>Exemple de classe abstraite</figcaption>
+</figure>
+</section>
+<section id="exercice" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-dobjets" class="level1">
+<h1>Le diagramme d'objets</h1>
+<section id="le-diagramme-dobjets-1" class="level2">
+<h2>Le diagramme d'objets</h2>
+<ul>
+<li><strong>Représenter les objets du système à un instant donné</strong>
+<ul>
+<li>illustrer le diagramme de classe</li>
+<li>détailler un aspect particulier</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/objets.png" alt="Diagramme d&#39;objets" /><figcaption>Diagramme d'objets</figcaption>
+</figure>
+</section>
+<section id="les-objets" class="level2">
+<h2>Les objets</h2>
+<ul>
+<li>Objet = instance de classe
+<ul>
+<li>Nom de l'objet souligné : <code>nom_objet:NomClasse</code></li>
+<li>Attributs avec une valeur : <code>attribut: type = valeur</code></li>
+<li>Méthodes non représentées</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/objets/classe_pays.png" alt="Classe Pays" /><figcaption>Classe <code>Pays</code></figcaption>
+</figure>
+<figure>
+<img src="img/uml_bases/objets/objets_representations_possibles.png" alt="Objet France" /><figcaption>Objet <code>France</code></figcaption>
+</figure>
+</section>
+<section id="les-liens" class="level2">
+<h2>Les liens</h2>
+<ul>
+<li>Lien = instance d'association
+<ul>
+<li>Liens simples uniquement</li>
+<li>Pas d'héritage</li>
+<li>Cardinalité de <code>1</code> toujours</li>
+<li>Nom du lien souligné</li>
+</ul></li>
+</ul>
+</section>
+<section id="exemple-3" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/uml_bases/objets/classes_pays_langue.png" alt="Classes Pays et Langue" /><figcaption>Classes <code>Pays</code> et <code>Langue</code></figcaption>
+</figure>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/objets/objets_pays_langue.png" alt="Un diagramme d&#39;objet correspondant" /><figcaption>Un diagramme d'objet correspondant</figcaption>
+</figure>
+</section>
+<section id="exemple-4" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/uml_bases/objets/diagramme_classes_pays_region.png" alt="Diagramme de classes" /><figcaption>Diagramme de classes</figcaption>
+</figure>
+<figure>
+<img src="img/uml_bases/objets/diagramme_objets_pays_region.png" alt="Un diagramme d&#39;objets cohérent" /><figcaption>Un diagramme d'objets cohérent</figcaption>
+</figure>
+<figure>
+<img src="img/uml_bases/objets/diagramme_objets_pays_region_nok.png" alt="Un diagramme d&#39;objets incohérent avec le diagramme de classes" /><figcaption>Un diagramme d'objets incohérent avec le diagramme de classes</figcaption>
+</figure>
+</section>
+<section id="exercices-1" class="level2">
+<h2>Exercices</h2>
+<ol type="1">
+<li></li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-de-paquetage" class="level1">
+<h1>Le diagramme de paquetage</h1>
+<section id="le-diagramme-de-paquetage-1" class="level2">
+<h2>Le diagramme de paquetage</h2>
+<ul>
+<li><strong>Représenter l'organisation en paquetages</strong>
+<ul>
+<li>paquetage = ensemble d'éléments UML fournissant un service cohérent</li>
+<li>utile pour structurer les gros projets</li>
+</ul></li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/paquetages/paquetage_vue_interne.png" alt="Représentation interne d&#39;un paquetage" /><figcaption>Représentation interne d'un paquetage</figcaption>
+</figure>
+</section>
+<section id="dépendances-entre-paquetages" class="level2">
+<h2>Dépendances entre paquetages</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/paquetages/paquetage_dependance.png" alt="Dépendance entre deux paquetages" /><figcaption>Dépendance entre deux paquetages</figcaption>
+</figure>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/paquetages/paquetage_import.png" alt="Import d&#39;un paquetage" /><figcaption>Import d'un paquetage</figcaption>
+</figure>
+</section>
+<section id="exemple-5" class="level2">
+<h2>Exemple</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/paquetages/separation_ihm_metier.png" alt="Séparation IHM - code métier" /><figcaption>Séparation IHM - code métier</figcaption>
+</figure>
+</section>
+<section id="exemple-6" class="level2">
+<h2>Exemple</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/paquetages/archi_couches.png" alt="Architecture en couches" /><figcaption>Architecture en couches</figcaption>
+</figure>
+</section>
+</section>
+<section id="le-diagramme-de-déploiement" class="level1">
+<h1>Le diagramme de déploiement</h1>
+<section id="diagramme-de-déploiement" class="level2">
+<h2>Diagramme de déploiement</h2>
+<ul>
+<li><strong>Décrire la configuration physique des matériels</strong>
+<ul>
+<li>répartition des composants</li>
+<li>interractions entre noeuds</li>
+</ul></li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_miniatures/deploiement.png" alt="Diagramme de déploiement" /><figcaption>Diagramme de déploiement</figcaption>
+</figure>
+</section>
+<section id="noeuds-et-composants" class="level2">
+<h2>Noeuds et composants</h2>
+<ul>
+<li>Noeud = élément physique du système</li>
+<li>Composant = unité logicielle autonome
+<ul>
+<li><em>diagramme de composant : vue de haut niveau sur un système</em></li>
+</ul></li>
+<li>Artifact = fichier présent sur un noeud et matérialisant la présence d'un composant</li>
+</ul>
+<figure>
+<img src="img/uml_bases/deploiement/artifact.png" alt="Présente d&#39;un composant sur un noeud" /><figcaption>Présente d'un composant sur un noeud</figcaption>
+</figure>
+</section>
+<section id="exercice-1" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li>Station météo</li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-dactivité" class="level1">
+<h1>Le diagramme d'activité</h1>
+<section id="diagramme-dactivité" class="level2">
+<h2>Diagramme d'activité</h2>
+<ul>
+<li><strong>Décrire les enchaînements d'actions lors d'une fonctionnalité importante</strong>
+<ul>
+<li>un cas d'utilisation</li>
+<li>une méthode importante</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/activite.png" alt="Diagramme d&#39;activité" /><figcaption>Diagramme d'activité</figcaption>
+</figure>
+</section>
+<section id="eléments-de-base" class="level2">
+<h2>Eléments de base</h2>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/activite/etat_initial_final.png" alt="Etat initial / Etat final" /><figcaption>Etat initial / Etat final</figcaption>
+</figure>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/activite/activite.png" alt="Activité" /><figcaption>Activité</figcaption>
+</figure>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/activite/transition.png" alt="Transition" /><figcaption>Transition</figcaption>
+</figure>
+</section>
+<section id="branchement-conditionnel" class="level2">
+<h2>Branchement conditionnel</h2>
+<ul>
+<li>Activités dépendantes du résultat d'un test</li>
+</ul>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/activite/condition.png" alt="Branchement conditionnel" /><figcaption>Branchement conditionnel</figcaption>
+</figure>
+</section>
+<section id="transitions-concurrentes" class="level2">
+<h2>Transitions concurrentes</h2>
+<ul>
+<li>Activités effectuées en parallèle</li>
+<li><strong>Join</strong> = séparation de branches d'activités</li>
+<li><strong>Fork</strong> = resynchronisation des branches d'activités</li>
+</ul>
+<p></br></p>
+<figure>
+<img src="img/uml_bases/activite/parallele.png" alt="Transitions concurrentes" /><figcaption>Transitions concurrentes</figcaption>
+</figure>
+</section>
+<section id="exemple-7" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/uml_bases/activite/diagramme_inserer_cheque.png" alt="Activité insérer un chèque" /><figcaption>Activité insérer un chèque</figcaption>
+</figure>
+</section>
+<section id="exemple-8" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/uml_bases/activite/diagramme_distributeur_billets.png" alt="Diagramme d&#39;activité composé d&#39;autres diagrammes" /><figcaption>Diagramme d'activité composé d'autres diagrammes</figcaption>
+</figure>
+</section>
+<section id="couloir-dactivités" class="level2">
+<h2>Couloir d'activités</h2>
+<figure>
+<img src="img/uml_bases/activite/couloirs.png" alt="Diagramme d&#39;activité - Traiter une commande" /><figcaption>Diagramme d'activité - Traiter une commande</figcaption>
+</figure>
+</section>
+<section id="exercice-2" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li>Mousse au chocolat</li>
+<li>GPS de navigation</li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-de-séquence" class="level1">
+<h1>Le diagramme de séquence</h1>
+<section id="diagramme-de-séquence" class="level2">
+<h2>Diagramme de séquence</h2>
+<ul>
+<li><strong>Décrire les interactions entre entités lors d'une fonctionnalité importante</strong>
+<ul>
+<li>un cas d'utilisation</li>
+<li>une méthode importante</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/sequence.png" alt="Diagramme de séquence" /><figcaption>Diagramme de séquence</figcaption>
+</figure>
+</section>
+<section id="activation-des-objets" class="level2">
+<h2>Activation des objets</h2>
+<ul>
+<li>Axe du temps du haut vers le bas</li>
+<li>Ligne de vie des objets
+<ul>
+<li>périodes d'activation</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/sequence/ligne_vie.png" alt="Ligne de vie et période d&#39;activation" /><figcaption>Ligne de vie et période d'activation</figcaption>
+</figure>
+</section>
+<section id="echanges-de-messages" class="level2">
+<h2>Echanges de messages</h2>
+<ul>
+<li>Flux de données échangés
+<ul>
+<li>envoi d'un message =appel de méthode</li>
+<li>réponse =retour de méthodes</li>
+<li>numérotation optionnelle des messages échangés</li>
+</ul></li>
+<li>Types de messages :
+<ul>
+<li>synchrone : attente d'une réponse</li>
+<li>asynchrone : pas de réponse/retour</li>
+<li>de retour : valeur renvoyée suite à message synchrone</li>
+<li>création / destruction</li>
+</ul></li>
+</ul>
+</section>
+<section id="types-de-messages" class="level2">
+<h2>Types de messages</h2>
+<figure>
+<img src="img/uml_bases/sequence/types_messages.png" alt="Les différents types de messages" /><figcaption>Les différents types de messages</figcaption>
+</figure>
+</section>
+<section id="cadre-dinteraction" class="level2">
+<h2>Cadre d'interaction</h2>
+<ul>
+<li>Partie du diagramme associée à une modalité d'exécution
+<ul>
+<li><code>opt</code> : condition de test (<em>si</em> en programmation)</li>
+<li><code>alt</code> : plusieurs conditions de test (<em>si / sinon si...</em>)</li>
+<li><code>loop</code> : répétition d'un échange de messages</li>
+<li><code>par</code> : fragments exécutés en parallèle</li>
+<li><code>ref</code> : passage par un autre diagramme de séquence</li>
+</ul></li>
+</ul>
+</section>
+<section id="exemple-9" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/exo_uml/demineur_sequence_decouvrir.png" />
+</figure>
+</section>
+<section id="exercice-3" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li>Correspondance diagramme de classes / diagramme de séquence</li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-détats-transitions" class="level1">
+<h1>Le diagramme d'états-transitions</h1>
+<section id="diagramme-détats-transitions" class="level2">
+<h2>Diagramme d'états-transitions</h2>
+<ul>
+<li><strong>Représenter les états possibles d'un objet et les transitions entre eux</strong>
+<ul>
+<li>utile lorsque l'état d'un objet dépend de son hitorique</li>
+<li>symbolique proche de celle du diagramme d'activité</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/etats_transitions.png" alt="Diagramme d&#39;états-transitions" /><figcaption>Diagramme d'états-transitions</figcaption>
+</figure>
+</section>
+<section id="etats-et-transitions" class="level2">
+<h2>Etats et transitions</h2>
+<ul>
+<li>Etat stable</li>
+<li>Transition instantannée</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/etat_transition.png" alt="Etat initial / Transition / Etat" /><figcaption>Etat initial / Transition / Etat</figcaption>
+</figure>
+</section>
+<section id="conditions-de-garde" class="level2">
+<h2>Conditions de garde</h2>
+<ul>
+<li>Plusieurs transtions possibles à partir d'un état</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/transitions_gardes.png" alt="Transitions avec gardes - Système de thermostat" /><figcaption>Transitions avec gardes - Système de thermostat</figcaption>
+</figure>
+</section>
+<section id="transitions-refléxives" class="level2">
+<h2>Transitions refléxives</h2>
+<ul>
+<li>Transition laissant l'objet dans le même état</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/transition_reflexive.png" alt="Transition reflexive" /><figcaption>Transition reflexive</figcaption>
+</figure>
+</section>
+<section id="exercice-4" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li>Démineur</li>
+</ol>
+</section>
+</section>
+<section id="uml-et-méthodologie" class="level1">
+<h1>UML et méthodologie</h1>
+<section id="section-1" class="level2">
+<h2></h2>
+<ul>
+<li>UML est un langage</li>
+</ul>
+</section>
+<section id="du-besoin-au-code" class="level2">
+<h2>Du besoin au code</h2>
+<figure>
+<img src="img/methodes_dvp/besoin_code.png" alt="Comment passer d&#39;un besoin à du code" /><figcaption>Comment passer d'un besoin à du code</figcaption>
+</figure>
+</section>
+<section id="qualité-dun-logiciel" class="level2">
+<h2>Qualité d'un logiciel</h2>
+<ul>
+<li>Capacité fonctionnelle
+<ul>
+<li>réponse aux besoins explicites et implicites</li>
+</ul></li>
+<li>Facilité d'utilisation
+<ul>
+<li>ergonomie, gestion des utilisations incorrectes</li>
+</ul></li>
+<li>Fiabilité
+<ul>
+<li>exactitude des résultats, tolérance aux pannes</li>
+</ul></li>
+<li>Performance
+<ul>
+<li>temps de réponse, débit</li>
+</ul></li>
+<li>Maintenabilité
+<ul>
+<li>effort nécessaire pour corriger ou transformer</li>
+</ul></li>
+<li>Portabilité
+<ul>
+<li>aptitude à fonctionner dans un nouvel environnement</li>
+</ul></li>
+</ul>
+</section>
+<section id="cycles-de-développement" class="level2">
+<h2>Cycles de développement</h2>
+<figure>
+<img src="img/methodes_dvp/cycle_cascade.png" alt="Cycle en cascade" /><figcaption>Cycle en cascade</figcaption>
+</figure>
+</section>
+<section id="cycles-de-développement-1" class="level2">
+<h2>Cycles de développement</h2>
+<figure>
+<img src="img/methodes_dvp/cycle_v.png" alt="Cycle en V" /><figcaption>Cycle en V</figcaption>
+</figure>
+</section>
+<section id="méthodes-de-développement" class="level2">
+<h2>Méthodes de développement</h2>
+<ul>
+<li>Quelques méthodes de développement utilisant UML :
+<ul>
+<li>Le processus unifié (PU, UP, RUP, AUP...)</li>
+<li>La méthode minimale</li>
+<li>La méthode <em>extreme programming</em> (XP)</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-processus-unifié" class="level2">
+<h2>Le processus unifié</h2>
+<ul>
+<li>Basé sur UML</li>
+<li>Guidé par les besoins des utilisateurs</li>
+<li>Centré sur l'architecture logicielle</li>
+<li>Itératif et incrémental</li>
+</ul>
+</section>
+<section id="le-processus-unifié-1" class="level2">
+<h2>Le processus unifié</h2>
+<ul>
+<li>Guidé par les besoins des utilisateurs
+<ul>
+<li>modèles UML dérivés des cas d'utilisation</li>
+</ul></li>
+<li>Marche à suivre :
+<ol type="1">
+<li>réaliser un ébauche grossière de l'application</li>
+<li>identifier les fonctions essentielles</li>
+<li>adapter l'architecture pour prendre en compte ces fonctionnalités</li>
+<li>tester</li>
+<li>recommencer</li>
+</ol></li>
+<li><em>S'y prendre en plusieurs fois et affiner le modèle par étapes</em></li>
+</ul>
+</section>
+<section id="le-processus-unifié-2" class="level2">
+<h2>Le processus unifié</h2>
+<figure>
+<img src="img/methodes_dvp/cycle_spirale.png" alt="Cycle en spirale" /><figcaption>Cycle en spirale</figcaption>
+</figure>
+</section>
+<section id="extreme-programming" class="level2">
+<h2>eXtreme Programming</h2>
+<ul>
+<li>Client maîtrise d'ouvrage</li>
+<li>Livraisons au plus tôt</li>
+<li>Tests de toutes les fonctionnalités</li>
+<li>Amélioration continue de la structure interne</li>
+</ul>
+</section>
+<section id="extreme-programming-1" class="level2">
+<h2>eXtreme Programming</h2>
+<ul>
+<li>Programmation
+<ul>
+<li>développement guidés par les tests</li>
+<li>conception simple</li>
+<li>remaniement</li>
+</ul></li>
+<li>Collaboration
+<ul>
+<li>programmation en binôme</li>
+<li>responsabilité collective du code</li>
+<li>règles de codage</li>
+<li>intégration continue</li>
+</ul></li>
+<li>Gestion de projet
+<ul>
+<li>Client sur site</li>
+<li>Rythme durable</li>
+<li>Livraisons fréquentes</li>
+<li>Planification itérative</li>
+</ul></li>
+</ul>
+</section>
+<section id="appartée-sur-les-tests" class="level2">
+<h2>Appartée sur les tests</h2>
+<ul>
+<li>Tests unitaires
+<ul>
+<li>écrits éventuellement avant le code</li>
+<li>guider et rythmer la conception</li>
+<li>documenter le code</li>
+</ul></li>
+<li>Tests fonctionnels
+<ul>
+<li>absence d'anomalie</li>
+<li>fonctionnalités livrées</li>
+<li>= recette</li>
+</ul></li>
+</ul>
+</section>
+</section>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
+        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
+
+        <script type="text/javascript">
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                /* mettre une taille en pixel sinon l'overview ne fonctionne plus */
+                width: 1024,
+                height: 768,
+                controls: true,                                 // Display controls in the bottom right corner
+                progress: true,                                 // Display a presentation progress bar
+                history: true,                                  // Push each slide change to the browser history
+                center: false, // Vertical centering of slides
+                minScale: 0.2, // Bounds for smallestpossible content scale
+                maxScale: 1.5, // Bounds for largest possible content scale
+                slideNumber: true, // Display the page number of the current slide
+                autoSlide: 0, // Slide every duration milliseconds
+
+                theme: 'default', // available themes are in /css/theme
+                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    // { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    // { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    /* ne pas activer highlight sinon la colorisation syntaxique ne fonctionne plus ? */
+                    // { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
+                    // { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+                    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <!-- -A/- -include-after-body -->
+        <!-- comme le footer contient des variables, on le met dans le gabarit car
+             les variables ne sont pas interprétées via -A de pandoc -->
+        <div id="slide-ign-footer">
+            <div class="slide-ign-title">Analyse informatique</div>
+            <div class="slide-ign-date">janvier 2017</div>
+        </div>
+    </body>
+</html>
+
