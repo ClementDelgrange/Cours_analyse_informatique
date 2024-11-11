@@ -45,6 +45,7 @@
 
 % Mise en forme des codes python
 \usepackage{listingsutf8}
+\newcommand{\passthrough}[1]{#1}
 \lstset{
 	language=python,
 	inputencoding=utf8/latin1,
@@ -87,7 +88,7 @@ Réponse \> ....................................................................
 \newenvironment{note}{%
 	\begin{tabular}[t t]{c c}
 		\includegraphics{img/tips.png} &
-		\begin{minipage}[c]{0.9\linewidth}
+		\begin{minipage}[c]{0.8\linewidth}
 }{%
 		\end{minipage}
 	\end{tabular}
