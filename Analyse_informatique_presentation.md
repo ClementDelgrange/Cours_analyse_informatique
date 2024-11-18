@@ -1,12 +1,12 @@
 % Analyse informatique
 % Division des enseignements en informatique
-% janvier 2017
+% novembre 2024
 
 
 # Introduction #
 
 ##  ##
-</br>
+<br/>
 
 ![Grandes étapes de la conception d'une application](img/intro_oo/etapes_prog.png)
 
@@ -21,7 +21,7 @@
 
 
 ## Quelques chiffres ##
-</br>
+<br/>
 
 * Coût d'un logiciel :
 	* maintenance = 53%
@@ -29,13 +29,13 @@
 
 
 ## Quelques chiffres ##
-</br>
+<br/>
 
 ![Taux de réussite des projets informatiques en entreprise](img/intro_oo/reussite_projets_info.png)
 
 
 ## Le besoin ##
-</br>
+<br/>
 
 * Outils d'aide à la modélisation pour :
 	* élaborer la structure des programmes
@@ -44,7 +44,7 @@
 
 
 ## Le programme ##
-</br>
+<br/>
 
 1. Programmation orientée objet
 2. Présentation d'UML
@@ -53,13 +53,17 @@
 
 
 ## Organisation ##
-</br>
+<br/>
 
-* 4 séances de 3h
+* 5 séances de 3h (alternance théorie / pratique)
 
-</br>
+<br />
 
-* projet à faire à la maison
+* https://github.com/ClementDelgrange/Cours_analyse_informatique/blob/master/Analyse_informatique.pdf
+
+<br/>
+
+* devoir sur table (étude de cas)
 
 
 
@@ -90,7 +94,7 @@
 
 
 ## Exemple ##
-</br>
+<br/>
 
 ![Mastermind en fonctionnel](img/intro_oo/mastermind_schema_fonctions.png)
 
@@ -107,7 +111,7 @@
 
 ## Programmation orientée objet ##
 
-* Développement dans les années 1980
+* Fort développement dans les années 1980
 * Décrit les structures de base du système et leurs interactions
 * Approche *ascendante*
 
@@ -115,13 +119,13 @@
 
 
 ## Exemple ##
-</br>
+<br/>
 
 ![Mastermind en orienté objet](img/intro_oo/mastermind_schema_objets.png)
 
 
 ## Fonctionnel vs. Orienté objet ##
-</br>
+<br/>
 
 * Approche fonctionnelle plus intuitive
 * Approche objet facilement réutilisable et maintenable
@@ -138,7 +142,7 @@
 
 
 ## Exemples d'objets ##
-</br>
+<br/>
 
 ![Exemples d'objets](img/intro_oo/objets.png)
 
@@ -152,7 +156,7 @@
 
 
 ## Exemples de classes ##
-</br>
+<br/>
 
 * Point
 * Bouton
@@ -169,13 +173,13 @@
 
 
 ## Exemple d'encapsulation ##
-</br>
+<br/>
 
 ![Le moteur d'une voiture est encapsulé](img/intro_oo/encapsulation.png)
 
 
 ## Exemple d'encapsulation ##
-</br>
+<br/>
 
 ![Encapsulation de la gestion d'un nombre complèxe](img/intro_oo/encapsulation-2.png)
 
@@ -203,7 +207,7 @@
 
 
 ## Exemple de polymorphisme ##
-</br>
+<br/>
 
 ![Illustration du principe du polymorphisme](img/intro_oo/polymorphisme.png)
 
@@ -222,13 +226,13 @@
 # Présentation d'UML #
 
 ## Naissance d'un langage de modélisation ##
-</br>
+<br/>
 
 ![Historiques des langages de programmation](img/intro_oo/historique_langages_prog.png)
 
 
 ## Naissance d'un langage de modélisation ##
-</br>
+<br/>
 
 ![La naissance d'UML](img/intro_oo/historique_methodes_OO.png)
 
@@ -245,27 +249,27 @@
 
 
 ## Les diagrammes UML ##
-</br>
+<br/>
 
 ![Les 14 diagrammes UML](img/14_diagrammes_UML.png)
 
 
 ## Les diagrammes UML ##
-</br>
+<br/>
 
 * 14 diagrammes en version 2.5
-	* 7 diagrammes struturels : composants du système et fonctionnalités permises
-	* 7 diagrammes comportementaux : intéractions entre les éléments d'un système
+	* 7 diagrammes structurels : composants du système et fonctionnalités permises
+	* 7 diagrammes comportementaux : interactions entre les éléments d'un système
 
-</br>
+<br/>
 
 
 ## UML ##
-</br>
+<br/>
 
 * En résumé, UML c'est :
 	* un langage graphique de conception orientée objet
-	* contitué de diagrammes accompagnés d'explications
+	* constitué de diagrammes accompagnés d'explications
 	* pas une méthode
 
 
@@ -283,7 +287,7 @@
 
 ## Le cas d'utilisation ##
 
-* Action (=> verbe à l'infinif)
+* Action (=> verbe à l'infinitif)
 
 ![Cas d'utilisation](img/uml_bases/cas_utilisation/cas_utilisation.png)
 
@@ -299,14 +303,14 @@
 * Personne ou système en interaction avec le système
 * Identifié
 * 2 catégories :
-	* acteur principal : exprime une attente vis à vis du système
+	* acteur principal : exprime une attente vis-à-vis du système
 	* acteur secondaire : est sollicité par le système
 
 ![Acteur principal](img/uml_bases/cas_utilisation/acteur.png)
 
 
 ## Les acteurs ##
-</br>
+<br/>
 
 ![Acteur secondaire](img/uml_bases/cas_utilisation/acteur_secondaire.png)
 
@@ -330,15 +334,14 @@
 	* Préciser une chronologie
 * Comprend
 	* Identification : nom, objectif, acteurs, dates, responsable
-	* Description : pré-condition, scénario, post-conditions
+	* Description : précondition, scénario, postconditions
 	* Spécifications non fonctionnelles
 
 
 ## Exercices ##
 
-1. 
-1.
-1.
+1. identification des acteurs
+2. application d'achat de billets de train
 
 
 
@@ -347,7 +350,7 @@
 ## Diagramme de classes ##
 
 * **Représenter les structures de données**
-	* classes et liens entre classes...
+	* classes et liens entre classes
 	* mise en oeuvre des concepts de l'orienté objet
 	* modélisation statique
 
@@ -373,7 +376,6 @@
 * Type : `integer`, `float`, `string`, `date`, `boolean`, ...
 * Multiplicité : `[2]`, `[3]`, `[*]`...
 * Valeur par défaut : `=valeur_par_defaut`
-* Attribut dérivé = 
 
 ``` 
 {-, #, +} nom_attribut : type_attribut {[multiplicite]} {=valeur_par_defaut}
@@ -384,7 +386,7 @@
 * Dont la valeur dépend des autres attributs
 	* pas d'affectation
 
-</br>
+<br/>
 	
 ![Exemple d'attribut dérivé](img/uml_bases/classes/classe_rectangle.png)
 
@@ -420,7 +422,7 @@
 
 ![Rôles d'une association](img/uml_bases/classes/association_roles.png)
 
-</br>
+<br/>
 
 ![Association à navigabilité restreinte](img/uml_bases/classes/association_navigabilite_restreinte.png)
 
@@ -430,22 +432,22 @@
 * Concept orienté objet du même nom
 * Attributs et méthodes automatiquement transmis à la classe fille
 
-</br>
+<br/>
 
 ![Relation d'héritage](img/uml_bases/classes/heritage.png)
 
 
 ## Exemples d'héritage ##
-</br>
+<br/>
 
 ![Exemples d'héritage](img/uml_bases/classes/heritage_exemples.png)
 
 
 ## Agrégation-composition ##
 
-* Composition  = *agrégation forte*
+* Composition = *agrégation forte*
 
-</br>
+<br/>
 
 ![Différence composition-agrégation](img/uml_bases/classes/composition_agregation.png)
 
@@ -463,17 +465,16 @@
 
 * Classe qui ne peut être instanciée
 
-</br>
+<br/>
 
 ![Exemple de classe abstraite](img/uml_bases/classes/classe_abstraite.png)
 
 
 ## Exercice ##
 
-1.
-1.
-1.
-
+1. Application d'achat de billets de train
+2. Gestion d'une ferme
+3. Gestion d'un cadastre
 
 
 # Le diagramme d'objets #
@@ -512,7 +513,7 @@
 
 ![Classes `Pays` et `Langue`](img/uml_bases/objets/classes_pays_langue.png)
 
-</br>
+<br/>
 
 ![Un diagramme d'objet correspondant](img/uml_bases/objets/objets_pays_langue.png)
 
@@ -528,7 +529,7 @@
 
 ## Exercices ##
 
-1. 
+1. Gestion d'un cadastre
 
 
 
@@ -540,29 +541,29 @@
 	* paquetage = ensemble d'éléments UML fournissant un service cohérent
 	* utile pour structurer les gros projets
 
-</br>
+<br/>
 
 ![Représentation interne d'un paquetage](img/uml_bases/paquetages/paquetage_vue_interne.png)
 
 
 ## Dépendances entre paquetages ##
-</br>
+<br/>
 
 ![Dépendance entre deux paquetages](img/uml_bases/paquetages/paquetage_dependance.png)
 
-</br>
+<br/>
 
 ![Import d'un paquetage](img/uml_bases/paquetages/paquetage_import.png)
 
 
 ## Exemple ##
-</br>
+<br/>
 
 ![Séparation IHM - code métier](img/uml_bases/paquetages/separation_ihm_metier.png)
 
 
 ## Exemple ##
-</br>
+<br/>
 
 ![Architecture en couches](img/uml_bases/paquetages/archi_couches.png)
 
@@ -576,7 +577,7 @@
 	* répartition des composants
 	* interractions entre noeuds
 
-</br>
+<br/>
 
 ![Diagramme de déploiement](img/uml_miniatures/deploiement.png)
 
@@ -609,15 +610,15 @@
 
 
 ## Eléments de base ##
-</br>
+<br/>
 
 ![Etat initial / Etat final](img/uml_bases/activite/etat_initial_final.png)
 
-</br>
+<br/>
 
 ![Activité](img/uml_bases/activite/activite.png)
 
-</br>
+<br/>
 
 ![Transition](img/uml_bases/activite/transition.png)
 
@@ -637,7 +638,7 @@
 * **Join** = séparation de branches d'activités
 * **Fork** = resynchronisation des branches d'activités
 
-</br>
+<br/>
 
 ![Transitions concurrentes](img/uml_bases/activite/parallele.png)
 

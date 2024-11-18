@@ -1,6 +1,6 @@
 % Analyse informatique - Exercices
 % Division des enseignements en informatique
-% décembre 2016
+% novembre 2024
 
 
 # Question de cours #
@@ -76,71 +76,48 @@
 \newpage
 
 
-# Borne de réservation de billets de train #
-Considérons un système de réservation et d’impression de billets de train via des bornes interactives situées dans des gares. L'utilisateur peut :
+# Application d'achat de billets de train #
+Considérons une application de réservation de billets de train. Des échanges avec différents utilisateurs de l'application nous permettent d'établir la description suivante :
 
-* rechercher un voyage ;
-* réserver une place dans un train ;
-* acheter son billet.
+* l'utilisateur se connecte
+* l'application affiche sur l'écran "effectuer une réservation"
+* après avoir cliqué sur le bouton, l'utilisateur est invité à saisir les villes de départ et d'arrivée
+* l'autocomplétion des noms de ville affiche en priorité les villes déjà saisies par l'utilisateur
+* l'utilisateur sélectionne ensuite une date de départ
+* l'application calcule les trajets disponibles (horaires de départ/arrivée, type de train, prix)
+* l'utilisateur sélectionne la proposition qui l'intéresse
+* il est finalement invité à saisir ses informations de paiement pour procéder à celui-ci
+* a tout moment l'utilisateur peut retourner sur l'application pour afficher sa liste de réservations et télécharger le billet associé
+* si les options de réservation le permettent, il peut annuler une réservation
+* les utilisateurs ayant effectué plus de 15 achats accèdent aux status d'ambassadeur
+* un ambassadeur a accès à des promotions exclusives via une page dédiée dans l'application
+* il peut en sélectionner une et procéder au paiement de la même manière que pour une réservation classique 
 
-Pour chacune de ses opérations, la borne se connecte à une base de données pour lire ou mettre à jour les informations.
-
-=> Ecrire le diagramme de cas d'utilisation du système.
-
-
-# Réservation de vols #
-Une compagnie aérienne nous mandate pour réaliser un nouveau système de réservation de vols.
-
-L'application doit répondre aux critères suivants :
-
-* La compagnie aérienne propose différents vols.
-* Un vol a un numéro d'identification, un aéroport de départ et un aéroport d’arrivée, chacun identifié par un code aéroport.
-* Chaque aéroport dessert une ou plusieurs villes
-* Plusieurs aéroports peuvent déservir la même ville.
-* Un vol a un jour et une heure de départ et un jour et une heure d’arrivée.
-* Un vol peut comporter des escales dans des aéroports.
-* Une escale a une heure d’arrivée et une heure de départ.
-* La compagnie décide d'ouvrir ou de refermer un vol à la réservation.
-* Un client peut réserver un ou plusieurs vols, pour des plusieurs passagers.
-* Une réservation est en revanche nominative.
-* Une réservation peut être annulée.
-
-=> Réalisez le diagramme de classes pour ce système.
+=> Représenter le système à l'aide de diagrammes de cas d'utilisation et de classes.
 
 
-# Maison d'hôtes #
-Une maison d’hôtes cherche à améliorer son système de réservation et de gestion de l'occupation des chambres au moyen d'un système de gestion informatisé. Les usagers pourront réserver leur séjour grâce à une interface web. 
+# Gestion d'une ferme #
+Nous créons une application pour aider à la gestion d'une ferme. La première fonctionnalité développée doit permettre à un éleveur de volaille d'estimer la valeur de son cheptel.
 
-Il faudra impérativement s'identifier pour pouvoir réserver une chambre. Dans le cadre de la réservation en ligne, il sera possible de créer un nouveau client en renseignant ses coordonnées et autres informations.
-
-Le gérant de la maison d'hôtes pourra effectuer des réservations comme s'il était un client normal mais il aura accès à d'autres fonctionnalités : l'enregistrement à l'arrivée (check-in) et au départ (check-out).
-
-Naturellement, il est nécessaire de s'identifier en tant que réceptionniste avant de pouvoir procéder à un
-enregistrement. Le check-out est un processus plus complexe qui nécessite obligatoirement une facturation.
-
-=> Réaliser les diagramme de cas d'utilisation et de classes pour cette application.
-
-
-# Gestion d'un cadastre #
-Nous souhaitons réaliser un modèle UML pour une application de gestion cadastrale d'un territoire. L'application doit permettre d'ajouter, supprimer, découper et/ou fusionner une parcelle dans une commune, sachant qu'une commune est découpée en section cadastrales, qui peuvent elles-même être redécoupées en sous-section cadastrales, auxquelles sont rattachées les parcelles. 
-
-Pour identifier une parcelle, on concatène le code INSEE de la commune (ex : "58200") avec le numéro de section (ex : "AD") et avec celui de la parcelle (ex : 124).
-
-L'application doit également permettre de calculer la taxe foncière due par chaque propriétaire d'une parcelle. Le calcul tient compte de la surface de la parcelle ainsi que du nombre et type de batiment présent sur celle-ci (bâtiments dits *légers* ou *en dur*). 
-
-=> Réalisez les diagrammes de cas d'utilisation et de classes pour l'application à développer. Votre modèle sera le plus générique possible pour le permettre d'évoluer sans avoir à tout reprendre (par exemple ajouter des sous-sous-sections). 
-
-
-# Eleveur de volailles #
-Un éleveur de volailles possèdent des canards et des poulets qu’il reçoit à l’âge de 2 semaines et qu’il élève jusqu’à leur commercialisation à un âge donné.
+Un éleveur de volailles possède des canards et des poulets qu’il reçoit à l’âge de 2 semaines et qu’il élève jusqu’à leur commercialisation quelques semaines plus tard.
 
 Chaque volaille est caractérisée par un numéro d’identification et par son poids.
 
 Les 2 espèces, canard et poulet, ont chacune un âge d’abattage et un prix au kilo (qui varie tous les jours et qu’il faut donc pouvoir changer). Par contre, le prix au kilo et l’âge d’abattage sont les mêmes pour tous les poulets (et respectivement tous les canards).
 
-Un éleveur doit pouvoir savoir le prix potentiel de l’ensemble de ses volailles.
-
 => Proposez une modélisation UML (diagramme de classe) pour cette problématique.
+
+
+# Gestion d'un cadastre #
+Nous souhaitons réaliser un modèle UML pour une application de gestion cadastrale d'un territoire. L'application doit permettre d'ajouter, supprimer ou découper une parcelle. Elle doit également permettre de fusionner plusieurs parcelles d'une commune. Une commune est découpée en sections cadastrales, qui peuvent elles-mêmes être redécoupées en sous-sections cadastrales, auxquelles sont rattachées les parcelles. 
+
+Pour identifier une parcelle, on concatène le code INSEE de la commune (ex : "58200") avec le numéro de section (ex : "AD") et avec celui de la parcelle (ex : 124).
+
+L'application doit également permettre de calculer la taxe foncière due par chaque propriétaire d'une parcelle. Le calcul tient compte de la surface de la parcelle ainsi que du nombre et type de bâtiment présent sur celle-ci (bâtiments dits *légers* ou *en dur*). 
+
+=> Réalisez les diagrammes de cas d'utilisation et de classes pour l'application à développer. 
+=> Améliorez votre modèle pour le rendre le plus générique possible et ainsi lui permettre d'intégrer des évolutions sans avoir à tout reprendre (par exemple ajouter des sous-sous-sections). 
+=> Illustrez votre diagramme de classes à l'aide d'un diagramme d'objets
 
 
 # Station météo #
@@ -150,7 +127,7 @@ Nous réalisons une mini-station météo à l'aide d'un Raspberry Pi. Le montage
 
 
 # Recette de la mousse au chocolat #
-Proposez un diagramme d'activité pour la recette ci-dessous. Optimisez le en supposant être assez nombreux pour pouvoir paralléliser au maximum les différentes tâches.
+Proposez un diagramme d'activité pour la recette ci-dessous. Optimisez-le en supposant être assez nombreux pour pouvoir paralléliser au maximum les différentes tâches.
 
 > Commencer par casser le chocolat en morceaux, puis le faire fondre. En parallèle, casser les oeufs en séparant les blancs des jaunes. Quand le chocolat est fondu, ajouter les jaunes d’oeuf. Battre les blancs en neige jusqu’à ce qu’ils soient bien fermes. Les incorporer délicatement à la préparation chocolat sans les briser. Verser dans des ramequins individuels. Mettre au frais au moins 3 heures au réfrigérateur avant de servir.
 
@@ -283,45 +260,111 @@ Pour vendre un objet, le vendeur (connecté avec un compte acheteur-vendeur) doi
 
 \newpage
 
-## Borne de réservation de billets de train ##
-Le système étudié est une borne interactive. Les trois cas d'utilisation identifiés sont : rechercher un voyage, réserver une place dans un train et acheter un billet. Pour chacun de ses cals d'utilisation, le système principal fait appel à un acteur secondaire : une base de données.
+## Application d'achat de billets de train ##
+Le système étudié est une application d'achat de billet de train. Deux acteurs sont identifiés : le client et l'ambassadeur. L'ambassadeur étant un client particulier. Les trois cas d'utilisation identifiés sont pour les clients : effectuer une réservation, afficher la liste des réservations et annuler une réservation. L'ambassadeur peut effectuer une action additionnelle : afficher les promotions exclusives.
+Les cas d'utilisation "effectuer une réservation" et "afficher les promotions" partagent un sous-cas d'utilisation "procéder au paiement". 
 
-![Diagramme de cas d'utilisation - Borne de réservation de billets de train](img\exo_uml\exo1_cas_utilisation.png)
+![Diagramme de cas d'utilisation - Application d'achat de billets de train](img/exo_uml/appli_billets_train_activite.png)
+
+```plantuml
+@startuml
+left to right direction
+
+actor Client
+actor Ambassadeur
+
+package "Application d'achat de billets de train" {
+  usecase "Effectuer une réservation" as UC1
+  usecase "Saisir destinations" as UC1a
+  usecase "Saisir date de départ" as UC1b
+  usecase "Sélectionner une proposition" as UC1c
+  usecase "Procéder au paiement" as UC1d
+  usecase "Afficher les réservations" as UC2
+  usecase "Télécharger le billet" as UC2a
+  usecase "Annuler une réservation" as UC3
+  usecase "Afficher les promotions exclusives" as UC4
+  usecase "Sélectionner une promotion" as UC4a
+}
+
+Client --> UC1
+UC1 .-down-> UC1a : <<include>>
+UC1 .-down-> UC1b : <<include>>
+UC1 .-down-> UC1c : <<include>>
+UC1 .-down-> UC1d : <<include>>
+Client --> UC2
+UC2 .-down-> UC2a : <<include>>
+Client --> UC3
+
+Client <|-right- Ambassadeur
+Ambassadeur --> UC4
+UC4 .-down-> UC4a : <<include>>
+UC4 .-down-> UC1d : <<include>>
+@enduml
+```
+
+Le premier problème qui se pose lors de la modélisation est de représenter le (les) lien(s) entre trajets et gares : un trajet a une gare de départ, une d'arrivée et peut effectuer des escales dans d'autres gares.
+On utilisera des liens 1-* pour représenter les liens pour les gares de départ et d'arrivée.
+Pour les escales, on optera pour un lien *-*, qui pourrait être complété d'une classe d'association (avec les horaires de l'escale par exemple).
+
+![Diagramme de classes - Application d'achat de billets de train](img/exo_uml/appli_billets_train_classes_0.png)
+
+La partie du modèle traitant de la partie réservation (une réservation concerne un trajet) et ensuite ajoutée. Elle utilise trois classes : *Client* (celui qui effectue une réservation), *Reservation* (pour faire le lien entre le client et le trajet) et *Paiement* qui compose une réservation.
+
+![Diagramme de classes - Application d'achat de billets de train](img/exo_uml/appli_billets_train_classes.png) 
+
+```mermaid
+classDiagram
+    direction LR
+    class Trajet{
+        +numero: string
+        +horaire_depart: datetime
+        +horaire_arrivee: datetime
+    }
+    class Gare{
+        +code: string
+    }
+    class Ville{
+        +nom: string
+    }
+    class Client{
+        +numero: integer
+        +nom: string
+        +prenom: string
+        +email: string
+    }
+    class Ambassadeur
+    class Réservation{
+        +numero: integer
+        +confirmer()
+        +annuler()
+    }
+    class Paiement
+
+
+    Trajet "*" -- "1" Gare: a pour départ
+    Trajet "*" -- "1" Gare: a pour arrivée
+    Trajet "*" -- "*" Gare: effectue une escale
+    Gare "*" -- "1..*" Ville: dessert
+
+    Réservation "*" -- "1" Trajet: concerne
+    Client "*" -- "1" Réservation: effectue
+    Ambassadeur --|> Client
+    Réservation *-- Paiement
+```
 
 \newpage
 
-## Réservation de vols ##
-Le premier problème qui se pose lors de la modélisation est de représenter le (les) lien(s) entre vols et aéroport : un vol a un aéroport de départ, un d'arrivée et effectue des escales dans les aéroports.
-
-Un utilisera deux liens 1-* pour représenter les liens aéroport de départ et d'arrivée.
-
-![Diagramme de classes - Aéroports](img/exo_uml/exo_reservation_vols_v1.png)
-
-On complète le modèle de manière similaire (ajout d'un lien entre *Vol* et *Aeroport*) pour les escales, mais avec une classe d'association.
-
-La partie du modèle traitant de la partie réservation (une réservation concerne un vol) et ensuite ajoutée. Elle utilise trois classes : *Client* (celui qui effectue une réservation), *Passager* (celui qui voyage réellement) et *Reservation* pour faire le lien entre le client, le passager et le vol.
-
-![Diagramme de classes - Compagnie aérienne](img/exo_uml/exo_reservation_vols_v2.png)
-
-\newpage
-
-## Maison d'hôtes ##
-
-à compléter...
-
-\newpage
-
-## Eleveur de volailles ##
+## Gestion d'une ferme ##
 ![Diagramme de classes - Eleveur de volailles](img/exo_uml/exo3_classes.png)
 
-On crée une classe *Eleveur* qui ne possède qu'une méthode, permettant de calculer le prix de l'ensemble de ses volailles. Un éleveur possède par ailleur des volailles que nous représentons à l'aide d'une classe abstraite *Volaille*. 
+On crée une classe *Eleveur* qui ne possède qu'une méthode, permettant de calculer le prix de l'ensemble de ses volailles. Un éleveur possède par ailleurs des volailles que nous représentons à l'aide d'une classe abstraite *Volaille*. 
 
-*Poulet* et *Canard* héritent de cette classe abstraite. Chaque volaille possède un poids, un numéro permettant de l'identifier et un age expimé en semaines. Ces attributs sont transmis par héritage aux canards et pouletS. De plus, les classes *Canard* et *Poulet* possèdent chacune des attributs de classe (*age_abattage* indiquant l'âge d'abattage identique pour toutes les instances de la classe, et *prix_kilo*, prix au kilo des instances de la classe, là aussi identique pour toutes les instances). Des ascesseurs et mutateurs de classe permettent de mettre à jour ces attributs.
+*Poulet* et *Canard* héritent de cette classe abstraite. Chaque volaille possède un poids, un numéro permettant de l'identifier et un âge exprimé en semaines. Ces attributs sont transmis par héritage aux canards et poulets. De plus, les classes *Canard* et *Poulet* possèdent chacune des attributs de classe (*age_abattage* indiquant l'âge d'abattage identique pour toutes les instances de la classe, et *prix_kilo*, prix au kilo des instances de la classe, là aussi identique pour toutes les instances). Des accesseurs et mutateurs de classe permettent de mettre à jour ces attributs.
 
 \newpage
 
 ## Gestion du cadastre ##
-Le diagramme de cas d'utilisation comporte deux grandes fonctionnalités : gérer les parcelles et calculer les impots. La fonctionnalité de gestion des parcelles est décomposées en plusieurs fonctionnalités optionnelles qui correspondent aux différentes tâches exprimées dans l'énoncé.
+Le diagramme de cas d'utilisation comporte deux grandes fonctionnalités : gérer les parcelles et calculer les impôts. La fonctionnalité de gestion des parcelles est décomposées en plusieurs fonctionnalités optionnelles qui correspondent aux différentes tâches exprimées dans l'énoncé.
 
 ![Diagramme de cas d'utilisation - Cadastre](img/exo_uml/cadastre_cas_utilisation.png)
 
@@ -329,25 +372,25 @@ Dans une première approche, nous pouvons proposer le diagramme de classes suiva
 
 ![Diagramme de classes v0 - Cadastre](img/exo_uml/cadastre_classes_v0.png)
 
-Mais cette version ne répond pas à la problématique de généricité demandée : il nest nécessaire d'ajouter de nouvelles classes à chaque sous-niveau que nous voulons prendre en compte. Pour faire évoluer le modèle, nous proposons donc d'introduire une nouvelle classe `ZoneCadastrale` qui possède trois attributs `id`, `niveau` et `nom_niveau`, qui représentent respectivement l'identifiant de la zone, son numéro de niveau (1 pour une commune, 2 pour une section, 3 pour une sous-section...) et le libellé du niveau. 
+Mais cette version ne répond pas à la problématique de généricité demandée : il est nécessaire d'ajouter de nouvelles classes à chaque sous-niveau que nous voulons prendre en compte. Pour faire évoluer le modèle, nous proposons donc d'introduire une nouvelle classe `ZoneCadastrale` qui possède trois attributs `id`, `niveau` et `nom_niveau`, qui représentent respectivement l'identifiant de la zone, son numéro de niveau (1 pour une commune, 2 pour une section, 3 pour une sous-section...) et le libellé du niveau. 
 
-Par ailleurs, nous indiquons qu'une zone cadastrale est une composition de zones cadastrales. De cette manière nous conservons les relations de type *une commune est composées de sections*, *une section est composée de sous-sections*, etc.
+Par ailleurs, nous indiquons qu'une zone cadastrale est une composition de zones cadastrales. De cette manière, nous conservons les relations de type *une commune est composées de sections*, *une section est composée de sous-sections*, etc.
 
 Cette modélisation nous permet de reconstruire une hiérarchie dans les différentes zones cadastrales. Le niveau 1 est le plus haut : c'est celui qui contient les communes. Le niveau 2 est composé des éléments contenus dans ceux de niveau 1 (les sections), etc.
 
-![Diagramme de classes - Cadastre](img\exo_uml\cadastre_classes.png)
+![Diagramme de classes - Cadastre](img/exo_uml/cadastre_classes.png)
 
 Dans cette deuxième version, nous avons également fait apparaître les méthodes les plus importantes.
 
-Pour s'asurer que le sens de notre modélisation est bien compris, nous utilisons une diagramme d'objets qui illustrera un exemple de situation.
+Pour s'assurer que le sens de notre modélisation est bien compris, nous utilisons un diagramme d'objets qui illustrera un exemple de situation.
 
-![Diagramme de classes - Cadastre](img\exo_uml\cadastre_objets.png)
+![Diagramme de classes - Cadastre](img/exo_uml/cadastre_objets.png)
 
 \newpage
 
 ## Station météo ##
 
-![Diagramme de déploiement - Station météo](img\exo_uml\station_meteo_deploiement.png)
+![Diagramme de déploiement - Station météo](img/exo_uml/station_meteo_deploiement.png)
 
 \newpage
 
@@ -372,13 +415,13 @@ Pour optimiser la réalisation de la recette, nous parallélisons toutes les tâ
 \newpage
 
 ## Démineur ##
-Nous indentifions deux fonctionnalités principales : configurer une partie et jouer une partie. *Configurer une partie* signifie choisir le nombre de cases et/ou le nombre de mines. Quand au cas d'utilisation *Jouer une partie*, il comprend les sous-fonctionnalités *poser un drapeau* et *découvrir une mine*. Comme il n'est pas obligatoire de poser des drapeaux pour pouvoir jouer cette sous-fonctionnalité est optionnelle. En ravanche il est obligatoire de découvrir au moins une case à un moment de la partie (sinon elle ne se temine jamais) : cette fonctionnalité est donc obligatoire.
+Nous identifions deux fonctionnalités principales : configurer une partie et jouer une partie. *Configurer une partie* signifie choisir le nombre de cases et/ou le nombre de mines. Quand au cas d'utilisation *Jouer une partie*, il comprend les sous-fonctionnalités *poser un drapeau* et *découvrir une mine*. Comme il n'est pas obligatoire de poser des drapeaux pour pouvoir jouer cette sous-fonctionnalité est optionnelle. En revanche il est obligatoire de découvrir au moins une case à un moment de la partie (sinon elle ne se termine jamais) : cette fonctionnalité est donc obligatoire.
 
 ![Diagramme de cas d'utilisation du démineur](img/exo_uml/demineur_cas_utilisation.png)
 
 Les trois grandes classes que nous identifions sont `Partie`, `Grille` et `Case`. Une partie se joue sur une grille qui est composée de cases. Dans la classe `Partie`, nous prévoyons des attributs `nb_mines_initiales` contenant le nombre de mines que le joueur souhaite inclure dans sa grille et `taille_grille` qui renseignera la taille de la grille utilisée. Nous ajoutons également un attribut dérivé `nb_mines_restantes` qui nous permettra de déterminer si la partie est gagnée. Enfin la classe `Partie` contient des méthodes permettant de jouer (marquer et découvrir une case).
 
-Le plateau est composée de cases qui sont positionnées à l'aide de leur numéro de ligne et de colonne. Les cases peuvent être de trois types différents : minées, vides ou numérotées (lorsqu'elles sont à côté d'une case minée). Le type de la case influe sur le comportement de la méthodes `decouvrir()` : respectivement partie perdue, démasquage des cases voisines et démasquage de la seule case. Le comportement des méthodes de la classe `Case` dépend également de l'état de celle-ci : il ne se passe pas la même chose lorsque l'on essaye de marquer une case déjà marquée ou une case découverte par exemple.
+Le plateau est composé de cases qui sont positionnées à l'aide de leur numéro de ligne et de colonne. Les cases peuvent être de trois types différents : minées, vides ou numérotées (lorsqu'elles sont à côté d'une case minée). Le type de la case influe sur le comportement de la méthode `decouvrir()` : respectivement partie perdue, démasquage des cases voisines et démasquage de la seule case. Le comportement des méthodes de la classe `Case` dépend également de l'état de celle-ci : il ne se passe pas la même chose lorsque l'on essaye de marquer une case déjà marquée ou une case découverte par exemple.
 
 Le diagramme de classe que nous avons établit est le suivant :
 
@@ -395,35 +438,35 @@ De même, nous utilisons un diagramme de séquence pour décrire le cas d'utilis
 \newpage
 
 ## VéliDescartes ##
-Nous identifons trois acteurs principaux utilisant le système : l'utilisateur sans abonnement qui souhaite s'abonner, l'utilisateur avec abonnement qui veut emprunter/déposer des vélo et signaler des incidents et l'admiinstrateur du système qui désire réaliser des diagnostics d'état/utilisation.
+Nous identifions trois acteurs principaux utilisant le système : l'utilisateur sans abonnement qui souhaite s'abonner, l'utilisateur avec abonnement qui veut emprunter/déposer des vélos et signaler des incidents et l'adminstrateur du système qui désire réaliser des diagnostics d'état/utilisation.
 
-![VéliDescartes - Diagramme de cas d'utilisation](img\exo_uml\velib_cas_utilisation.png) 
+![VéliDescartes - Diagramme de cas d'utilisation](img/exo_uml/velib_cas_utilisation.png) 
 
-Pour élobrer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de Vélidescartes qui peut posséder ou pas un abonnement. Cette utilisateur emprunte des vélos qui sont déposés dans des bornettes. Les bornettes sont organisées en stations avec une adresse et un numéro.
+Pour élobrer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de Vélidescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des bornettes. Les bornettes sont organisées en stations avec une adresse et un numéro.
 
-![VéliDescartes - Diagramme de classes](img\exo_uml\velib_classes.png) 
+![VéliDescartes - Diagramme de classes](img/exo_uml/velib_classes.png) 
 
 Afin d'illustrer notre diagramme de classe, nous réalisons le diagramme d'objets suivant :
 
-![VéliDescartes - Diagramme d'objets](img\exo_uml\velib_objets.png)
+![VéliDescartes - Diagramme d'objets](img/exo_uml/velib_objets.png)
 
 Nous choisissons de représenter les deux fonctionnalités principales *emprunter un vélo* et *déposer un vélo* sous forme de diagramme d'activité.
 
-![VéliDescartes - Diagramme d'activité *emprunter un vélo*](img\exo_uml\velib_activite_emprunter.png)
+![VéliDescartes - Diagramme d'activité *emprunter un vélo*](img/exo_uml/velib_activite_emprunter.png)
 
-![VéliDescartes - Diagramme d'activité *déposer une vélo*](img\exo_uml\velib_activite_deposer.png)
+![VéliDescartes - Diagramme d'activité *déposer une vélo*](img/exo_uml/velib_activite_deposer.png)
 
 Pour la fonctionnalité *s'abonner*, nous utilisons un diagramme de séquence permettant de montrer à quel moment intervient la création d'un objet abonnement.
 
-![VéliDescartes - Diagramme de séquence *s'abonner*](img\exo_uml\velib_seq_abonner.png)
+![VéliDescartes - Diagramme de séquence *s'abonner*](img/exo_uml/velib_seq_abonner.png)
 
 La partie régler un montant par CB est détaillée dans un autre diagramme de séquence :
 
-![VéliDescartes - Diagramme de séquence *régler abonnement*](img\exo_uml\velib_seq_regler.png)
+![VéliDescartes - Diagramme de séquence *régler abonnement*](img/exo_uml/velib_seq_regler.png)
 
 Les états de la bornette peuvent enfin être représentés dans un diagramme d'état-transition.
 
-![VéliDescartes - Diagramme de'états-transitions d'une bornette](img\exo_uml\velib_etats_transitions_bornette.png)
+![VéliDescartes - Diagramme de'états-transitions d'une bornette](img/exo_uml/velib_etats_transitions_bornette.png)
 
 \newpage
 
@@ -438,22 +481,22 @@ Nous identifions trois cas d'utilisation principaux :
 
 Pour calculer la vitesse de déplacement et des itinéraires, le GPS a besoin de détecter la position de la voiture, ce qui fait appel à des satellites (acteur secondaire du système). La détection de la position de la voiture est une option de la fonctionnalité d'affichage de la carte.
 
-![Diagramme de cas d'utilisation - GPS routier](img\exo_uml\gps_cas_utilisation.png) 
+![Diagramme de cas d'utilisation - GPS routier](img/exo_uml/gps_cas_utilisation.png) 
 
 Lors de la réalisation de l'activité *Etre guidé*, le conducteur commence par allumer le GPS. Celui-ci cherche alors à détecter les satellites pour pouvoir calculer la position du véhicule. Le conducteur peut alors indiquer sa destination pour que le GPS puisse calculer un itinéraire. Lorsque l'itinéraire est calculé, il s'affiche sur le GPS et plusieurs cas sont alors possibles :
 
 * soit le conducteur suit correctement la route indiquée : le GPS lui indique alors simplement la route à suivre jusqu'à arriver à destination
 * soit le conducteur ne respecte pas l'itinéraire indiqué : le GPS recalcule alors un nouvel itinéraire en tenant compte de la nouvelle position et met à jour l'affichage de la route à suivre.
 * 
-![Diagramme de l'activité *être guidé* - GPS routier](img\exo_uml\gps_activite.png) 
+![Diagramme de l'activité *être guidé* - GPS routier](img/exo_uml/gps_activite.png) 
 
-Notre analyse du système nous conduit pour commencer à identifier trois structures d'objets contribuant à son fonctionnement : l'adresse de destination, l'itinéraire et la positon GPS de la voiture.
+Notre analyse du système nous conduit pour commencer à identifier trois structures d'objets contribuant à son fonctionnement : l'adresse de destination, l'itinéraire et la position GPS de la voiture.
 
 L'adresse de destination est traduite en position (coordonnées x,y) pour être utilisée dans le système. Un itinéraire est quand à lui composé d'une suite ordonnée de positions. Nous ajoutons donc cette classe à notre modèle et définissons la position GPS de la voiture comme un type particulier de position.  
 
 Enfin, nous ajoutons une classe affichage qui utilise la position GPS pour centrer la carte dessus et l'itinéraire pour le représenter sur le fond de carte et guider le conducteur.
 
-![Diagramme de classes - GPS routier](img\exo_uml\gps_classes.png) 
+![Diagramme de classes - GPS routier](img/exo_uml/gps_classes.png) 
 
 \newpage
 
