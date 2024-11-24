@@ -661,7 +661,45 @@
 ## Exercice ##
 
 1. Mousse au chocolat
-2. GPS de navigation
+2. Application de navigation GPS
+
+
+# Le diagramme d'états-transitions #
+
+## Diagramme d'états-transitions ##
+
+* **Représenter les états possibles d'un objet et les transitions entre eux**
+	* utile lorsque l'état d'un objet dépend de son historique
+	* symbolique proche de celle du diagramme d'activité
+
+![Diagramme d'états-transitions](img/uml_miniatures/etats_transitions.png)
+
+
+## Etats et transitions ##
+
+* Etat stable
+* Transition instantanée
+
+![Etat initial  / Transition  / Etat](img/uml_bases/etats-transitions/etat_transition.png)
+
+
+## Conditions de garde ##
+
+* Plusieurs transitions possibles à partir d'un état
+
+![Transitions avec gardes - Système de thermostat](img/uml_bases/etats-transitions/transitions_gardes.png)
+
+
+## Transitions reflexives ##
+
+* Transition laissant l'objet dans le même état
+
+![Transition reflexive](img/uml_bases/etats-transitions/transition_reflexive.png)
+
+
+## Exercice ##
+
+1. Démineur
 
 
 # Le diagramme de séquence #
@@ -680,7 +718,7 @@
 * Axe du temps du haut vers le bas
 * Ligne de vie des objets
 	* périodes d'activation
-	
+
 ![Ligne de vie et période d'activation](img/uml_bases/sequence/ligne_vie.png)
 
 
@@ -695,12 +733,12 @@
 	* asynchrone : pas de réponse/retour
 	* de retour : valeur renvoyée suite à message synchrone
 	* création / destruction
-	
+
 ## Types de messages ##
 
 ![Les différents types de messages](img/uml_bases/sequence/types_messages.png)
 
-	
+
 ## Cadre d'interaction ##
 
 * Partie du diagramme associée à une modalité d'exécution
@@ -713,51 +751,18 @@
 
 ## Exemple ##
 
-![](img/exo_uml/demineur_sequence_decouvrir.png)
+![Diagramme de classe d'un ascenceur](img/uml_bases/sequence/diag_class_ascenceur.png)
+
+
+## Exemple ##
+
+![Diagramme de séquence - Utiliser l'ascenceur pour se déplacer](img/uml_bases/sequence/diag_seq_ascenceur.png)
 
 
 ## Exercice ##
 
 1. Correspondance diagramme de classes / diagramme de séquence
-
-
-# Le diagramme d'états-transitions #
-
-## Diagramme d'états-transitions ##
-
-* **Représenter les états possibles d'un objet et les transitions entre eux**
-	* utile lorsque l'état d'un objet dépend de son hitorique
-	* symbolique proche de celle du diagramme d'activité
-
-![Diagramme d'états-transitions](img/uml_miniatures/etats_transitions.png)
-
-
-## Etats et transitions ##
-
-* Etat stable
-* Transition instantannée
-
-![Etat initial  / Transition  / Etat](img/uml_bases/etats-transitions/etat_transition.png)
-
-
-## Conditions de garde ##
-
-* Plusieurs transtions possibles à partir d'un état
-
-![Transitions avec gardes - Système de thermostat](img/uml_bases/etats-transitions/transitions_gardes.png)
-
-
-## Transitions refléxives ##
-
-* Transition laissant l'objet dans le même état
-
-![Transition reflexive](img/uml_bases/etats-transitions/transition_reflexive.png)
-
-
-## Exercice ##
-
-1. Démineur
-
+2. Démineur (suite)
 
 
 # UML et méthodologie #

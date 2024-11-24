@@ -10,12 +10,12 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="reveal.js//css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
 		
         <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="reveal.js//lib/css/zenburn.css">
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-        <link rel="stylesheet" href="reveal.js//css/theme/simple.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 
 	<!-- Styles ENSG-IGN -->
@@ -27,13 +27,13 @@
             var link = document.createElement( 'link' );
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = 'reveal.js//css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
+            link.href = 'reveal.js/css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
             link.media = 'print';
             document.getElementsByTagName( 'head' )[0].appendChild( link );
         </script>
 
         <!--[if lt IE 9]>
-        <script type="text/javascript" type="text/javascript" src="reveal.js//lib/js/html5shiv.js"></script>
+        <script type="text/javascript" type="text/javascript" src="reveal.js/lib/js/html5shiv.js"></script>
         <![endif]-->
         <!-- -H/- -include-in-header -->
     </head>
@@ -186,7 +186,7 @@
 <li>Approche <em>ascendante</em></li>
 </ul>
 <figure>
-<img src="img/intro_oo/approche_objet.png" width="350px" alt="Découpage d’un programme selon l’approche orientée objet" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche orientée objet</figcaption>
+<img src="img/intro_oo/approche_objet.png" alt="Découpage d’un programme selon l’approche orientée objet" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche orientée objet</figcaption>
 </figure>
 </section>
 <section id="exemple-1" class="level2">
@@ -860,7 +860,57 @@
 <h2>Exercice</h2>
 <ol type="1">
 <li>Mousse au chocolat</li>
-<li>GPS de navigation</li>
+<li>Application de navigation GPS</li>
+</ol>
+</section>
+</section>
+<section id="le-diagramme-détats-transitions" class="level1">
+<h1>Le diagramme d’états-transitions</h1>
+<section id="diagramme-détats-transitions" class="level2">
+<h2>Diagramme d’états-transitions</h2>
+<ul>
+<li><strong>Représenter les états possibles d’un objet et les transitions entre eux</strong>
+<ul>
+<li>utile lorsque l’état d’un objet dépend de son historique</li>
+<li>symbolique proche de celle du diagramme d’activité</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_miniatures/etats_transitions.png" alt="Diagramme d’états-transitions" /><figcaption aria-hidden="true">Diagramme d’états-transitions</figcaption>
+</figure>
+</section>
+<section id="etats-et-transitions" class="level2">
+<h2>Etats et transitions</h2>
+<ul>
+<li>Etat stable</li>
+<li>Transition instantanée</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/etat_transition.png" alt="Etat initial / Transition / Etat" /><figcaption aria-hidden="true">Etat initial / Transition / Etat</figcaption>
+</figure>
+</section>
+<section id="conditions-de-garde" class="level2">
+<h2>Conditions de garde</h2>
+<ul>
+<li>Plusieurs transitions possibles à partir d’un état</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/transitions_gardes.png" alt="Transitions avec gardes - Système de thermostat" /><figcaption aria-hidden="true">Transitions avec gardes - Système de thermostat</figcaption>
+</figure>
+</section>
+<section id="transitions-reflexives" class="level2">
+<h2>Transitions reflexives</h2>
+<ul>
+<li>Transition laissant l’objet dans le même état</li>
+</ul>
+<figure>
+<img src="img/uml_bases/etats-transitions/transition_reflexive.png" alt="Transition reflexive" /><figcaption aria-hidden="true">Transition reflexive</figcaption>
+</figure>
+</section>
+<section id="exercice-3" class="level2">
+<h2>Exercice</h2>
+<ol type="1">
+<li>Démineur</li>
 </ol>
 </section>
 </section>
@@ -931,62 +981,21 @@
 </section>
 <section id="exemple-9" class="level2">
 <h2>Exemple</h2>
-<p><img src="img/exo_uml/demineur_sequence_decouvrir.png" /></p>
-</section>
-<section id="exercice-3" class="level2">
-<h2>Exercice</h2>
-<ol type="1">
-<li>Correspondance diagramme de classes / diagramme de séquence</li>
-</ol>
-</section>
-</section>
-<section id="le-diagramme-détats-transitions" class="level1">
-<h1>Le diagramme d’états-transitions</h1>
-<section id="diagramme-détats-transitions" class="level2">
-<h2>Diagramme d’états-transitions</h2>
-<ul>
-<li><strong>Représenter les états possibles d’un objet et les transitions entre eux</strong>
-<ul>
-<li>utile lorsque l’état d’un objet dépend de son hitorique</li>
-<li>symbolique proche de celle du diagramme d’activité</li>
-</ul></li>
-</ul>
 <figure>
-<img src="img/uml_miniatures/etats_transitions.png" alt="Diagramme d’états-transitions" /><figcaption aria-hidden="true">Diagramme d’états-transitions</figcaption>
+<img src="img/uml_bases/sequence/diag_class_ascenceur.png" alt="Diagramme de classe d’un ascenceur" /><figcaption aria-hidden="true">Diagramme de classe d’un ascenceur</figcaption>
 </figure>
 </section>
-<section id="etats-et-transitions" class="level2">
-<h2>Etats et transitions</h2>
-<ul>
-<li>Etat stable</li>
-<li>Transition instantannée</li>
-</ul>
+<section id="exemple-10" class="level2">
+<h2>Exemple</h2>
 <figure>
-<img src="img/uml_bases/etats-transitions/etat_transition.png" alt="Etat initial / Transition / Etat" /><figcaption aria-hidden="true">Etat initial / Transition / Etat</figcaption>
-</figure>
-</section>
-<section id="conditions-de-garde" class="level2">
-<h2>Conditions de garde</h2>
-<ul>
-<li>Plusieurs transtions possibles à partir d’un état</li>
-</ul>
-<figure>
-<img src="img/uml_bases/etats-transitions/transitions_gardes.png" alt="Transitions avec gardes - Système de thermostat" /><figcaption aria-hidden="true">Transitions avec gardes - Système de thermostat</figcaption>
-</figure>
-</section>
-<section id="transitions-refléxives" class="level2">
-<h2>Transitions refléxives</h2>
-<ul>
-<li>Transition laissant l’objet dans le même état</li>
-</ul>
-<figure>
-<img src="img/uml_bases/etats-transitions/transition_reflexive.png" alt="Transition reflexive" /><figcaption aria-hidden="true">Transition reflexive</figcaption>
+<img src="img/uml_bases/sequence/diag_seq_ascenceur.png" alt="Diagramme de séquence - Utiliser l’ascenceur pour se déplacer" /><figcaption aria-hidden="true">Diagramme de séquence - Utiliser l’ascenceur pour se déplacer</figcaption>
 </figure>
 </section>
 <section id="exercice-4" class="level2">
 <h2>Exercice</h2>
 <ol type="1">
-<li>Démineur</li>
+<li>Correspondance diagramme de classes / diagramme de séquence</li>
+<li>Démineur (suite)</li>
 </ol>
 </section>
 </section>
@@ -1144,8 +1153,8 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="reveal.js//lib/js/head.min.js"></script>
-        <script type="text/javascript" src="reveal.js//js/reveal.js"></script>
+        <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
+        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
 
         <script type="text/javascript">
             // Full list of configuration options available here:
@@ -1168,15 +1177,15 @@
 
                 // Optional libraries used to extend on reveal.js
                 dependencies: [
-                    { src: 'reveal.js//lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    // { src: 'reveal.js//plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    // { src: 'reveal.js//plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    // { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    // { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     /* ne pas activer highlight sinon la colorisation syntaxique ne fonctionne plus ? */
-                    // { src: 'reveal.js//plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'reveal.js//plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                    { src: 'reveal.js//plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
-                    // { src: 'reveal.js//plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
-                    // { src: 'reveal.js//plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
+                    // { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+                    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
             });
 

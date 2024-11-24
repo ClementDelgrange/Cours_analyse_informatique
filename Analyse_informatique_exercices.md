@@ -121,7 +121,7 @@ L'application doit également permettre de calculer la taxe foncière due par ch
 
 
 # Station météo #
-Nous réalisons une mini-station météo à l'aide d'un Raspberry Pi. Le montage consiste à connecter au Raspberry Pi un premier capteur de température, de pression et d'humidité et un second capteur de luminosité. Pour communiquer avec ces capteurs, le Raspberry Pi utilise le protocole I2C. L'ensemble des données sont collectées à l'aide d'un script `meteo.py` par le Raspberry Pi qui les envoie via sa connexion wifi sur Google Drive dans un document Google Sheet (tableur). Des courbes de tendances sont tracées à partir de ce classeur et exportées chaque semaine sur un poste bureautique classique. 
+Nous réalisons une mini station météo à l'aide d'un Raspberry Pi. Le montage consiste à connecter au Raspberry Pi un premier capteur de température, de pression et d'humidité et un second capteur de luminosité. Pour communiquer avec ces capteurs, le Raspberry Pi utilise le protocole I2C. L'ensemble des données sont collectées à l'aide d'un script `meteo.py` par le Raspberry Pi qui les envoie via sa connexion wifi sur Google Drive dans un document Google Sheet (tableur). Des courbes de tendances sont tracées à partir de ce classeur et exportées chaque semaine sur un poste bureautique classique. 
 
 => Réalisez le diagramme de déploiement de la station météo.
 
@@ -130,6 +130,17 @@ Nous réalisons une mini-station météo à l'aide d'un Raspberry Pi. Le montage
 Proposez un diagramme d'activité pour la recette ci-dessous. Optimisez-le en supposant être assez nombreux pour pouvoir paralléliser au maximum les différentes tâches.
 
 > Commencer par casser le chocolat en morceaux, puis le faire fondre. En parallèle, casser les oeufs en séparant les blancs des jaunes. Quand le chocolat est fondu, ajouter les jaunes d’oeuf. Battre les blancs en neige jusqu’à ce qu’ils soient bien fermes. Les incorporer délicatement à la préparation chocolat sans les briser. Verser dans des ramequins individuels. Mettre au frais au moins 3 heures au réfrigérateur avant de servir.
+
+
+# Application de navigation GPS #
+Nous souhaitons réaliser une application de navigation GPS. Cette application doit permettre à l'utilisateur d'afficher une carte. Lorsque la position de la voiture est détectée, la carte sera centrée cette position. L'application doit également permettre d'afficher la vitesse de déplacement de la voiture. Enfin l'application est utilisée avant tout pour guider le conducteur (calculer et afficher des itinéraires).
+
+Pour calculer la position de la voiture, le GPS doit recevoir les signaux d'au moins 4 satellites.
+
+1. Réalisez le diagramme de cas d'utilisation pour ce système.
+2. Proposez un diagramme d'activité pour l'activité de guidage du conducteur.
+3. Concevez un diagramme de classes permettant de modéliser le système.
+4. Complétez votre diagramme d'activité en précisant les entités du système responsable des différentes activités.
 
 
 # Réveille-matin #
@@ -189,17 +200,6 @@ Les administrateurs du système peuvent connaître l'état des bornes et des vé
 2. Proposez une modélisation du système.
 3. Détaillez, sous forme d'enchaînement d'activités ou d'échange de messages entre composants du système, quelques uns des cas d'utilisation principaux du système.
 4. Utilisez un diagramme UML pour préciser l'organisation des composants matériels. 
-
-
-# GPS de navigation #
-Nous nous intéressons à un GPS routier. Ce GPS permet d'afficher une carte, centrée sur la position de la voiture lorsqu'il la détecte, d'afficher la vitesse de déplacement de celle-ci. Et bien évidemment, le GPS est utilisé avant tout pour guider le conducteur (calculer et afficher des itinéraires).
-
-Pour calculer la position de la voiture, le GPS doit recevoir les signaux d'au moins 4 satellites.
-
-1. Réalisez le diagramme de cas d'utilisation pour ce système.
-2. Proposez un diagramme d'activité pour l'activité de guidage du conducteur.
-3. Concevez un diagramme de classes permettant de modéliser le système.
-4. Complétez votre diagramme d'activité en précisant les entités du système responsable des différentes activités.
 
 
 # EncherePasChere #
@@ -266,6 +266,7 @@ Les cas d'utilisation "effectuer une réservation" et "afficher les promotions" 
 
 ![Diagramme de cas d'utilisation - Application d'achat de billets de train](img/exo_uml/appli_billets_train_activite.png)
 
+Source du diagramme :
 ```plantuml
 @startuml
 left to right direction
@@ -312,6 +313,7 @@ La partie du modèle traitant de la partie réservation (une réservation concer
 
 ![Diagramme de classes - Application d'achat de billets de train](img/exo_uml/appli_billets_train_classes.png) 
 
+Source du diagramme :
 ```mermaid
 classDiagram
     direction LR
@@ -402,6 +404,72 @@ Pour optimiser la réalisation de la recette, nous parallélisons toutes les tâ
 
 \newpage
 
+## Application de navigation GPS ##
+Le système étudié est une application de navigation GPS.
+
+Nous identifions trois cas d'utilisation principaux :
+
+* afficher une carte;
+* afficher la vitesse de déplacement;
+* guider le conducteur, ce qui inclut de calculer et d'afficher des itinéraires.
+
+Pour calculer la vitesse de déplacement et des itinéraires, le GPS a besoin de détecter la position de la voiture, ce qui fait appel à des satellites (acteur secondaire du système). La détection de la position de la voiture est une option de la fonctionnalité d'affichage de la carte.
+
+![Diagramme de cas d'utilisation - GPS routier](img/exo_uml/gps_cas_utilisation.png)
+
+Lors de la réalisation de l'activité *Etre guidé*, le conducteur commence par allumer le GPS. Celui-ci cherche alors à détecter les satellites pour pouvoir calculer la position du véhicule. Le conducteur peut alors indiquer sa destination pour que l'application puisse calculer un itinéraire. Lorsque l'itinéraire est calculé, il s'affiche dans l'application et plusieurs cas sont alors possibles :
+
+* soit le conducteur suit correctement la route indiquée : l'application lui indique alors simplement la route à suivre jusqu'à arriver à destination
+* soit le conducteur ne respecte pas l'itinéraire indiqué : l'application recalcule alors un nouvel itinéraire en tenant compte de la nouvelle position et met à jour l'affichage de la route à suivre.
+
+![Diagramme de l'activité *être guidé* - GPS routier](img/exo_uml/gps_activite.png)
+
+Notre analyse du système nous conduit pour commencer à identifier trois structures d'objets contribuant à son fonctionnement : l'adresse de destination, l'itinéraire et la position GPS de la voiture.
+
+L'adresse de destination est traduite en position (coordonnées x,y) pour être utilisée dans le système. Un itinéraire est quand à lui composé d'une suite ordonnée de positions. Nous ajoutons donc cette classe à notre modèle et définissons la position GPS de la voiture comme un type particulier de position.
+
+Enfin, nous ajoutons une classe affichage qui utilise la position GPS pour centrer la carte dessus et l'itinéraire pour le représenter sur le fond de carte et guider le conducteur.
+
+![Diagramme de classes - GPS routier](img/exo_uml/gps_classes.png)
+
+Source du diagramme :
+```mermaid
+classDiagram
+    direction LR
+    class Adresse{
+        -numero: integer
+        -rue: string
+        -ville: string
+    }
+    class Position{
+        +latitude: float
+        +longitude: float
+    }
+    class PositionUtilisateur{
+        -vitesse: float
+        -detecter_satelites()
+        -maj_vitesse()
+        -maj_position()
+    }
+    class Itineraire{
+        -depart: Adresse
+        -arrivee: Adresse
+        -etapes: Position[*]
+        +est_sur_itineraire(p Position): bool
+    }
+    class Carte{
+
+    }
+
+    Adresse "0..1" -- "1" Position: correspond à
+    Position "*" --o "*" Itineraire
+    PositionUtilisateur --|> Position
+    Carte "1" -- "1" PositionUtilisateur: est centré sur
+    Carte "1" -- "0..1" Itineraire: est affiché sur
+```
+
+\newpage
+
 ## Réveille-matin ##
 
 ![Diagramme d'états-transitions](img/exo_uml/reveille_etats_transitions.png)
@@ -415,7 +483,7 @@ Pour optimiser la réalisation de la recette, nous parallélisons toutes les tâ
 \newpage
 
 ## Démineur ##
-Nous identifions deux fonctionnalités principales : configurer une partie et jouer une partie. *Configurer une partie* signifie choisir le nombre de cases et/ou le nombre de mines. Quand au cas d'utilisation *Jouer une partie*, il comprend les sous-fonctionnalités *poser un drapeau* et *découvrir une mine*. Comme il n'est pas obligatoire de poser des drapeaux pour pouvoir jouer cette sous-fonctionnalité est optionnelle. En revanche il est obligatoire de découvrir au moins une case à un moment de la partie (sinon elle ne se termine jamais) : cette fonctionnalité est donc obligatoire.
+Nous identifions deux fonctionnalités principales : configurer une partie et jouer une partie. *Configurer une partie* signifie choisir le nombre de cases et/ou le nombre de mines. Quant au cas d'utilisation *Jouer une partie*, il comprend les sous-fonctionnalités *poser un drapeau* et *découvrir une case*. Comme il n'est pas obligatoire de poser des drapeaux pour pouvoir jouer cette sous-fonctionnalité est optionnelle. En revanche il est obligatoire de découvrir au moins une case à un moment de la partie (sinon elle ne se termine jamais) : cette fonctionnalité est donc obligatoire.
 
 ![Diagramme de cas d'utilisation du démineur](img/exo_uml/demineur_cas_utilisation.png)
 
@@ -423,7 +491,7 @@ Les trois grandes classes que nous identifions sont `Partie`, `Grille` et `Case`
 
 Le plateau est composé de cases qui sont positionnées à l'aide de leur numéro de ligne et de colonne. Les cases peuvent être de trois types différents : minées, vides ou numérotées (lorsqu'elles sont à côté d'une case minée). Le type de la case influe sur le comportement de la méthode `decouvrir()` : respectivement partie perdue, démasquage des cases voisines et démasquage de la seule case. Le comportement des méthodes de la classe `Case` dépend également de l'état de celle-ci : il ne se passe pas la même chose lorsque l'on essaye de marquer une case déjà marquée ou une case découverte par exemple.
 
-Le diagramme de classe que nous avons établit est le suivant :
+Le diagramme de classe que nous avons établi est le suivant :
 
 ![Diagramme de classes du démineur](img/exo_uml/demineur_classes.png)
 
@@ -467,36 +535,6 @@ La partie régler un montant par CB est détaillée dans un autre diagramme de s
 Les états de la bornette peuvent enfin être représentés dans un diagramme d'état-transition.
 
 ![VéliDescartes - Diagramme de'états-transitions d'une bornette](img/exo_uml/velib_etats_transitions_bornette.png)
-
-\newpage
-
-## GPS de navigation ##
-Le système étudié est un GPS routier.
-
-Nous identifions trois cas d'utilisation principaux :
-
-* afficher une carte;
-* afficher la vitesse de déplacement;
-* guider le conducteur, ce qui inclut de calculer et d'afficher des itinéraires.
-
-Pour calculer la vitesse de déplacement et des itinéraires, le GPS a besoin de détecter la position de la voiture, ce qui fait appel à des satellites (acteur secondaire du système). La détection de la position de la voiture est une option de la fonctionnalité d'affichage de la carte.
-
-![Diagramme de cas d'utilisation - GPS routier](img/exo_uml/gps_cas_utilisation.png) 
-
-Lors de la réalisation de l'activité *Etre guidé*, le conducteur commence par allumer le GPS. Celui-ci cherche alors à détecter les satellites pour pouvoir calculer la position du véhicule. Le conducteur peut alors indiquer sa destination pour que le GPS puisse calculer un itinéraire. Lorsque l'itinéraire est calculé, il s'affiche sur le GPS et plusieurs cas sont alors possibles :
-
-* soit le conducteur suit correctement la route indiquée : le GPS lui indique alors simplement la route à suivre jusqu'à arriver à destination
-* soit le conducteur ne respecte pas l'itinéraire indiqué : le GPS recalcule alors un nouvel itinéraire en tenant compte de la nouvelle position et met à jour l'affichage de la route à suivre.
-* 
-![Diagramme de l'activité *être guidé* - GPS routier](img/exo_uml/gps_activite.png) 
-
-Notre analyse du système nous conduit pour commencer à identifier trois structures d'objets contribuant à son fonctionnement : l'adresse de destination, l'itinéraire et la position GPS de la voiture.
-
-L'adresse de destination est traduite en position (coordonnées x,y) pour être utilisée dans le système. Un itinéraire est quand à lui composé d'une suite ordonnée de positions. Nous ajoutons donc cette classe à notre modèle et définissons la position GPS de la voiture comme un type particulier de position.  
-
-Enfin, nous ajoutons une classe affichage qui utilise la position GPS pour centrer la carte dessus et l'itinéraire pour le représenter sur le fond de carte et guider le conducteur.
-
-![Diagramme de classes - GPS routier](img/exo_uml/gps_classes.png) 
 
 \newpage
 
