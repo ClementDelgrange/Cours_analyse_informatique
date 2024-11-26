@@ -188,18 +188,20 @@ Pour chacun des diagrammes, vous n'oublierez pas d'expliquer vos diagrammes et d
 
 
 # VéliDescartes #
-La Cité Descartes souhaite mettre en place un système d'emprunt de vélo en libre service, sur le modèle des Vélib à Paris.
+La Cité Descartes souhaite mettre en place un système de vélo en libre-service.
 
-Une dizaine de stations seront installées sur le campus par les services techniques. Elles seront l'unique point d'accès pour emprunter des vélos et contiendront chacune une borne et plusieurs bornettes où seront garés les vélos (un par bornette).
+Une dizaine de stations doivent être installées sur le campus par les équipes de maintenance. Elles seront l'unique point d'accès pour emprunter des vélos et contiendront chacune des bornes où seront garés les vélos.
 
-Avant de pouvoir emprunter son premier vélo, l'utilisateur devra s'abonner au service et régler par carte bancaire une cotisation annuelle de 5 euros. Un utilisateur abonné peut emprunter un vélo à n'importe quelle station et le retourner dans n'importe quelle autre. Il ne peut emprunter qu'un seul vélo à la fois. Lorsqu'il retourne un vélo, l'abonné peut signaler un problème sur le vélo.
+Avant de pouvoir emprunter son premier vélo, l'utilisateur devra s'abonner au service et régler par carte bancaire s'acquitter d'un abonnement annuel. Une fois cet abonnement réglé, les locations seront gratuites. 
 
-Les administrateurs du système peuvent connaître l'état des bornes et des vélos à chaque instant (savoir si un vélo est en cours d'utilisation ou s'il est garé, combien de vélos sont disponibles à une borne donnée, si une bornette sont utilisée, libre ou cassée).
+Un utilisateur abonné peut emprunter un vélo à n'importe quelle station et le retourner dans n'importe quelle autre. Il ne peut emprunter qu'un seul vélo à la fois. Lorsqu'il retourne un vélo, l'abonné peut signaler un problème sur le vélo (pneu crevé, roue voilée, selle manquante...).
 
-1. Représentez les grandes fonctionnalités de l'application.
-2. Proposez une modélisation du système.
-3. Détaillez, sous forme d'enchaînement d'activités ou d'échange de messages entre composants du système, quelques uns des cas d'utilisation principaux du système.
-4. Utilisez un diagramme UML pour préciser l'organisation des composants matériels. 
+L'utilisateur effectue l'ensemble de ces opérations depuis une application mobile. 
+
+Les administrateurs du système, qui se connectent via une interface web classique, doivent pouvoir savoir à chaque instant si un vélo est en cours d'utilisation ou s'il est garé. De même ils doivent pouvoir savoir combien de vélo en état de fonctionnement sont disponibles à une station.
+
+
+1. Proposez une modélisation du système. Votre réponse pourra inclure une représentation des grandes fonctionnalités du système, avec un focus plus important sur certaines fonctionnalités sensibles. Elle pourra également détailler les structures du programme à réaliser, leurs interactions et/ou leur implantation sur les différents composants matériels du système.
 
 
 # EncherePasChere #
@@ -506,11 +508,11 @@ De même, nous utilisons un diagramme de séquence pour décrire le cas d'utilis
 \newpage
 
 ## VéliDescartes ##
-Nous identifions trois acteurs principaux utilisant le système : l'utilisateur sans abonnement qui souhaite s'abonner, l'utilisateur avec abonnement qui veut emprunter/déposer des vélos et signaler des incidents et l'adminstrateur du système qui désire réaliser des diagnostics d'état/utilisation.
+Nous identifions trois acteurs principaux utilisant le système : l'utilisateur sans abonnement qui souhaite s'abonner, l'utilisateur avec abonnement qui veut emprunter/déposer des vélos et signaler des incidents et l'administrateur du système qui désire réaliser des diagnostics d'état/utilisation.
 
 ![VéliDescartes - Diagramme de cas d'utilisation](img/exo_uml/velib_cas_utilisation.png) 
 
-Pour élobrer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de Vélidescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des bornettes. Les bornettes sont organisées en stations avec une adresse et un numéro.
+Pour élaborer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de VéliDescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des stations. Les bornes sont organisées en stations avec une adresse et un numéro.
 
 ![VéliDescartes - Diagramme de classes](img/exo_uml/velib_classes.png) 
 
