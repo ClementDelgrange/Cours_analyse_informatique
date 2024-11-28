@@ -190,13 +190,18 @@ Pour chacun des diagrammes, vous n'oublierez pas d'expliquer vos diagrammes et d
 # VéliDescartes #
 La Cité Descartes souhaite mettre en place un système de vélo en libre-service.
 
-Une dizaine de stations doivent être installées sur le campus par les équipes de maintenance. Elles seront l'unique point d'accès pour emprunter des vélos et contiendront chacune des bornes où seront garés les vélos.
+Une dizaine de stations doivent être matérialisées sur le campus par les équipes de maintenance. Elles constitueront les seuls lieux où les utilisateurs pourront emprunter et déposer des vélos.
 
-Avant de pouvoir emprunter son premier vélo, l'utilisateur devra s'abonner au service et régler par carte bancaire s'acquitter d'un abonnement annuel. Une fois cet abonnement réglé, les locations seront gratuites. 
+Les utilisateurs du système interagiront avec celui-ci via une application mobile (iOS ou Android).
+
+Avant de pouvoir emprunter un vélo, l'utilisateur devra s'abonner au service. Plusieurs types d'abonnements seront possibles à l'ouverture du service : mensuel ou annuel. Les utilisateurs devront s'acquitter d'une cotisation dont le montant dépendra du type d'abonnement. Une fois cet abonnement payé, les locations seront gratuites. 
 
 Un utilisateur abonné peut emprunter un vélo à n'importe quelle station et le retourner dans n'importe quelle autre. Il ne peut emprunter qu'un seul vélo à la fois. Lorsqu'il retourne un vélo, l'abonné peut signaler un problème sur le vélo (pneu crevé, roue voilée, selle manquante...).
 
-L'utilisateur effectue l'ensemble de ces opérations depuis une application mobile. 
+Avant d'autoriser l'emprunt d'un vélo, le système s'assurera donc notamment que :
+- l'utilisation n'a pas d'autre location en cours;
+- l'état du vélo permet un emprunt;
+- le vélo choisi est bien situé dans le périmètre d'une station.
 
 Les administrateurs du système, qui se connectent via une interface web classique, doivent pouvoir savoir à chaque instant si un vélo est en cours d'utilisation ou s'il est garé. De même ils doivent pouvoir savoir combien de vélo en état de fonctionnement sont disponibles à une station.
 
@@ -512,31 +517,23 @@ Nous identifions trois acteurs principaux utilisant le système : l'utilisateur 
 
 ![VéliDescartes - Diagramme de cas d'utilisation](img/exo_uml/velib_cas_utilisation.png) 
 
-Pour élaborer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de VéliDescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des stations. Les bornes sont organisées en stations avec une adresse et un numéro.
+Pour élaborer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de VéliDescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des stations. Les stations comme les vélos sont localisés avec ler position GPS.
 
-![VéliDescartes - Diagramme de classes](img/exo_uml/velib_classes.png) 
+![VéliDescartes - Diagramme de classes](img/exo_uml/velidescartes_classes.png) 
 
 Afin d'illustrer notre diagramme de classe, nous réalisons le diagramme d'objets suivant :
 
-![VéliDescartes - Diagramme d'objets](img/exo_uml/velib_objets.png)
+![VéliDescartes - Diagramme d'objets](img/exo_uml/velidescartes_objets.png)
 
-Nous choisissons de représenter les deux fonctionnalités principales *emprunter un vélo* et *déposer un vélo* sous forme de diagramme d'activité.
+Ainsi que les différents états des vélos dans un diagramme d'état-transition:
 
-![VéliDescartes - Diagramme d'activité *emprunter un vélo*](img/exo_uml/velib_activite_emprunter.png)
+![VéliDescartes - Diagramme de'états-transitions d'une bornette](img/exo_uml/velidescartes_etats_transitions_velo.png)
 
-![VéliDescartes - Diagramme d'activité *déposer une vélo*](img/exo_uml/velib_activite_deposer.png)
+Nous choisissons de représenter les deux fonctionnalités principales *emprunter un vélo* et *déposer un vélo* sous forme de diagramme de séquence. Cela nous permet de mettre en évidence les interactions entre les objets et de montrer à quel moment intervient la création d'un objet Location.
 
-Pour la fonctionnalité *s'abonner*, nous utilisons un diagramme de séquence permettant de montrer à quel moment intervient la création d'un objet abonnement.
+![VéliDescartes - Diagramme d'activité *emprunter un vélo*](img/exo_uml/velidescartes_sequence_emprunter_velo.png)
 
-![VéliDescartes - Diagramme de séquence *s'abonner*](img/exo_uml/velib_seq_abonner.png)
-
-La partie régler un montant par CB est détaillée dans un autre diagramme de séquence :
-
-![VéliDescartes - Diagramme de séquence *régler abonnement*](img/exo_uml/velib_seq_regler.png)
-
-Les états de la bornette peuvent enfin être représentés dans un diagramme d'état-transition.
-
-![VéliDescartes - Diagramme de'états-transitions d'une bornette](img/exo_uml/velib_etats_transitions_bornette.png)
+![VéliDescartes - Diagramme d'activité *déposer une vélo*](img/exo_uml/velidescartes_sequence_deposer_velo.png)
 
 \newpage
 
