@@ -1,17 +1,21 @@
+# Générer les pdf / présentations en html des supports de cours
+
 1. Installation de pandoc : <http://pandoc.org/installing.html>
+2. Se placer à la racine du répo
+3. Pour générer les diapositives :
+```shell
+pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_informatique_presentation.html Analyse_informatique_presentation.md
+pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_avancee_presentation.html Analyse_avancee_presentation.md
+```
 
-2. commandes à exécuter depuis le répertoire `Analyse_informatique_UML` pour générer les différents supports de cours :
-    * Pour générer les diapositives :
+5. Pour générer les pdf de cours :
+```shell
+pandoc -s -N --listings --template=template/template.latex -o Analyse_informatique.pdf Analyse_informatique.md 
+pandoc -s -N --listings --template=template/template.latex -o Analyse_avancee.pdf Analyse_avancee.md 
+```
 
-    pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_informatique_presentation.html Analyse_informatique_presentation.md
-    pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_avancee_presentation.html Analyse_avancee_presentation.md
-
-    * Pour générer les pdf de cours :
-
-    pandoc -s -N --listings --template=template/template.latex -o Analyse_informatique.pdf Analyse_informatique.md 
-	pandoc -s -N --listings --template=template/template.latex -o Analyse_avancee.pdf Analyse_avancee.md 
-	
-    * Pour générer les pdf d'exercices :
-
-    pandoc -s -N --listings --template=template/template_tp.latex -o Analyse_informatique_exercices.pdf Analyse_informatique_exercices.md 
-    pandoc -s -N --listings --template=template/template_tp.latex -o Analyse_avancee_exercices.pdf Analyse_avancee_exercices.md 
+5. Pour générer les pdf d'exercices :
+```shell
+pandoc -s -N --listings --template=template/template_tp.latex -o Analyse_informatique_exercices.pdf Analyse_informatique_exercices.md 
+pandoc -s -N --listings --template=template/template_tp.latex -o Analyse_avancee_exercices.pdf Analyse_avancee_exercices.md 
+```

@@ -273,43 +273,6 @@ Les cas d'utilisation "effectuer une réservation" et "afficher les promotions" 
 
 ![Diagramme de cas d'utilisation - Application d'achat de billets de train](img/exo_uml/appli_billets_train_activite.png)
 
-Source du diagramme :
-```plantuml
-@startuml
-left to right direction
-
-actor Client
-actor Ambassadeur
-
-package "Application d'achat de billets de train" {
-  usecase "Effectuer une réservation" as UC1
-  usecase "Saisir destinations" as UC1a
-  usecase "Saisir date de départ" as UC1b
-  usecase "Sélectionner une proposition" as UC1c
-  usecase "Procéder au paiement" as UC1d
-  usecase "Afficher les réservations" as UC2
-  usecase "Télécharger le billet" as UC2a
-  usecase "Annuler une réservation" as UC3
-  usecase "Afficher les promotions exclusives" as UC4
-  usecase "Sélectionner une promotion" as UC4a
-}
-
-Client --> UC1
-UC1 .-down-> UC1a : <<include>>
-UC1 .-down-> UC1b : <<include>>
-UC1 .-down-> UC1c : <<include>>
-UC1 .-down-> UC1d : <<include>>
-Client --> UC2
-UC2 .-down-> UC2a : <<include>>
-Client --> UC3
-
-Client <|-right- Ambassadeur
-Ambassadeur --> UC4
-UC4 .-down-> UC4a : <<include>>
-UC4 .-down-> UC1d : <<include>>
-@enduml
-```
-
 Le premier problème qui se pose lors de la modélisation est de représenter le (les) lien(s) entre trajets et gares : un trajet a une gare de départ, une d'arrivée et peut effectuer des escales dans d'autres gares.
 On utilisera des liens 1-* pour représenter les liens pour les gares de départ et d'arrivée.
 Pour les escales, on optera pour un lien *-*, qui pourrait être complété d'une classe d'association (avec les horaires de l'escale par exemple).
@@ -320,46 +283,6 @@ La partie du modèle traitant de la partie réservation (une réservation concer
 
 ![Diagramme de classes - Application d'achat de billets de train](img/exo_uml/appli_billets_train_classes.png) 
 
-Source du diagramme :
-```mermaid
-classDiagram
-    direction LR
-    class Trajet{
-        +numero: string
-        +horaire_depart: datetime
-        +horaire_arrivee: datetime
-    }
-    class Gare{
-        +code: string
-    }
-    class Ville{
-        +nom: string
-    }
-    class Client{
-        +numero: integer
-        +nom: string
-        +prenom: string
-        +email: string
-    }
-    class Ambassadeur
-    class Réservation{
-        +numero: integer
-        +confirmer()
-        +annuler()
-    }
-    class Paiement
-
-
-    Trajet "*" -- "1" Gare: a pour départ
-    Trajet "*" -- "1" Gare: a pour arrivée
-    Trajet "*" -- "*" Gare: effectue une escale
-    Gare "*" -- "1..*" Ville: dessert
-
-    Réservation "*" -- "1" Trajet: concerne
-    Client "*" -- "1" Réservation: effectue
-    Ambassadeur --|> Client
-    Réservation *-- Paiement
-```
 
 \newpage
 
@@ -439,41 +362,6 @@ Enfin, nous ajoutons une classe affichage qui utilise la position GPS pour centr
 
 ![Diagramme de classes - GPS routier](img/exo_uml/gps_classes.png)
 
-Source du diagramme :
-```mermaid
-classDiagram
-    direction LR
-    class Adresse{
-        -numero: integer
-        -rue: string
-        -ville: string
-    }
-    class Position{
-        +latitude: float
-        +longitude: float
-    }
-    class PositionUtilisateur{
-        -vitesse: float
-        -detecter_satelites()
-        -maj_vitesse()
-        -maj_position()
-    }
-    class Itineraire{
-        -depart: Adresse
-        -arrivee: Adresse
-        -etapes: Position[*]
-        +est_sur_itineraire(p Position): bool
-    }
-    class Carte{
-
-    }
-
-    Adresse "0..1" -- "1" Position: correspond à
-    Position "*" --o "*" Itineraire
-    PositionUtilisateur --|> Position
-    Carte "1" -- "1" PositionUtilisateur: est centré sur
-    Carte "1" -- "0..1" Itineraire: est affiché sur
-```
 
 \newpage
 
@@ -513,45 +401,28 @@ De même, nous utilisons un diagramme de séquence pour décrire le cas d'utilis
 \newpage
 
 ## VéliDescartes ##
-Nous identifions trois acteurs principaux utilisant le système : l'utilisateur sans abonnement qui souhaite s'abonner, l'utilisateur avec abonnement qui veut emprunter/déposer des vélos et signaler des incidents et l'administrateur du système qui désire réaliser des diagnostics d'état/utilisation.
+Nous identifions deux acteurs principaux utilisant le système : le client qui veut prendre des abonnements, emprunter&déposer des vélos et signaler des incidents, et l'administrateur du système qui souhaite visualiser l'état du système.
 
-![VéliDescartes - Diagramme de cas d'utilisation](img/exo_uml/velib_cas_utilisation.png) 
+![VéliDescartes - Diagramme de cas d'utilisation](img/exo_uml/velidescartes_cas_utilisation.png) 
 
-Pour élaborer la structure de l'application, nous identifions plusieurs composants. L'utilisateur de VéliDescartes qui peut posséder ou pas un abonnement. Cet utilisateur emprunte des vélos qui sont déposés dans des stations. Les stations comme les vélos sont localisés avec ler position GPS.
+Pour élaborer la structure de l'application, nous identifions plusieurs entités. Tout d'abord le client de VeliDescartes. Un client peut posséder plusieurs abonnements, mais un seul valide pour une date donnée (dates de début et durées de validité permettent de s'en assurer; nous illustrerons cela plus loin dans un diagramme d'activité). Ce client emprunte des vélos qui sont déposés dans des stations. Ici encore un client peut emprunter plusieurs vélos, mais un seul à la fois. Les dates de début et fin de location enregistrées dans la classe d'association `Location` nous permettent de gérer cette contrainte (un diagramme de séquence détaillera l'implémentation de cette contrainte). L'utilisation d'une classe d'association permet de stocker les informations ne pouvant être attachées directement ni aux clients, ni aux vélos. Les stations comme les vélos sont localisés avec ler position GPS. Cette géolocalisation nous permet de savoir quels vélos sont présents dans une station.
 
 ![VéliDescartes - Diagramme de classes](img/exo_uml/velidescartes_classes.png) 
 
-Afin d'illustrer notre diagramme de classe, nous réalisons le diagramme d'objets suivant :
+Afin d'illustrer notre diagramme de classe, et notamment rendre explicite les cardinalités `Client`-`Abonnement` et `Cient`-`Velo` , nous réalisons un diagramme d'objets. Dans ce diagramme, qui fige l'état du système au 9 février 2024 à 8h40, le client bob a déjà souscrit à deux abonnements, dont un est actuellement valide. Et il a effectué trois locations de vélo : deux sont terminées et une troisième est en cours (avec un vélo déjà utilisé lors d'une location précédente).
 
 ![VéliDescartes - Diagramme d'objets](img/exo_uml/velidescartes_objets.png)
 
-Ainsi que les différents états des vélos dans un diagramme d'état-transition:
+Toujours pur illustrer le diagramme de classe, nous représentons les différents états des vélos dans un diagramme d'états-transitions:
 
-![VéliDescartes - Diagramme de'états-transitions d'une bornette](img/exo_uml/velidescartes_etats_transitions_velo.png)
+![VéliDescartes - Diagramme de'états-transitions d'un vélo](img/exo_uml/velidescartes_etats_transitions_velo.png)
 
-Nous choisissons de représenter les deux fonctionnalités principales *emprunter un vélo* et *déposer un vélo* sous forme de diagramme de séquence. Cela nous permet de mettre en évidence les interactions entre les objets et de montrer à quel moment intervient la création d'un objet Location.
+Afin d'expliciter le fait qu'un client ne peut posséder qu'un seul abonnement valide à la fois, nous réalisons un diagramme d'activité. Nous pouvons voir que si un abonnement existe déjà pour la date de début, l'activité se termine sans créer de nouvel abonnement :
+
+![VéliDescartes - Diagramme d'activité *prendre abonnement*](img/exo_uml/velidescartes_activite_prendre_abonnement.png)
+
+Enfin nous réalisons deux diagrammes de séquence pour illustrer deux des fonctionnalités principales de l'application : *emprunter un vélo* et *déposer un vélo*. Cela nous permet de mettre en évidence les interactions entre les objets, de montrer à quel moment intervient la création d'un objet `Location`, ou encore d'expliciter les différentes conditions permettant de réaliser ces actions (ex : le vélo doit être situé dans la stations pour pouvoir le déposer, on ne peut pas emprunter un vélo s'il n'est pas libre).
 
 ![VéliDescartes - Diagramme d'activité *emprunter un vélo*](img/exo_uml/velidescartes_sequence_emprunter_velo.png)
 
 ![VéliDescartes - Diagramme d'activité *déposer une vélo*](img/exo_uml/velidescartes_sequence_deposer_velo.png)
-
-\newpage
-
-## EncherePasChere #
-à compléter...
-
-Nous identifions trois acteurs : le visiteur, l'acheteur et le vendeur.
-
-Le visiteur utilise l'application pour rechercher des objets mis en vente. Il peut également s'il a trouvé un objet qui l'intéresse s'inscrire comme acheteur. Ou s'inscrire comme vendeur s'il désire mettre des objets en vente.
-
-L'acheteur peut, tout naturellement, rechercher des objets mis en vente. Il utilise également le système pour acheter un objet en vente directe ou poser une enchère sur un objet aux enchères. Cette enchère peut se conclure par l'achat de l'objet.
-
-Le vendeur ne fait que mettre des objets en vente. Nous détaillons cette fonctionnalité pour préciser que la mise en vente peut être directe ou aux enchères.
-
-Nous aurions pu utiliser des liens de généralisation entre visiteur et acheteur et/ou vendeur, mais avons choisi de ne pas le faire pour ne pas représenter le fait qu'un acheteur peut s'incrire comme vendeur par exemple. Cela implique également que les comptes acheteurs et vendeur sont complètement décorrélés.
-
-Classes Acheteur et Vendeur. Classe ObjetMisEnVente. Enchere et VenteDirecte hétirent d'ObjetMisEnVente. Classe pour le site avec les méthodes génériques?
-
-Séquence d'un achat aux enchères
-
-Etat-transitions d'une enchère
