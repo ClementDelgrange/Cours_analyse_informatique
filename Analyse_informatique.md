@@ -1,35 +1,35 @@
 % Analyse informatique
-% Division des enseignements en informatique
-% novembre 2024 - v1.2
+% Centre de compétences technologies des systèmes d'information
+% novembre 2025 - v1.3
 
 
 # Introduction #
 
-Dans le découpage traditionnel en trois grandes phases de la conception de programmes informatiques, ce cours traite de la première : l'analyse informatique. Cette phase vise, en partant d'un énoncé en langage courant d'un problème à résoudre, à formuler une modélisation précise de la solution qui pourra être mise en oeuvre.
+Dans le découpage traditionnel en trois grandes phases de la conception de programmes informatiques (analyse -> algorithmie -> implémentation), ce cours traite de la première : l'analyse informatique. Cette phase vise, en partant d'un énoncé en langage courant d'un problème à résoudre, à formuler une modélisation précise de la solution qui pourra être mise en oeuvre.
 
 ![Grandes étapes de la conception d'une application](img/intro_oo/etapes_prog.png)
 
 Avant de s'attaquer à cette problématique d'analyse et de modélisation des systèmes informatiques, il est intéressant de se pencher sur les raisons de l'importance de cette phase en informatique.
 
-En informatique, contrairement à d'autres domaines industriels, le produit fini (i.e. le logiciel) ne s'use pas, son comportement ne se dégrade pas au cours du temps. Les défaillances du logiciel ne sont jamais imputables à des défauts de matériaux. Ce qui signifie aussi qu'elles sont toujours provoquées par des erreurs humaines lors de la conception, que ce soit lors de la modélisation, lors de l'écriture d'algorithmes ou lors du développement proprement dit. Il n'est dès lors pas possible de négliger l'une de ses phases, au risque de se retrouver avec un programme bloqué par des comportements non prévus.
+En informatique, contrairement à d'autres domaines industriels, le produit fini (c'est-à-dire le logiciel) ne s'use pas, son comportement ne se dégrade pas au cours du temps. Les défaillances du logiciel ne sont jamais imputables à des défauts de matériaux. Ce qui signifie aussi qu'elles sont toujours provoquées par des erreurs humaines lors de la conception, que ce soit lors de la modélisation, lors de l'écriture d'algorithmes ou lors du développement proprement dit. Il n'est dès lors pas possible de négliger l'une de ses phases, au risque de se retrouver avec un programme bloqué par des comportements non prévus.
 
 De plus, comme le logiciel ne dégrade pas au cours du temps, il ne devient obsolète que par rapport à des concurrents proposant des produits plus performants ou face à des usages nouveaux le rendant inadapté. Au début de l'histoire de l'informatique, les programmes étaient relativement *simples*. Il était alors relativement aisé par la personne l'ayant conçu de le faire évoluer pour le maintenir compétitif. Puis à partir des années 1970, les programmes se sont complexifiés, les équipes travaillant dessus ont grossi. Cette tendance s'est accélérée au cours des années 1980, si bien qu'il est devenu de plus en plus souvent nécessaire de faire évoluer les programmes. A tel point que si ces possibilités d'évolutions du logiciel n'avaient pas été prévues dès le départ, il devenait très compliqué de maintenir les programmes. La phase d'analyse n'était plus négligeable.
 Aujourd'hui le développement des plateformes web, comme Facebook, Airbnb, Uber ou Leboncoin, ressemble plus à un processus continu s'étalant sur plusieurs années, sans que l'ensemble des fonctionnalités ne soient connues initialement. Ce qui renforce d'autant plus le besoin de développer des solutions qui seront ouvertes aux évolutions.  
 
-Quelques chiffres viennent appuyer ces affirmations. Depuis les années 1990, le cabinet de conseil en informatique Standish Group mène des études sur la réalisation des projets informatiques en entreprise (*Chaos Report*[^1]). Les chiffres de ces études nous apprennent que seul un tiers des projets sont considérés comme des succès. Les deux tiers restant étant soir des échecs totaux (abandon du projet) pour 20%, soit des résultats mitigés (périmètre de l'application réduit) pour 40%. Ces études nous apprennent également que la phase de développement initial ne réprésente que 30% du coût du logiciel (17% pour la correction de bogues et 53% pour la maintenance).
+Quelques chiffres viennent appuyer ces affirmations. Depuis les années 1990, le cabinet de conseil en informatique Standish Group mène des études sur la réalisation des projets informatiques en entreprise (*Chaos Report*[^1]). Les chiffres de ces études nous apprennent que seul un tiers des projets sont considérés comme des succès. Les deux tiers restant étant soit des échecs totaux (abandon du projet) pour 20%, soit des résultats mitigés (périmètre de l'application réduit) pour 40%. Ces études nous apprennent également que la phase de développement initial ne représente que 30% du coût du logiciel (17% pour la correction de bogues et 53% pour la maintenance).
 
 [^1] Quelques articles sur le Chaos Report du Standish Group:
 - https://bestofbusinessanalyst.fr/pourquoi-projets-it-echecs/
 - https://www.successthroughsafe.com/blog-1/2021/11/13/standish-chaos-report-2021
 - http://alain.battandier.free.fr/spip.php?article18
 
-Ce cours se concentrera sur la modélisation des systèmes informatiques dans le but :
+Ce cours se concentrera sur la modélisation des systèmes informatiques qui a pour but :
 
 * d'élaborer la structure des programmes;
 * de s'assurer que les exigences initiales ont bien été respectées;
 * de maintenir les logiciels.
 
-Après avoir énoncé quelques généralités sur les manières de programmer et introduit le concept de programmation orientée objet, nous utiliserons l'Unified Modeling Language (UML) pour modéliser des systèmes informatiques. 
+Après avoir énoncé quelques généralités sur les manières de programmer et introduit le concept de programmation orientée objet qui répond aux problématiques de maintenance des systèmes informatiques, nous utiliserons l'Unified Modeling Language (UML) pour modéliser ces systèmes. 
 
 
 \newpage
@@ -39,23 +39,20 @@ Après avoir énoncé quelques généralités sur les manières de programmer et
 ## Langages et paradigmes de programmation ##
 Ceux qui ont déjà un peu programmé savent peut-être qu'il n'existe pas qu'une seule manière de programmer. Un **paradigme** de programmation est un style de programmation informatique que le développeur peut employer avec un langage de programmation pour résoudre un problème. Un langage de programmation peut être défini par plusieurs paradigmes.
 
-En programmation **impérative**, le programme est découpé en instructions exécutées les unes à la suite des autres. Des branchements, avec ou sans condition, permettent de passer à une autre bloc d'instructions, tandis que des bouclages permettent de répéter plusieurs fois un bloc d'instructions. C'est le paradigme utilisé dans les processeurs. Dans le monde réel, une recette de cuisine est un exemple de programme impératif (*faire fondre le beurre / lorsque le beurre est fondu ajouter le chocolat / ajouter les oeufs*).
+En programmation **impérative**, le programme est découpé en instructions exécutées les unes à la suite des autres. Des branchements, avec ou sans condition, permettent de passer à une autre bloc d'instructions, tandis que des bouclages permettent de répéter plusieurs fois un bloc d'instructions. C'est la manière la plus naturelle d'exprimer un calcul pour une machine. Dans le monde réel, une recette de cuisine est un exemple de programme impératif (*faire fondre le beurre / lorsque le beurre est fondu ajouter le chocolat / ajouter les oeufs*).
+Les premiers langages de programmation (Algol 58, BASIC) fonctionnaient ainsi, car c’était la manière la plus directe de contrôler une machine. Mais à mesure que les programmes grossissaient, les instructions s’enchaînaient par centaines, voire milliers. Modifier quelque chose devenait risqué : changer une étape pouvait perturber tout le reste, car tout dépendait de tout.
 
-En programmation **fonctionnelle**, un programme est défini comme une composition de fonctions, au sens mathématique du terme : règle de calcul permettant de définir un résultat dont la valeur dépend de paramètres.
+Pour tenter de remédier à ce chaos, les programmeurs ont commencé à ranger les instructions qui allaient ensemble dans des ensembles qu’on appelle des procédures. C'est le paradigme **procédural** (utilisé en C, Pascal ou Fortran). Chaque procédure correspond à une tâche identifiable : `faireFondreBeure()`, `ajouterChocolat()`, etc.
+Cela rend le programme plus clair : on découpe un grand problème en plusieurs petits morceaux réutilisables. On peut ainsi faire appel à une fonction sans avoir besoin de connaître ses détails internes (un peu comme on appelle une machine à laver sans savoir comment elle tourne).
+Mais il restait une difficulté : les données (les informations manipulées, comme la température du beurre ou la quantité de chocolat) étaient partagées un peu partout. Chaque fonction pouvait les modifier librement, ce qui rendait les programmes fragiles. Changer un détail dans la manière de stocker une donnée pouvait obliger à revoir plusieurs fonctions, ce qui rendait la maintenance toujours un peu risquée.
 
-La programmation **objet** vise à définir chaque brique d'un logiciel et ses interactions comme un objet. Le programme définit la structure interne des objets et leurs comportements.
+En programmation **fonctionnelle**, un programme est pensé comme une série de transformations successives (ou composition de fonctions, au sens mathématique du terme). Chaque fonction prend une valeur d’entrée, calcule un résultat, et le transmet à la suivante, sans modifier l'environnement autour. On pourrait ici faire l'analogie avec une chaîne de montage où chaque fonction est un poste de travail qui prend une pièce (des données), effectue une seule transformation (sans se soucier de ce qui s'est passé avant ou après), et la passe au poste suivant.
+Cette approche évite les effets secondaires et facilite la compréhension du calcul. Elle est née très tôt (langage LIST dans les années 1950) et, même si elle reste plus abstraite, certaines de ses idées (comme les fonctions réutilisables et les calculs sans effet de bord) se retrouvent dans de nombreux langages modernes.
+
+La programmation **objet** vise à définir chaque brique d'un logiciel et ses interactions comme un objet, regroupant à la fois les données (ce qu'il possède) et les fonctions qui les manipulent (ce qu'il sait faire). Dans la vie réelle, cela revient à considérer le programme informatique comme une équipe d'experts : au lieu d'une longue liste d'instructions, on donne un ordre à un expert ("cuisinier: couper -> oignons", "commis: laver -> assiettes"), et il exécute la tâche car il détient les compétences et les outils nécessaires.
+Ce paradigme objet voit le jour dans les années 1960 (langage Simula-67) et se développera largement lors des décennies suivantes (Java, Python, C++). En effet, en encourageant la réutilisation des développements, il facilite grandement la maintenance des programmes informatiques.
 
 ![Historiques des langages de programmation](img/intro_oo/historique_langages_prog.png)
-
-
-## Modèles architecturaux ##
-Un modèle d'architecture décrit la manière dont un logiciel doit être conçu pour répondre de manière optimale aux spécifications. 
-
-La notion d'architecture logicielle apparaît dans les années 1960 avec la **programmation fonctionnelle**. Selon ce principe, un programme informatique, qui est alors composé d'une suite d'étapes (architecture monolithique), est découpé en fonctionnalités, elles-mêmes découpées en sous-fonctionnalités. La maintenance des programmes est généralement très couteuse, car il est difficile d'identifier précisément les portions de code à modifier. 
-
-Dans les années 1970, les programmes informatiques sont découpés en composants logiciels. On décrit alors l'architecture de chacun de ces composants et les relations entre eux. L'**architecture en couche** par exemple permet de décrire un système comme un empilement de composants indépendants. Cette architecture permet de capitaliser les développements en rendant possible la réutilisation externe des composants logiciels indépendants. Un autre modèle architecturale décrira un système informatique comme comportant un composant central chargé de traiter les données (système de gestion de base de données par exemple) autour duquel gravitent les autres composants. On parle d'**architecture centrée sur les données**.
-
-C'est également lors de cette décennie que le modèle d'architecture **orientée objet** voit le jour. Il se développera largement au cours des années 1980, même si l'architecture centrée sur les données reste majoritairement utilisée. En introduisant de nouveaux types de composants logiciels (*objets*, *classes*) et de relations entre composants (*héritage*, *composition*, etc.), l'architecture orientée objet encourage la réutilisation des développements et facilite la maintenance.
 
 
 ## Grands principes de l'orienté objet ##
@@ -65,7 +62,7 @@ Si l'approche fonctionnelle tente de résoudre un problème en le découpant en 
 
 > Un **objet** est une entité autonome, aux frontières précises, décrit par une collection de propriétés et de traitements associés.
 >
-> * Un objet possède une identité (un nom).
+> * Un objet possède une identité (sa référence unique en mémoire, qui le distingue des autres, même s'ils partagent le même nom ou les mêmes attributs).
 > * Un ensemble d'attributs caractérisent l'état de l'objet.
 > * Un ensemble d'opérations en définit le comportement.
 
@@ -73,7 +70,7 @@ Exemples :
 
 * le point de coordonnées (2, 3) est un objet. Il est défini par des propriétés : x=2 et y=3. Certaines opérations sont possibles sur ce point : le déplacer ou calculer la distance à un autre point.
 * le bouton "Enregistrer" du ruban supérieur de Word est un objet. Il possède une dimension, des coordonnées, une icone. Une méthode est associée au clic sur ce bouton (elle déclenche l'enregistrement du document).
-* la personne Paul Higone est un objet.
+* la personne Paul Higone, né le 12/03/1990, est un objet.
 
 ![Exemples d'objets](img/intro_oo/objets.png)
 
@@ -110,16 +107,18 @@ Autre exemple informatique, un nombre complexe peut être représenté de diffé
 > * Ce principe encourage la réutilisation, il permet de créer des classes généralistes et de leur ajouter des spécificités.
 > * Nous utiliserons aussi les termes de classe *mère* ou *parente* pour la classe existante et de classe *fille* pour la classe dérivée.
 
-La classe Carré hérite de la classe Quadrilatère : un carré est un type particulier de quadrilatère. Les méthodes et propriétés du quadrilatère sont automatiquement transmises au carré : composition de 4 points, surface, déplacement d'un sommet...
+L'héritage est aussi appelé la relation *est un type de*.
+
+La classe Carré hérite de la classe Quadrilatère : on dit qu'un carré est un type de quadrilatère. Les méthodes et propriétés du quadrilatère sont automatiquement transmises au carré : composition de 4 points, surface, déplacement d'un sommet...
 
 ![Illustration du principe d'héritage](img/intro_oo/heritage.png)
 
-> L'**polymorphisme** est la faculté de pouvoir redéfinir dans une classe dérivée les méthodes héritées de la classe parente.
+> Le **polymorphisme** est la faculté de pouvoir redéfinir dans une classe dérivée les méthodes héritées de la classe parente.
 >
 > * Il permet une programmation plus générique : possibilité d’utiliser toujours la même fonction sur plusieurs types d’objets.
 > * Ce principe autorise, dans le cas de l’héritage, à spécifier un comportement général hérité de la classe mère.
 
-Par exemple, une instance de Quadrilatère est composée de quatre instances de la classe Point. De cette manière, il n'est plus nécessaire de définir dans la classe Quadrilatère les attributs permettant de stocker les coordonnées de chacun des sommets, ni les méthodes pour déplacer ces sommets puisqu'elles sont déjà implémentées dans la classe Point. Il suffira d'utiliser les attributs et méthodes de la classe Point.
+Considérons la classe parente Quadrilatère avec une méthode pour calculer sa surface. La classe fille Carré redéfinit cette méthode en simplifiant la formule. Si l'on place un Quadrilatère et Carré dans une liste de forme géométriques et qu'on appelle la méthode pour calculer la surface sur chacun d'eux, le programme saura automatiquement appliquer la formule correcte pour chaque objet. Le code d'appel est générique, mais le comportement est spécifique.
 
 ![Illustration du principe du polymorphisme](img/intro_oo/polymorphisme.png)
 
@@ -139,11 +138,11 @@ L'approche fonctionnelle présente l'avantage d'être assez naturelle à mettre 
 
 ![Découpage fonctionnel d'une application - évolution du logiciel](img/intro_oo/decoupage_fonctionnel_evolution.png)
 
-L'orienté objet naît de l'idée de regrouper au même endroit les choses qui vont ensemble (les composants d'un programme et les traitements associés). Il découpe pour ce faire un programme en structures élémentaires qu'il fait ensuite interagir (approche qualifiée d'*ascendante*). A l'inverse de l'approche fonctionnelle, l'approche objet est beaucoup moins intuitive. 
+L'orienté objet naît de l'idée de regrouper au même endroit les choses qui vont ensemble (les composants d'un programme et les traitements associés). Il découpe pour ce faire un programme en structures élémentaires qu'il fait ensuite interagir (approche qualifiée d'*ascendante*). A l'inverse de l'approche fonctionnelle, l'approche objet est beaucoup moins intuitive car elle impose de penser le système en termes d'entités (les "acteurs" ou "sujets", c'est-à-dire les *NOMS*) plutôt qu'en termes d'actions à exécuter (les *VERBES*).
 
 Pour appliquer ce modèle de développement, il devient rapidement nécessaire de disposer d'outils pour aider à la modélisation. A mesure que ce modèle de conception se répand au cours des années 1980, plusieurs méthodes et outils visant à faciliter la modélisation orientée objet voient ainsi le jour. 
 
-En 1995, deux grandes méthodes utilisées jusqu'alors (OMT-2 et Booch'93) s'associent pour donner naissance à UML 0.8. La méthode OOSE rejoint le projet l'année suivante qui, avec le soutien de partenaires industriels puissants (HP, IBM, Microsoft, Oracle, etc.), donne naissance à UML 0.9. C'est la période d'unification des méthodes de conception orientée objet qui abouti en janvier 1997 à la version 1.0 d'UML. Cette version est soumise à l'Object Management Group (OMG[^2]; organisme ayant pour but de promouvoir l'approche objet). La version 1.1 sera adoptée en novembre 1997 et s'impose comme un standard de l'industrie.
+En 1995, deux grandes méthodes utilisées jusqu'alors (OMT-2 de James Rumbaugh et Booch'93 de Grady Booch) s'associent pour donner naissance à UML 0.8. La méthode OOSE d'Ivar Jacobson rejoint le projet l'année suivante qui, avec le soutien de partenaires industriels puissants (HP, IBM, Microsoft, Oracle, etc.), donne naissance à UML 0.9. C'est la période d'unification des méthodes de conception orientée objet qui abouti en janvier 1997 à la version 1.0 d'UML. Cette version est soumise à l'Object Management Group (OMG[^2]; organisme ayant pour but de promouvoir l'approche objet). La version 1.1 sera adoptée en novembre 1997 et s'impose comme un standard de l'industrie.
 
 [^2] https://www.omg.org/
 
@@ -159,12 +158,14 @@ Unified Modeling Language (UML) est un langage graphique de conception orientée
 
 ![Logo d'UML](img/logos/logo_UML.jpg)
 
+Il est important de noter qu'UML est uniquement un langage de modélisation (un ensemble de règles et de symboles pour dessiner les plans du logiciel). Il ne s'agit pas d'une méthode de développement (comme Scrum ou le Cycle en V), car il ne dicte pas la façon dont le projet doit être organisé.
+
 UML a été conçu de manière à être compréhensible à la fois par l'homme et par la machine. Ses diagrammes sont ainsi composés de formes géométriques simples facilement compréhensibles par un humain, mais également interprétables par un ordinateur.
 
 Le langage UML dans sa version 2 se compose de 14 diagrammes :
 
-* 7 diagrammes structurels permettent de décrire les composants du système et les fonctionnalités attendues ou permises par l'application;
-* 7 diagrammes comportementaux concourent à la description des interactions entre les différents éléments d'un système.
+* 7 diagrammes structurels permettent de décrire l'anatomie du système : de quoi le système est-il fait ? Ils décrivent les composants, les classes et les fonctionnalités attendues ou permises par l'application.
+* 7 diagrammes comportementaux concourent à la description de la physiologie du système : que fait le système et comment ? Ils décrivent la dynamique et les interactions entre les différents éléments d'un système.
 
 ![Les 14 diagrammes UML](img/14_diagrammes_UML.png)
 
@@ -194,13 +195,13 @@ des événements
 système
 * 4 diagrammes d’interactions : sous catégorie de diagrammes comportementaux mettant l'accent
 sur les interactions entre les éléments du système :
-	* Diagramme de séquence : détail des échanges et interaction entre composants d’un système
-	* Diagramme de communication : représentation simplifiée de l'échange de messages entre
+    * Diagramme de séquence : détail des échanges et interaction entre composants d’un système. C'est le plus utilisé des diagrammes d'interactions.
+    * Diagramme de communication : représentation simplifiée de l'échange de messages entre
 les objets
-	* Diagramme global d’interaction : diagramme d'activité où les noeuds représentent des
+    * Diagramme global d’interaction : diagramme d'activité où les noeuds représentent des
 diagrammes de communication
-	* Diagramme de temps : diagramme d'interaction où l'accent est mis sur les contraintes de
-temps
+    * Diagramme de temps : diagramme d'interaction où l'accent est mis sur les contraintes de
+temps.
 
 
 \newpage
@@ -208,6 +209,9 @@ temps
 # Modélisation structurelle #
 
 ## Le diagramme de cas d'utilisation ##
+### Préambule ###
+Le diagramme de cas d'utilisation est souvent placé à la frontière entre l'analyse fonctionnelle et la modélisation structurelle. Notre découpage précédent le plaçait d'ailleurs dans la liste des diagrammes comportementaux, alors qu'il apparaît ici dans la partie sur la modélisation structurelle.
+
 ### Objectifs du diagramme ###
 Le recueil d'informations sur les besoins d'un client donne souvent lieu à des informations de niveaux variés et en quantités très inégales. Se baser sur ces seules informations pour mener un projet conduit à des frustrations de la part du développeur dont le travail n'est pas justement valorisé, mais également du client qui ne voit pas ses attentes réalisées.
 
@@ -217,11 +221,21 @@ L'objectif de ce diagramme est de structurer et de clarifier les besoins du clie
 
 Le diagramme de cas d'utilisation est un diagramme central qui sert de fil rouge tout au long des développements pour s'assurer ques les fonctionnalités initialement identifiées sont bien implémentées.
 
+/begin{note}
+**Clarification sur la classification du Diagramme de Cas d'Utilisation**
+
+Le lecteur attentif aura remarqué que dans la spécification officielle UML de l'OMG, le diagramme de cas d'utilisation est classé parmi les diagrammes comportementaux alors qu'il apparait ici dans une partie sur la modélisation structurelle. Il faut bien y voir là une incohérance.
+
+En pratique, le diagramme de cas d'utilisation se situe à la frontière entre besoins et conception. Une démarche d'ingénierie sérieuse ne peut pas commencer à réfléchir à la structure d'une application sans avoir au préalable défini ce que l'utilisateur attend.
+
+C'est pourquoi, par pragmatisme d'ingénierie (et pédagogique), nous le traitons ici au début de la modélisation structurelle : il est le pont entre la collecte des besoins et la conception détaillée.
+/end{note}
+
 ### Eléments de base d'un diagramme de cas d'utilisation ###
 Le diagramme de cas d'utilisation est composé de *cas d'utilisation* qui forment le *contour du système* et d'*acteurs*.
 
 #### Le cas d'utilisation ####
-Un cas d'utilisation est une séquence d'actions destinées à répondre à un besoin précis d'un utilisateur. Il est en général exprimé à l'aide d'un verbe à l'infinitif.
+Un cas d'utilisation est une séquence d'actions destinées à répondre à un besoin précis d'un utilisateur. Il est en général exprimé à l'aide d'une phrase courte du type "verbe à l'infinitif + complément".
 
 ![Cas d'utilisation](img/uml_bases/cas_utilisation/cas_utilisation.png)
 
@@ -340,7 +354,7 @@ Par exemple, pour la classe `Rectangle` suivante, la surface n'est pas un attrib
 Finalement, la syntaxe générale pour les attributs d'une classe est la suivante (les mentions optionnelles étant entre accolades) :
 
 ```
-{-, #, +} nom_attribut : type_attribut {[multiplicite]} {=valeur_par_defaut}
+{-, #, +} {/} nom_attribut : type_attribut {[multiplicite]} {=valeur_par_defaut}
 ```
 
 #### Les méthodes ####
@@ -412,7 +426,9 @@ Enfin notons que par défaut, une association est navigable dans les deux sens. 
 
 Dans l'exemple ci-dessous, l'électeur vote pour zéro ou un candidat. Si l'électeur connait le candidat pour lequel il a voté, le candidat ne sais pas quels électeurs ont voté pour lui.
 
-![Association à navigabilité restreinte](img/uml_bases/classes/association_navigabilite_restreinte.png) 
+![Association à navigabilité restreinte](img/uml_bases/classes/association_navigabilite_restreinte.png)
+
+En terme d'implémentation cela signifie que la classe `Electeur` aura un attribut référençant le "candidat voté", mais la classe `Candidat` n'aura pas d'attribut permettant de retrouver la liste des électeurs.
 
 
 #### L'héritage ####
@@ -570,18 +586,32 @@ Les liens représentés doivent bien entendu rester cohérent avec les associati
 
 ## Le diagramme de déploiement ##
 ### Objectifs du diagramme ###
-Le diagramme de déploiement couvre un domaine de la conception informatique qui n'a pas été abordé jusqu'ici : la configuration physique des différents matériels qui participent à l'exécution du système. Il décrit l'implantation physique de l'application.
+Le diagramme de déploiement couvre un domaine de la conception informatique qui n'a pas été abordé jusqu'ici : la configuration physique des différents matériels qui participent à l'exécution du système. Il répond à la question : "Où et comment notre logiciel va-t-il concrètement fonctionner ?" Il décrit l'implantation physique de l'application, agissant comme le plan d'installation nécessaire aux administrateurs systèmes. Sans ce diagramme, le meilleur des codes ne peut pas être mis en production.
 
 ### Eléments de base du diagramme ###
-Le diagramme de déploiement est constitué de noeuds connectés par des liens physiques. Un noeud est une entité matérielle physique (un serveur, un poste bureautique, une imprimante, etc.). 
+Le diagramme de déploiement est constitué de noeuds connectés par des liens physiques. Un nœud est l'équivalent d'une machine physique ou virtuelle (un serveur, un poste bureautique, une imprimante, un smartphone, etc.). Il est représenté comme un cube tridimensionnel pour bien insister sur sa nature matérielle.
 
 ![Exemples de noeuds](img/uml_bases/deploiement/noeuds_exemples.png)
 
-Si un noeud utilise un composant informatique, décrit par ailleurs dans la modélisation UML (un paquetage, une classe, etc.), UML 2 préconise de dessiner un **artifact** à l'intérieur du noeud et d'indiquer à l'aide d'une flèche en pointillés avec le mot clé `<<manifest>>` pointant vers le composant utilisé. 
+Si un noeud utilise un composant informatique, décrit par ailleurs dans la modélisation UML (un paquetage, une classe, etc.), UML 2 préconise de dessiner un **artifact** à l'intérieur du noeud. Un artifact (ou artéfact) représente une entité physique logicielle comme un fichier (exécutable binaire, fichier source, base de données, etc.) présent sur la machine. Il s'agit du code ou des données qui sont concrètement déposés sur le noeud. Il est représenté par un rectangle avec le mot clé `<<artifact>>`.
 
-Un artifact représente une entité physique comme un fichier (exécutable binaire, fichier source, page HTML, etc.) présent sur la machine. Il est représenté par un rectangle avec le mot clé `<<artifact>>`.
+La relation `<<manifest>>` (représentée par une flèche en pointillés) indique que le fichier (artifact) est installé ou exécuté sur le noeud.
 
 ![Présente d'un composant sur un noeud](img/uml_bases/deploiement/artifact.png)
+
+\begin{longtable}{p{0.2\linewidth} p{0.30\linewidth} p{0.37\linewidth}}
+  \toprule
+    \textbf{Élément UML} & \textbf{Analogie Concrète} & \textbf{Rôle} \\
+  \midrule
+  \endhead
+    Noeud & Une machine physique ou virtuelle (PC, serveur, téléphone) & Représente le support d'exécution physique ou logique qui héberge le code \\
+  \midrule
+    Artéfact & Un fichier (un .exe, .html, .py...) & Représente l'entité logicielle concrète qui est déployée sur le noeud \\
+  \midrule
+    Relation de manifestation & L'action d'installer ou de copier-coller un fichier sur une machine & Indique que l'artéfact est hébergé et exécuté par le noeud \\
+  \bottomrule
+  \caption{Tableau récapitulatif des éléments UML d'un diagramme de déploiement}
+\end{longtable}
 
 \begin{note}
 Le diagramme de déploiement a été fortement modifié en UML 2. Dans les versions 1 d'UML, les composants étaient représentés directement à l'intérieur du noeud qui les utilisait.
@@ -629,7 +659,7 @@ Dans l'exemple ci-dessous, nous représentons une activité "Commander un produi
 ![Diagramme d'activité - Commander un produit](img/uml_bases/activite/diagramme_activite.png)
 
 ### Couloirs d'activités ###
-UML permet de représenter les entités responsables de chaque activité. Pour cela, nous utilisons des *couloirs d'activités*. 
+UML permet de représenter les entités responsables de chaque activité (ces entités correspondent souvent aux acteurs identifiés dans le diagramme de cas d'utilisation ou aux classes définis dans la modélisation structurelle). Pour cela, nous utilisons des *couloirs d'activités*. 
 
 Le diagramme ci-dessous reprend l'exemple précédent en y ajoutant des couloirs d'activités.
 
@@ -653,9 +683,11 @@ Dans un diagramme de séquence, chaque objet impliqué est représenté avec un 
 
 ![Ligne de vie et période d'activation](img/uml_bases/sequence/ligne_vie.png)
 
-Précisons que ce sont des instances de classes qui sont représentées dans le diagramme de séquence. Le nom de la classe est donc précédé de deux points (`:Class`). Il est possible de nommer cette instance (`r:Class`; cf. \ref{les-objets}), mais ne s'agissant pas d'une instance précise de classe (i.e. d'un objet identifié), son nom n'est pas souligné.
+Précisons que ce sont des instances de classes qui sont représentées dans le diagramme de séquence. Le nom de la classe est donc précédé de deux points (`:Class`). Il est bien entendu possible de nommer cette instance (`r:Class`; cf. \ref{les-objets}).
 
 Lorsqu'une instance est active, elle peut envoyer des *messages* qui sont représentés par une flèche horizontale vers une autre instance. La réception d'un message active l'instance si elle ne l'est pas déjà.
+
+Précisons que l'envoi d'un message correspond à l'appel d'une méthode sur l'instance cible. C'est un point fondamental pour lier les modélisations structurelles et comportementales. 
 
 ![Envoi d'un message](img/uml_bases/sequence/envoi_message.png)
 
@@ -744,24 +776,28 @@ Enfin, UML n'est qu'un langage de modélisation, pas une méthode. Des méthodes
 ## Des outils pour faire de l'UML ##
 Maitriser les concepts de base d'une modélisation UML et connaître les éléments de base qui composent un diagramme sont des étapes essentielles dans le processus d'apprentissage des étudiants. Pour un usage professionnel, nous nous tournerons vers des outils informatiques permettant de réaliser des diagrammes UML.
 
+* **Mermaid**
+    * OS : -
+    * Licence : OpenSource
+    * Création des diagrammes via du texte et du code
+    * Outil d'édition en ligne avec possibilité de le lancer localement via une image docker
+    * Diagramme de classe, d'état-transition, d'activité et de séquence supportés
+    * [https://mermaid.live](https://mermaid.live)
+* **Diagrams.net** (ex-Draw.io) :
+    * OS : - 
+    * Licence : OpenSource 
+    * Outil de dessin en ligne et desktop très simple et puissant, avec une excellente bibliothèque de formes UML. Idéal pour les maquettes rapides
+    * https://www.diagrams.net/
 * **Modelio** : 
     * OS : Mac, Window, Linux
     * Licence : OpenSource
     * Possibilité de générer du code en Java
     * [https://www.modelio.org](https://www.modelio.org)
 * **StarUML** : 
-    * OS : Mac, Window, Linux
+* OS : Mac, Window, Linux
     * Licence : OpenSource
     * Manipulation du logiciel relativement aisée
     * [https://staruml.io](https://staruml.io)
-* **Mermaid**
-    * OS : -
-    * Licence : OpenSource
-    * Création des diagrammes via du texte et du code 
-    * Outil d'édition en ligne avec possibilité de le lancer localement via une image docker
-    * Diagramme de classe, d'état-transition, d'activité et de séquence supportés
-    * [https://mermaid.live](https://mermaid.live)
-
 * **Enterprise Architect** :
     * OS : Mac, Window, Linux
     * Licence : propriétaire
@@ -778,8 +814,10 @@ Maitriser les concepts de base d'une modélisation UML et connaître les éléme
 
 ## Références ##
 * Site UML en français : [http://uml.free.fr](http://uml.free.fr)
-	* source de nombreux exemples de ce cours
+    * source de nombreux exemples de ce cours
 * P. Roques, *UML 2.5 par la pratique* 4ème édition, Eyrolles, 2018
-	* des exercices pour apprendre UML
+    * des exercices pour apprendre UML
 * D. Pilone, *UML 2 en concentré, Manuel de référence*, O'Reilly, 2006
-	* présentation exhaustive d'UML
+    * présentation exhaustive d'UML
+* E. Gamma, R. Helm, R. Johnson, J. Vlissides, *Design Patterns : Éléments de la programmation orientée objet réutilisable*, Addison-Wesley, 1994
+    * Pour aller plus loin. L'ouvrage de référence, dit le « Gang of Four » (GoF), pour découvrir les patrons de conception qui s'appliquent directement à la modélisation UML.
