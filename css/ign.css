@@ -70,9 +70,9 @@
     background-color: white;
 }
 .reveal .slides > section:first-child {
-	background-image: url("../img/logos/ign-logo-ensg.jpg"), url("../img/logos/ign-logo-ign.png");
+	background-image: url("../img/logos/logo_geodata_paris.png"), url("../img/logos/ign-logo-ign.png");
     background-position: left 15px, right top;
-    background-size: 284px 177px , 182px 196px;
+    background-size: 250px 72px , 182px 196px;
 	background-repeat: no-repeat;
 }
 .reveal .slides > section:first-child h1 {

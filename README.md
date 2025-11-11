@@ -4,8 +4,8 @@
 2. Se placer à la racine du répo
 3. Pour générer les diapositives :
 ```shell
-pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_informatique_presentation.html Analyse_informatique_presentation.md
-pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs -o Analyse_avancee_presentation.html Analyse_avancee_presentation.md
+pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs --variable revealjs-url="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0" -o Analyse_informatique_presentation.html Analyse_informatique_presentation.md
+pandoc -s -t html5 --template=template/ign-ensg-revealjs.html --section-divs --variable revealjs-url="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0" -o Analyse_avancee_presentation.html Analyse_avancee_presentation.md
 ```
 
 5. Pour générer les pdf de cours :

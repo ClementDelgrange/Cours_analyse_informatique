@@ -1,6 +1,6 @@
 % Analyse informatique
-% Division des enseignements en informatique
-% novembre 2024
+% Centre de compétences technologies des systèmes d'information
+% novembre 2025
 
 
 # Introduction #
@@ -24,8 +24,9 @@
 <br/>
 
 * Coût d'un logiciel :
-	* maintenance = 53%
-	* correction bogues = 17%
+    * développement initial = 30% 
+    * maintenance = 53%
+    * correction bogues = 17%
 
 
 ## Quelques chiffres ##
@@ -46,7 +47,7 @@
 ## Le programme ##
 <br/>
 
-1. Programmation orientée objet
+1. Introduction à la programmation orientée objet
 2. Présentation d'UML
 3. Etude de plusieurs diagrammes UML
 4. Cycles de développement
@@ -59,11 +60,11 @@
 
 <br />
 
-* https://github.com/ClementDelgrange/Cours_analyse_informatique/blob/master/Analyse_informatique.pdf
+* Supports disponibles sur https://github.com/ClementDelgrange/Cours_analyse_informatique
 
 <br/>
 
-* devoir sur table (étude de cas)
+* Devoir sur table
 
 
 
@@ -71,12 +72,20 @@
 
 ## Paradigmes de programmation ##
 
-* Plusieurs *manière* de programmer
-	* programmation impérative : suite d'instructions
-	* programmation fonctionnelle : composition de fonctions
-	* programmation orientée objet : définition d'interactions entre structures d'objets
-	* ...
-	
+* Plusieurs **façons** de concevoir un programme :
+    * **Impératif** : une suite d’instructions exécutées pas à pas
+    * **Procédural** : les instructions sont regroupées en fonctions
+    * **Fonctionnel** : une série de transformations de données
+    * **Orienté objet** : des entités (objets) qui collaborent entre elles
+    * ...
+
+
+## Programmation impérative ##
+
+* Première approche historique (dès les années 1940–50 : ALGOL 58)
+* Programme = une suite d'instructions exécutées dans l'ordre
+* Facile à comprendre, mais difficile à modifier quand le code grossit
+
 ```
 1- faire fondre le beurre
 2- lorsque le beurre est fondu ajouter le chocolat
@@ -84,36 +93,129 @@
 ```
 
 
+## Programmation procédurale ##
+
+* Évolution naturelle de la programmation impérative
+* On regroupe les instructions en **procédures**
+* Permet de découper un grand programme en **tâches réutilisables**
+* Facilite la lecture, mais les données restent partagées partout
+
+
 ## Programmation fonctionnelle ##
 
-* Apparition dans les années 1960
-* Programme découpé en fonctions, elles-mêmes découpées en sous-fonctions...
-* Approche *descendante*
+* Apparaît dès la fin des années 1950 (LISP)
+* Un programme est une **composition de fonctions** : chaque fonction transforme des données et transmet le résultat
+* Approche **déclarative** : on décrit *ce qu’on veut obtenir*, pas *comment le faire*
 
 ![Découpage d'un programme selon l'approche fonctionnelle](img/intro_oo/approche_fonctionnelle.png)
 
 
 ## Exemple ##
-<br/>
 
 ![Mastermind en fonctionnel](img/intro_oo/mastermind_schema_fonctions.png)
 
 
-## Limites de la programmation fonctionnelle ##
+## Quand la programmation procédurale atteint ses limites ##
+
+État initial : notre système gère Point et Polygon.
+```
+fonction CalculerSurface(entite)
+{
+    si (entite.type == 'POINT') {
+        retourner 0
+    }
+    sinon si (entite.type == 'POLYGON') {
+        retourner FormuleGauss(entite.coords)
+    } else {
+        afficher_erreur("Type de géométrie non pris en charge.")
+        retourner -1
+    }
+}
+```
+
+
+## Limites de la programmation procédurale ##
+
+État initial : notre système gère Point et Polygon.
+```
+fonction CalculerPerimetre(entite)
+{
+    si (entite.type == 'POINT') {
+        retourner 0;
+    }
+    sinon si (entite.type == 'POLYGON') {
+        retourner ...;
+    } else {
+        afficher_erreur("Type de géométrie non pris en charge.");
+        retourner -1;
+    }
+}
+```
+
+
+## Limites de la programmation procédurale ##
+
+Evolution : gérer les lignes
+```
+fonction CalculerSurface(entite)
+{
+    si (entite.type == 'POINT') {
+        retourner 0;
+    }
+    sinon si (entite.type == 'LIGNE') {
+        retourner 0;
+    }
+    sinon si (entite.type == 'POLYGON') {
+        retourner FormuleGauss(entite.coords);
+    } else {
+        afficher_erreur("Type de géométrie non pris en charge.");
+        retourner 0;
+    }
+}
+```
+
+
+## Limites de la programmation procédurale ##
+
+Evolution : gérer les lignes
+```
+fonction CalculerPerimetre(entite)
+{
+    si (entite.type == 'POINT') {
+        retourner 0;
+    }
+    sinon si (entite.type == 'LIGNE') {
+    	longueur_totale = 0;
+    	pour i de 0 à TAILLE(entite.coords) - 2 faire {
+            longueur_totale := longueur_totale + Distance(entite.coords[i], entite.coords[i+1]);
+        }
+        retourner longueur_totale;
+    }
+    sinon si (entite.type == 'POLYGON') {
+        retourner ...;
+    } else {
+        afficher_erreur("Type de géométrie non pris en charge.")
+        retourner 0;
+    }
+}
+```
+
+## Limites de la programmation procédurale ##
 
 ![Découpage fonctionnel d'une application dédiée à la gestion d'une bibliothèque](img/intro_oo/decoupage_fonctionnel.png)
 
 
-## Limites de la programmation fonctionnelle ##
+## Limites de la programmation procédurale ##
 
 ![Découpage fonctionnel d'une application - évolution du logiciel](img/intro_oo/decoupage_fonctionnel_evolution.png)
 
 
 ## Programmation orientée objet ##
 
-* Fort développement dans les années 1980
-* Décrit les structures de base du système et leurs interactions
-* Approche *ascendante*
+* Popularisée dans les années 1980 (Smalltalk, C++)
+* Regroupe **les données et les actions** dans une même entité : l’objet
+* Chaque objet sait ce qu’il contient et ce qu’il peut faire
+* Approche **ascendante** : on construit le programme à partir de petits acteurs autonomes
 
 ![Découpage d'un programme selon l'approche orientée objet](img/intro_oo/approche_objet.png)
 
@@ -124,11 +226,14 @@
 ![Mastermind en orienté objet](img/intro_oo/mastermind_schema_objets.png)
 
 
-## Fonctionnel vs. Orienté objet ##
-<br/>
+## Fonctionnel et procédural vs. orienté objet ##
 
-* Approche fonctionnelle plus intuitive
-* Approche objet facilement réutilisable et maintenable
+* Programmation fonctionnelle / procédurale
+  * Approche **descendante** : on découpe le problème en fonctions puis en sous-fonctions
+  * Plus intuitive
+* Programmation orientée objet
+  * Approche **ascendante** : on part des objets du monde réel et on décrit leurs comportements
+  * Objets réutilisables plus facilement maintenables
 * Résolvent les mêmes problèmes
 
 
@@ -210,6 +315,65 @@
 <br/>
 
 ![Illustration du principe du polymorphisme](img/intro_oo/polymorphisme.png)
+
+
+## Exemple ##
+
+```
+Classe Point {
+    méthode calculerSurface() {
+        retourner 0;
+    }
+    méthode calculerPerimetre() {
+    	retourner 0;
+   	}
+}
+
+Classe Polygon {
+    méthode calculerSurface() {
+        retourner this.FormuleGauss();
+    }
+    méthode calculerPerimetre() {
+    	retourner ...;
+   	}
+}
+
+fonction TraiterInventaire(liste_geometries) {
+    pour chaque entite dans liste_geometries {
+        resultat1 = entite.calculerSurface();
+        afficher(resultat1);
+        resultat2 = entite.calculerPerimetre();
+        afficher(resultat2);
+    }
+}
+```
+
+
+## Exemple ##
+
+```
+Classe Ligne {
+    méthode calculerSurface() {
+        retourner 0;
+    }
+    méthode calculerPerimetre() {
+    	longueur_totale = 0;
+    	pour i de 0 à TAILLE(self.coords) - 2 faire {
+            longueur_totale := longueur_totale + Distance(self.coords[i], self.coords[i+1]);
+        }
+        retourner longueur_totale;
+   	}
+}
+
+fonction TraiterInventaire(liste_geometries) {
+    pour chaque entite dans liste_geometries {
+        resultat1 = entite.calculerSurface();
+        afficher(resultat1);
+        resultat2 = entite.calculerPerimetre();
+        afficher(resultat2);
+    }
+}
+```
 
 
 ## Modélisation orienté objet ##

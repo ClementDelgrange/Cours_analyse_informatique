@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="generator" content="pandoc">
-        <meta name="author" content="Division des enseignements en informatique" />
+        <meta name="author" content="Centre de compétences technologies des systèmes d’information" />
         <title>Analyse informatique</title>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/css/reveal.css">
 		
         <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/lib/css/zenburn.css">
 
-        <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/css/theme/simple.css" id="theme">
 
 
 	<!-- Styles ENSG-IGN -->
@@ -27,13 +27,13 @@
             var link = document.createElement( 'link' );
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = 'reveal.js/css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
+            link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/css/print/'+ (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') + '.css';
             link.media = 'print';
             document.getElementsByTagName( 'head' )[0].appendChild( link );
         </script>
 
         <!--[if lt IE 9]>
-        <script type="text/javascript" type="text/javascript" src="reveal.js/lib/js/html5shiv.js"></script>
+        <script type="text/javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/lib/js/html5shiv.js"></script>
         <![endif]-->
         <!-- -H/- -include-in-header -->
     </head>
@@ -47,8 +47,8 @@
 
                 <section>
                     <h1>Analyse informatique</h1>
-                    <h3>Division des enseignements en informatique</h3>
-                    <h4>novembre 2024</h4>
+                    <h3>Centre de compétences technologies des systèmes d’information</h3>
+                    <h4>novembre 2025</h4>
                 </section>
 
                 <!-- - -toc/- -table-of-contents -->
@@ -81,6 +81,7 @@
 <ul>
 <li>Coût d’un logiciel :
 <ul>
+<li>développement initial = 30%</li>
 <li>maintenance = 53%</li>
 <li>correction bogues = 17%</li>
 </ul></li>
@@ -109,7 +110,7 @@
 <h2>Le programme</h2>
 <p><br/></p>
 <ol type="1">
-<li>Programmation orientée objet</li>
+<li>Introduction à la programmation orientée objet</li>
 <li>Présentation d’UML</li>
 <li>Etude de plusieurs diagrammes UML</li>
 <li>Cycles de développement</li>
@@ -123,11 +124,11 @@
 </ul>
 <p><br /></p>
 <ul>
-<li>https://github.com/ClementDelgrange/Cours_analyse_informatique/blob/master/Analyse_informatique.pdf</li>
+<li>Supports disponibles sur https://github.com/ClementDelgrange/Cours_analyse_informatique</li>
 </ul>
 <p><br/></p>
 <ul>
-<li>devoir sur table (étude de cas)</li>
+<li>Devoir sur table</li>
 </ul>
 </section>
 </section>
@@ -136,24 +137,42 @@
 <section id="paradigmes-de-programmation" class="level2">
 <h2>Paradigmes de programmation</h2>
 <ul>
-<li>Plusieurs <em>manière</em> de programmer
+<li>Plusieurs <strong>façons</strong> de concevoir un programme :
 <ul>
-<li>programmation impérative : suite d’instructions</li>
-<li>programmation fonctionnelle : composition de fonctions</li>
-<li>programmation orientée objet : définition d’interactions entre structures d’objets</li>
+<li><strong>Impératif</strong> : une suite d’instructions exécutées pas à pas</li>
+<li><strong>Procédural</strong> : les instructions sont regroupées en fonctions</li>
+<li><strong>Fonctionnel</strong> : une série de transformations de données</li>
+<li><strong>Orienté objet</strong> : des entités (objets) qui collaborent entre elles</li>
 <li>…</li>
 </ul></li>
+</ul>
+</section>
+<section id="programmation-impérative" class="level2">
+<h2>Programmation impérative</h2>
+<ul>
+<li>Première approche historique (dès les années 1940–50 : ALGOL 58)</li>
+<li>Programme = une suite d’instructions exécutées dans l’ordre</li>
+<li>Facile à comprendre, mais difficile à modifier quand le code grossit</li>
 </ul>
 <pre><code>1- faire fondre le beurre
 2- lorsque le beurre est fondu ajouter le chocolat
 3- ajouter les oeufs</code></pre>
 </section>
+<section id="programmation-procédurale" class="level2">
+<h2>Programmation procédurale</h2>
+<ul>
+<li>Évolution naturelle de la programmation impérative</li>
+<li>On regroupe les instructions en <strong>procédures</strong></li>
+<li>Permet de découper un grand programme en <strong>tâches réutilisables</strong></li>
+<li>Facilite la lecture, mais les données restent partagées partout</li>
+</ul>
+</section>
 <section id="programmation-fonctionnelle" class="level2">
 <h2>Programmation fonctionnelle</h2>
 <ul>
-<li>Apparition dans les années 1960</li>
-<li>Programme découpé en fonctions, elles-mêmes découpées en sous-fonctions…</li>
-<li>Approche <em>descendante</em></li>
+<li>Apparaît dès la fin des années 1950 (LISP)</li>
+<li>Un programme est une <strong>composition de fonctions</strong> : chaque fonction transforme des données et transmet le résultat</li>
+<li>Approche <strong>déclarative</strong> : on décrit <em>ce qu’on veut obtenir</em>, pas <em>comment le faire</em></li>
 </ul>
 <figure>
 <img src="img/intro_oo/approche_fonctionnelle.png" alt="Découpage d’un programme selon l’approche fonctionnelle" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche fonctionnelle</figcaption>
@@ -161,19 +180,92 @@
 </section>
 <section id="exemple" class="level2">
 <h2>Exemple</h2>
-<p><br/></p>
 <figure>
 <img src="img/intro_oo/mastermind_schema_fonctions.png" alt="Mastermind en fonctionnel" /><figcaption aria-hidden="true">Mastermind en fonctionnel</figcaption>
 </figure>
 </section>
-<section id="limites-de-la-programmation-fonctionnelle" class="level2">
-<h2>Limites de la programmation fonctionnelle</h2>
+<section id="quand-la-programmation-procédurale-atteint-ses-limites" class="level2">
+<h2>Quand la programmation procédurale atteint ses limites</h2>
+<p>État initial : notre système gère Point et Polygon.</p>
+<pre><code>fonction CalculerSurface(entite)
+{
+    si (entite.type == &#39;POINT&#39;) {
+        retourner 0
+    }
+    sinon si (entite.type == &#39;POLYGON&#39;) {
+        retourner FormuleGauss(entite.coords)
+    } else {
+        afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;)
+        retourner -1
+    }
+}</code></pre>
+</section>
+<section id="limites-de-la-programmation-procédurale" class="level2">
+<h2>Limites de la programmation procédurale</h2>
+<p>État initial : notre système gère Point et Polygon.</p>
+<pre><code>fonction CalculerPerimetre(entite)
+{
+    si (entite.type == &#39;POINT&#39;) {
+        retourner 0;
+    }
+    sinon si (entite.type == &#39;POLYGON&#39;) {
+        retourner ...;
+    } else {
+        afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;);
+        retourner -1;
+    }
+}</code></pre>
+</section>
+<section id="limites-de-la-programmation-procédurale-1" class="level2">
+<h2>Limites de la programmation procédurale</h2>
+<p>Evolution : gérer les lignes</p>
+<pre><code>fonction CalculerSurface(entite)
+{
+    si (entite.type == &#39;POINT&#39;) {
+        retourner 0;
+    }
+    sinon si (entite.type == &#39;LIGNE&#39;) {
+        retourner 0;
+    }
+    sinon si (entite.type == &#39;POLYGON&#39;) {
+        retourner FormuleGauss(entite.coords);
+    } else {
+        afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;);
+        retourner 0;
+    }
+}</code></pre>
+</section>
+<section id="limites-de-la-programmation-procédurale-2" class="level2">
+<h2>Limites de la programmation procédurale</h2>
+<p>Evolution : gérer les lignes</p>
+<pre><code>fonction CalculerPerimetre(entite)
+{
+    si (entite.type == &#39;POINT&#39;) {
+        retourner 0;
+    }
+    sinon si (entite.type == &#39;LIGNE&#39;) {
+        longueur_totale = 0;
+        pour i de 0 à TAILLE(entite.coords) - 2 faire {
+            longueur_totale := longueur_totale + Distance(entite.coords[i], entite.coords[i+1]);
+        }
+        retourner longueur_totale;
+    }
+    sinon si (entite.type == &#39;POLYGON&#39;) {
+        retourner ...;
+    } else {
+        afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;)
+        retourner 0;
+    }
+}</code></pre>
+</section>
+<section id="limites-de-la-programmation-procédurale-3" class="level2">
+<h2>Limites de la programmation procédurale</h2>
 <figure>
 <img src="img/intro_oo/decoupage_fonctionnel.png" alt="Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque</figcaption>
 </figure>
 </section>
-<section id="limites-de-la-programmation-fonctionnelle-1" class="level2">
-<h2>Limites de la programmation fonctionnelle</h2>
+<section id="limites-de-la-programmation-procédurale-4" class="level2">
+<h2>Limites de la programmation procédurale</h2>
 <figure>
 <img src="img/intro_oo/decoupage_fonctionnel_evolution.png" alt="Découpage fonctionnel d’une application - évolution du logiciel" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application - évolution du logiciel</figcaption>
 </figure>
@@ -181,9 +273,10 @@
 <section id="programmation-orientée-objet-1" class="level2">
 <h2>Programmation orientée objet</h2>
 <ul>
-<li>Fort développement dans les années 1980</li>
-<li>Décrit les structures de base du système et leurs interactions</li>
-<li>Approche <em>ascendante</em></li>
+<li>Popularisée dans les années 1980 (Smalltalk, C++)</li>
+<li>Regroupe <strong>les données et les actions</strong> dans une même entité : l’objet</li>
+<li>Chaque objet sait ce qu’il contient et ce qu’il peut faire</li>
+<li>Approche <strong>ascendante</strong> : on construit le programme à partir de petits acteurs autonomes</li>
 </ul>
 <figure>
 <img src="img/intro_oo/approche_objet.png" alt="Découpage d’un programme selon l’approche orientée objet" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche orientée objet</figcaption>
@@ -196,12 +289,19 @@
 <img src="img/intro_oo/mastermind_schema_objets.png" alt="Mastermind en orienté objet" /><figcaption aria-hidden="true">Mastermind en orienté objet</figcaption>
 </figure>
 </section>
-<section id="fonctionnel-vs.-orienté-objet" class="level2">
-<h2>Fonctionnel vs. Orienté objet</h2>
-<p><br/></p>
+<section id="fonctionnel-et-procédural-vs.-orienté-objet" class="level2">
+<h2>Fonctionnel et procédural vs. orienté objet</h2>
 <ul>
-<li>Approche fonctionnelle plus intuitive</li>
-<li>Approche objet facilement réutilisable et maintenable</li>
+<li>Programmation fonctionnelle / procédurale
+<ul>
+<li>Approche <strong>descendante</strong> : on découpe le problème en fonctions puis en sous-fonctions</li>
+<li>Plus intuitive</li>
+</ul></li>
+<li>Programmation orientée objet
+<ul>
+<li>Approche <strong>ascendante</strong> : on part des objets du monde réel et on décrit leurs comportements</li>
+<li>Objets réutilisables plus facilement maintenables</li>
+</ul></li>
 <li>Résolvent les mêmes problèmes</li>
 </ul>
 </section>
@@ -302,6 +402,59 @@
 <figure>
 <img src="img/intro_oo/polymorphisme.png" alt="Illustration du principe du polymorphisme" /><figcaption aria-hidden="true">Illustration du principe du polymorphisme</figcaption>
 </figure>
+</section>
+<section id="exemple-2" class="level2">
+<h2>Exemple</h2>
+<pre><code>Classe Point {
+    méthode calculerSurface() {
+        retourner 0;
+    }
+    méthode calculerPerimetre() {
+        retourner 0;
+    }
+}
+
+Classe Polygon {
+    méthode calculerSurface() {
+        retourner this.FormuleGauss();
+    }
+    méthode calculerPerimetre() {
+        retourner ...;
+    }
+}
+
+fonction TraiterInventaire(liste_geometries) {
+    pour chaque entite dans liste_geometries {
+        resultat1 = entite.calculerSurface();
+        afficher(resultat1);
+        resultat2 = entite.calculerPerimetre();
+        afficher(resultat2);
+    }
+}</code></pre>
+</section>
+<section id="exemple-3" class="level2">
+<h2>Exemple</h2>
+<pre><code>Classe Ligne {
+    méthode calculerSurface() {
+        retourner 0;
+    }
+    méthode calculerPerimetre() {
+        longueur_totale = 0;
+        pour i de 0 à TAILLE(self.coords) - 2 faire {
+            longueur_totale := longueur_totale + Distance(self.coords[i], self.coords[i+1]);
+        }
+        retourner longueur_totale;
+    }
+}
+
+fonction TraiterInventaire(liste_geometries) {
+    pour chaque entite dans liste_geometries {
+        resultat1 = entite.calculerSurface();
+        afficher(resultat1);
+        resultat2 = entite.calculerPerimetre();
+        afficher(resultat2);
+    }
+}</code></pre>
 </section>
 <section id="modélisation-orienté-objet" class="level2">
 <h2>Modélisation orienté objet</h2>
@@ -447,7 +600,7 @@
 <img src="img/uml_bases/cas_utilisation/acteur_generalisation.png" alt="Généralisation d’acteurs" /><figcaption aria-hidden="true">Généralisation d’acteurs</figcaption>
 </figure>
 </section>
-<section id="exemple-2" class="level2">
+<section id="exemple-4" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/cas_utilisation/diagramme_cas_utilisation.png" alt="Application de remonté d’informations et de calculs d’itinéraires dans les transports" /><figcaption aria-hidden="true">Application de remonté d’informations et de calculs d’itinéraires dans les transports</figcaption>
@@ -678,7 +831,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="exemple-3" class="level2">
+<section id="exemple-5" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/objets/classes_pays_langue.png" alt="Classes Pays et Langue" /><figcaption aria-hidden="true">Classes <code>Pays</code> et <code>Langue</code></figcaption>
@@ -688,7 +841,7 @@
 <img src="img/uml_bases/objets/objets_pays_langue.png" alt="Un diagramme d’objet correspondant" /><figcaption aria-hidden="true">Un diagramme d’objet correspondant</figcaption>
 </figure>
 </section>
-<section id="exemple-4" class="level2">
+<section id="exemple-6" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/objets/diagramme_classes_pays_region.png" alt="Diagramme de classes" /><figcaption aria-hidden="true">Diagramme de classes</figcaption>
@@ -734,14 +887,14 @@
 <img src="img/uml_bases/paquetages/paquetage_import.png" alt="Import d’un paquetage" /><figcaption aria-hidden="true">Import d’un paquetage</figcaption>
 </figure>
 </section>
-<section id="exemple-5" class="level2">
+<section id="exemple-7" class="level2">
 <h2>Exemple</h2>
 <p><br/></p>
 <figure>
 <img src="img/uml_bases/paquetages/separation_ihm_metier.png" alt="Séparation IHM - code métier" /><figcaption aria-hidden="true">Séparation IHM - code métier</figcaption>
 </figure>
 </section>
-<section id="exemple-6" class="level2">
+<section id="exemple-8" class="level2">
 <h2>Exemple</h2>
 <p><br/></p>
 <figure>
@@ -838,13 +991,13 @@
 <img src="img/uml_bases/activite/parallele.png" alt="Transitions concurrentes" /><figcaption aria-hidden="true">Transitions concurrentes</figcaption>
 </figure>
 </section>
-<section id="exemple-7" class="level2">
+<section id="exemple-9" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/activite/diagramme_inserer_cheque.png" alt="Activité insérer un chèque" /><figcaption aria-hidden="true">Activité insérer un chèque</figcaption>
 </figure>
 </section>
-<section id="exemple-8" class="level2">
+<section id="exemple-10" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/activite/diagramme_distributeur_billets.png" alt="Diagramme d’activité composé d’autres diagrammes" /><figcaption aria-hidden="true">Diagramme d’activité composé d’autres diagrammes</figcaption>
@@ -979,13 +1132,13 @@
 </ul></li>
 </ul>
 </section>
-<section id="exemple-9" class="level2">
+<section id="exemple-11" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/sequence/diag_class_ascenceur.png" alt="Diagramme de classe d’un ascenceur" /><figcaption aria-hidden="true">Diagramme de classe d’un ascenceur</figcaption>
 </figure>
 </section>
-<section id="exemple-10" class="level2">
+<section id="exemple-12" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/sequence/diag_seq_ascenceur.png" alt="Diagramme de séquence - Utiliser l’ascenceur pour se déplacer" /><figcaption aria-hidden="true">Diagramme de séquence - Utiliser l’ascenceur pour se déplacer</figcaption>
@@ -1153,8 +1306,8 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
-        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/lib/js/head.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/js/reveal.js"></script>
 
         <script type="text/javascript">
             // Full list of configuration options available here:
@@ -1177,15 +1330,15 @@
 
                 // Optional libraries used to extend on reveal.js
                 dependencies: [
-                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    // { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    // { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    // { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    // { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     /* ne pas activer highlight sinon la colorisation syntaxique ne fonctionne plus ? */
-                    // { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
-                    // { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
-                    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }//,
+                    // { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+                    // { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.3.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
             });
 
@@ -1195,7 +1348,7 @@
              les variables ne sont pas interprétées via -A de pandoc -->
         <div id="slide-ign-footer">
             <div class="slide-ign-title">Analyse informatique</div>
-            <div class="slide-ign-date">novembre 2024</div>
+            <div class="slide-ign-date">novembre 2025</div>
         </div>
     </body>
 </html>
