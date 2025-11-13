@@ -1,5 +1,5 @@
 % Analyse informatique
-% Centre de compétences technologies des systèmes d'information
+% Centre de compétences TSI
 % novembre 2025 - v1.3
 
 
