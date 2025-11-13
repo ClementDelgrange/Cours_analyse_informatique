@@ -1,79 +1,22 @@
 % Analyse informatique - Exercices
-% Division des enseignements en informatique
-% novembre 2024
+% Centre de compétences TSI
+% novembre 2025
 
 
-# Question de cours #
-1. Parmi ces affirmations, laquelle est fausse ?
-	1. La POO est un langage de programmation.
-	2. La POO permet de séparer le travail en deux : la conception et l'utilisation des objets.
-	3. La POO est une façon de programmer qui se base sur des objets.
-	4. La POO définie trois grands principes : encapsulation, héritage et polymorphisme.
-2. Quels éléments peuvent être représentés dans un diagramme de cas d'utilisation ? (plusieurs réponses possibles)
-	1. Des acteurs
-	2. Des actions
-	3. Des liens de généralisation
-	4. Des transitions
-	5. Le système
-3. Quelles entités peuvent être représentées dans un diagramme de classes ? (plusieurs réponses possibles)
-	1. Des acteurs
-	2. Des conditions
-	3. Des relations d'inclusion
-	4. Des relations de composition
-	5. Le système
-4. Quels éléments apparaissent dans un diagramme d'activité ? (plusieurs réponses possibles)
-	1. Des messages
-	2. Des méthodes
-	3. Des actions
-	4. Un état final
-	5. Un état initial
-5. La notation pour une méthode privée est-elle le signe `-` placé avant le nom de la méthode ?
-	1. Oui
-	2. Non
-6. Est-il possible avec un diagramme de cas d'utilisation de préciser qu'un cas d'utilisation doit s'exécuter obligatoirement avant un autre ?
-	1. Oui
-	2. Non
-7. Parmi les affirmations suivantes, lesquelles sont correctes ? (plusieurs réponses possibles)
-	1. La classe sert à créer des objets.
-	2. La classe a pour responsabilité le cycle de vie des objets.
-	3. Les objets précisent le comportement de la classe.
-	4. Un objet est une instance de classe.
-	5. Un objet hérite de sa classe.
-8. Qu'est ce que l'héritage ?
-	1. L'héritage permet à un objet de récupérer la valeur des attributs d'un autre objet.
-	2. L'héritage est une relation de généralisation / spécialisation entre une classe et une autre classe.
-	3. L'héritage correspond à l'instanciation d'une classe.
-	4. L'héritage est un moyen de changer le type des objets
-9. La phase d'expression des besoins est couverte par UML ?
-	1. Oui
-	2. Non
-10. La phase d'analyse est-elle indépendante ou dépendante de la plateforme d'exécution de l'application ?
-	1. Indépendante
-	2. Dépendante
-11. Qu'est-ce qui est faux au sujet des classes abstraites ?
-	1. Une classe abstraite ne peut pas être instanciée.
-	2. Une classe abstraite est faite pour être dérivée.
-	3. Une classe abstraite ne peut avoir que des méthodes abstraites.
-	4. Ce qui est abstrait esr représenté en italique en UML.
-12. Quels types de diagrammes UML vous paraissent les mieux adaptés à la définition d'un comportement ? (plusieurs réponses possibles)
-	1. Diagramme de classes
-	2. Diagramme d'objets
-	3. Diagramme de séquence
-	4. Diagramme d'activité
-13. Quel diagramme n'est pas un diagramme UML ?
-	1. Le diagramme d'objets
-	2. Le diagramme d'états-transitions
-	3. Le diagramme de flux
-	4. Le diagramme de paquetage
-	5. Le diagramme de communication
-14. En raison du principe d'encapsulation, un message échangé dans un diagramme de séquence est traduit par une méthode privée ?
-	1. Vrai
-	2. Faux
-15. UML définit les grandes étapes du processus de développement ?
-	1. Oui
-	2. Non
+# Système de gestion de parking
 
-\newpage
+Le système gère un parking à barrières automatisées.
+
+* Entrée : l'utilisateur arrive, prend un ticket à la borne d'entrée, ce qui ouvre la barrière. Le système enregistre l'heure d'entrée et l'identifiant du ticket.
+* Paiement : avant de sortir, l'utilisateur insère le ticket dans une borne de paiement. Le système calcule le montant dû en fonction de l'heure d'entrée. L'utilisateur paie par carte bancaire. Une fois le paiement validé par le système de paiement externe, le ticket est validé.
+* Sortie : l'utilisateur insère le ticket validé à la borne de sortie pour ouvrir la barrière.
+* Maintenance : un technicien de maintenance doit pouvoir ouvrir les barrières manuellement en cas de panne et extraire un rapport des recettes journalières.
+
+=> Identifier les acteurs du système.
+
+=> Identifier les cas d'utilisation principaux de ce système.
+
+=> Représenter ces acteurs et cas d'utilisation dans un diagramme de cas d'utilisation.
 
 
 # Application d'achat de billets de train #
@@ -96,28 +39,35 @@ Considérons une application de réservation de billets de train. Des échanges 
 => Représenter le système à l'aide de diagrammes de cas d'utilisation et de classes.
 
 
-# Gestion d'une ferme #
-Nous créons une application pour aider à la gestion d'une ferme. La première fonctionnalité développée doit permettre à un éleveur de volaille d'estimer la valeur de son cheptel.
-
-Un éleveur de volailles possède des canards et des poulets qu’il reçoit à l’âge de 2 semaines et qu’il élève jusqu’à leur commercialisation quelques semaines plus tard.
-
-Chaque volaille est caractérisée par un numéro d’identification et par son poids.
-
-Les 2 espèces, canard et poulet, ont chacune un âge d’abattage et un prix au kilo (qui varie tous les jours et qu’il faut donc pouvoir changer). Par contre, le prix au kilo et l’âge d’abattage sont les mêmes pour tous les poulets (et respectivement tous les canards).
-
-=> Proposez une modélisation UML (diagramme de classe) pour cette problématique.
-
-
 # Gestion d'un cadastre #
-Nous souhaitons réaliser un modèle UML pour une application de gestion cadastrale d'un territoire. L'application doit permettre d'ajouter, supprimer ou découper une parcelle. Elle doit également permettre de fusionner plusieurs parcelles d'une commune. Une commune est découpée en sections cadastrales, qui peuvent elles-mêmes être redécoupées en sous-sections cadastrales, auxquelles sont rattachées les parcelles. 
+Nous souhaitons réaliser un modèle UML pour une application de gestion cadastrale d'un territoire. L'application doit permettre d'ajouter, supprimer ou découper une parcelle. Elle doit également permettre de fusionner plusieurs parcelles d'une commune. Une commune est découpée en sections cadastrales, qui peuvent elles-mêmes être redécoupées en sous-sections cadastrales, auxquelles sont rattachées les parcelles. Chaque parcelle est l'élément terminal de la hiérarchie et est toujours rattachée à une zone cadastrale (que ce soit une section ou une sous-section).
 
-Pour identifier une parcelle, on concatène le code INSEE de la commune (ex : "58200") avec le numéro de section (ex : "AD") et avec celui de la parcelle (ex : 124).
+Pour identifier une parcelle, on concatène le code INSEE de la commune (ex : "58200") avec le numéro de section (ex : "AD") et avec celui de la parcelle (ex : 124). Le numéro de section (ex: "AD") et le numéro de parcelle (ex: 124) sont des identifiants locaux uniques au sein de leur unité cadastrable parente.
 
 L'application doit également permettre de calculer la taxe foncière due par chaque propriétaire d'une parcelle. Le calcul tient compte de la surface de la parcelle ainsi que du nombre et type de bâtiment présent sur celle-ci (bâtiments dits *légers* ou *en dur*). 
 
 => Réalisez les diagrammes de cas d'utilisation et de classes pour l'application à développer. 
-=> Améliorez votre modèle pour le rendre le plus générique possible et ainsi lui permettre d'intégrer des évolutions sans avoir à tout reprendre (par exemple ajouter des sous-sous-sections). 
+
+=> Assurez-vous que votre modèle soit le plus générique possible. Il doit permettre d'intégrer des évolutions sans avoir à tout reprendre (par exemple ajouter des sous-sous-sections).
+
 => Illustrez votre diagramme de classes à l'aide d'un diagramme d'objets
+
+
+## Gestion d'un catalogue de symboles cartographiques  ##
+
+Nous développons une application qui doit gérer l'affichage d'un catalogue de symboles pour la cartographie. Une entité géographique (point, ligne ou polygone) est affichée sur la carte avec un style de rendu précis.
+
+Chaque entité, par exemple, une rivière ou une route départementale, est caractérisée individuellement par :
+- Un identifiant unique (ID);
+- Sa géométrie.
+
+Le style de rendu (couleur, épaisseur de trait, symbole de point) est cependant le même pour toutes les rivières d'un même jeu de données, et le même pour toutes les routes départementales. Ce style est défini par le cartographe et doit pouvoir être mis à jour dynamiquement dans le système (par exemple, changer la couleur de toutes les rivières d'un bleu clair à un bleu foncé).
+
+Nous avons initialement deux types d'entités Linéaires : Rivière et RouteDépartementale.
+
+Le système doit permettre de calculer la longueur de chaque entité.
+
+=> Proposez une modélisation UML (diagramme de classe) qui permette à une seule modification du style de mettre à jour toutes les entités de ce type sur la carte.
 
 
 # Station météo #
@@ -248,22 +198,17 @@ Pour vendre un objet, le vendeur (connecté avec un compte acheteur-vendeur) doi
 
 # Corrections #
 
-## Questions de cours ##
-1. Réponse 1. La POO (programmation orientée objet) est une manière de programmer qui peut être utilisée avec différents langages de programmation.
-2. Réponses 1, 3 et 5. Le diagramme de cas d'utilisation se compose d'acteurs et de cas d'utilisations. L'ensemble des cas d'utilisation forment le système. La généralisation correspond au seul lien possible entre deux acteurs : elle indique qu'un acteur est une spécialisation d'un autre acteur.
-3. Réponse 4 uniquement. Le diagramme de classe se compose de classes et de relations entre ces classes. Une classe se caractérise par des attributs et des méthodes. Les liens entre classes peuvent être de différentes natures : association simple, héritage, agrégation ou composition.
-4. Réponses 4 et 5. Un diagramme d'activité représente une succession d'activités et de transitions. Il commence toujours par un état initial et se termine par un état final. Il n'est pas question ici d'échanges de messages entre objets (diagramme de séquence). Si un diagramme d'activité peut correspondre à une méthode, elles n'apparaissent pas sous forme standardisée comme cela peut être le cas dans d'autres diagrammes.
-5. Oui. La notation pour les attributs et méthodes privées est bien le signe `-` placé avant leur nom. Le `+` correspond à public et le `#` à protégé.
-6. Non. Il est impossible avec un diagramme de cas d'utilisation de rendre compte d'une chronologie entre les cas d'utilisations. Les seuls liens possibles sont la généralisation, l'inclusion et l'extension. Pour spécifier un ordre, nous utiliserons la description textuelle accompagnant le diagramme.
-7. Réponses 1 et 4. La classe est un modèle qui est utilisé pour créer des objets. On dit aussi que les objets sont des instances de classe. La classe ne précise pas quand ou comment (cycle de vie) sont créés les objets. Elle s'attache uniquement à décrire leur comportement.
-8. Réponse 2. L'héritage permet de définir une classe à partir d'une autre classe, les attributs et méthodes de la classe d'origine étant automatiquement transmis à la classe dérivée. 
-9. Oui. Le diagramme de cas d'utilisation vise à représenter de manière standardisée les grandes fonctionnalités proposées par l'application aux utilisateurs. 
-10. Indépendante. Une analyse reprend les informations données dans le cahier des charges. Or il s'agit uniquement d'informations fonctionnelles. L'analyse ne prend donc pas en compte la plateforme d'exécution.
-11. Réponse 3. Par définition, une classe abstraite ne peut pas être instanciée : elle est utilisée dans le cadre de l'héritage pour définir des classes filles concrètes. Elle peut en revanche posséder des méthodes abstraites, qui seront implémentées dans ses classes filles, et/ou concrètes. En UML, on représente les classes et méthodes abstraites en italique.
-12. Réponses 3 et 4. Les diagrammes de séquence ou d'activité font parti des diagrammes comportementaux, donc adaptés à la définition d'un comportement.
-13. Le diagramme de flux. Les quatre autres diagrammes existent bien en UML.
-14. Non. Le principe d'encapsulation permet à une classe de définir ce qui est visible de l'extérieur et ce qui ne l'est pas. Un message échangé entre deux objets distincts correspond forcément à une méthode publique.
-15. Non. UML est un langage d'aide à la modélisation orientée objet, mais n'est pas une méthode. Il ne décrit pas la manière dont doivent s'organiser les développement ni même comment mener la modélisation orientée objet.
+## Système de gestion de parking
+
+1. Identification des acteurs : conducteur, technicien de maintenance et système de paiement externe
+2. Identification des cas d'utilisation
+   1. Entrer dans le parking : gérer l'émission du ticket et l'ouverture d'une barrière d'entrée. 
+   2. Payer le stationnement : calculer la durée/le coût et interagir avec la borne de paiement. 
+   3. Sortir du parking : valider le ticket payé et ouvrir une barrière de sortie. 
+   4. Ouvrir une barrière manuellement : permettre au technicien de forcer l'ouverture d'une barrière (entrée ou sortie). 
+   5. Éditer rapport de recettes : fournir un bilan des transactions de paiement au technicien.
+
+![Diagramme de cas d'utilisation - Gestion d'un parking](img/exo_uml/gestion_parking_activite.png)
 
 \newpage
 
@@ -286,14 +231,6 @@ La partie du modèle traitant de la partie réservation (une réservation concer
 
 \newpage
 
-## Gestion d'une ferme ##
-![Diagramme de classes - Eleveur de volailles](img/exo_uml/exo3_classes.png)
-
-On crée une classe *Eleveur* qui ne possède qu'une méthode, permettant de calculer le prix de l'ensemble de ses volailles. Un éleveur possède par ailleurs des volailles que nous représentons à l'aide d'une classe abstraite *Volaille*. 
-
-*Poulet* et *Canard* héritent de cette classe abstraite. Chaque volaille possède un poids, un numéro permettant de l'identifier et un âge exprimé en semaines. Ces attributs sont transmis par héritage aux canards et poulets. De plus, les classes *Canard* et *Poulet* possèdent chacune des attributs de classe (*age_abattage* indiquant l'âge d'abattage identique pour toutes les instances de la classe, et *prix_kilo*, prix au kilo des instances de la classe, là aussi identique pour toutes les instances). Des accesseurs et mutateurs de classe permettent de mettre à jour ces attributs.
-
-\newpage
 
 ## Gestion du cadastre ##
 Le diagramme de cas d'utilisation comporte deux grandes fonctionnalités : gérer les parcelles et calculer les impôts. La fonctionnalité de gestion des parcelles est décomposées en plusieurs fonctionnalités optionnelles qui correspondent aux différentes tâches exprimées dans l'énoncé.
@@ -319,6 +256,23 @@ Pour s'assurer que le sens de notre modélisation est bien compris, nous utiliso
 ![Diagramme de classes - Cadastre](img/exo_uml/cadastre_objets.png)
 
 \newpage
+
+
+## Gestion d'un catalogue de symboles cartographiques  ##
+
+![Diagramme de classes - Gestion d'un catalogue de symboles cartographiques](img/exo_uml/catalogue_symbole_carto_classes.png)
+
+L'objectif de cette modélisation était de représenter, dans un diagramme de classes UML, la situation où toutes les instances d'une classe spécifique (comme `Riviere` ou `RouteDepartementale`) partagent exactement le même objet de spécification de style (`StyleRendu`), sans qu'il soit nécessaire de dupliquer cet objet pour chaque entité individuelle.
+
+La solution consiste à utiliser un attribut de classe (aussi appelé attribut statique), qui est la meilleure pratique UML pour désigner une donnée partagée au niveau de la classe elle-même, et non de l'instance.
+
+Concrêtement, nous avons opté pour la modélisation suivante :
+* isolation de l'ensemble des attributs de style dans un classe `StyleRendu`
+* ajout de l'attribut `style_rendu` dans les classes `Riviere` et `RouteDepartementale`.
+* pour indiquer que cet attribut est un attribut de classe (donc partagé par l'ensemble des instances), la notation UML standard consiste à le souligner (ce que le logiciel utilisé ne supporte pas). C'est le marqueur graphique le plus important de cette solution.
+
+\newpage
+
 
 ## Station météo ##
 
