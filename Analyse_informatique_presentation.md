@@ -100,22 +100,25 @@
 * Permet de découper un grand programme en **tâches réutilisables**
 * Facilite la lecture, mais les données restent partagées partout
 
-
-## Programmation fonctionnelle ##
-
-* Apparaît dès la fin des années 1950 (LISP)
-* Un programme est une **composition de fonctions** : chaque fonction transforme des données et transmet le résultat
-* Approche **déclarative** : on décrit *ce qu’on veut obtenir*, pas *comment le faire*
-
-![Découpage d'un programme selon l'approche fonctionnelle](img/intro_oo/approche_fonctionnelle.png)
+![Découpage d'un programme selon l'approche procédurale](img/intro_oo/approche_fonctionnelle.png)
 
 
 ## Exemple ##
 
-![Mastermind en fonctionnel](img/intro_oo/mastermind_schema_fonctions.png)
+![Mastermind en procédural](img/intro_oo/mastermind_schema_fonctions.png)
 
 
-## Quand la programmation procédurale atteint ses limites ##
+## Limites de la programmation procédurale ##
+
+![Découpage fonctionnel d'une application dédiée à la gestion d'une bibliothèque](img/intro_oo/decoupage_fonctionnel.png)
+
+
+## Limites de la programmation procédurale ##
+
+![Découpage fonctionnel d'une application - évolution du logiciel](img/intro_oo/decoupage_fonctionnel_evolution.png)
+
+
+## Limites de la programmation procédurale ##
 
 État initial : notre système gère Point et Polygon.
 ```
@@ -124,8 +127,8 @@ fonction CalculerSurface(entite)
     si (entite.type == 'POINT') {
         retourner 0
     }
-    sinon si (entite.type == 'POLYGON') {
-        retourner FormuleGauss(entite.coords)
+    sinon si (entite.type == 'POLYGONE') {
+        retourner FormuleCompliquee(entite.coords)
     } else {
         afficher_erreur("Type de géométrie non pris en charge.")
         retourner -1
@@ -143,7 +146,7 @@ fonction CalculerPerimetre(entite)
     si (entite.type == 'POINT') {
         retourner 0;
     }
-    sinon si (entite.type == 'POLYGON') {
+    sinon si (entite.type == 'POLYGONE') {
         retourner ...;
     } else {
         afficher_erreur("Type de géométrie non pris en charge.");
@@ -165,8 +168,8 @@ fonction CalculerSurface(entite)
     sinon si (entite.type == 'LIGNE') {
         retourner 0;
     }
-    sinon si (entite.type == 'POLYGON') {
-        retourner FormuleGauss(entite.coords);
+    sinon si (entite.type == 'POLYGONE') {
+        retourner FormuleCompliquee(entite.coords);
     } else {
         afficher_erreur("Type de géométrie non pris en charge.");
         retourner 0;
@@ -191,7 +194,7 @@ fonction CalculerPerimetre(entite)
         }
         retourner longueur_totale;
     }
-    sinon si (entite.type == 'POLYGON') {
+    sinon si (entite.type == 'POLYGONE') {
         retourner ...;
     } else {
         afficher_erreur("Type de géométrie non pris en charge.")
@@ -200,14 +203,12 @@ fonction CalculerPerimetre(entite)
 }
 ```
 
-## Limites de la programmation procédurale ##
 
-![Découpage fonctionnel d'une application dédiée à la gestion d'une bibliothèque](img/intro_oo/decoupage_fonctionnel.png)
+## Programmation fonctionnelle ##
 
-
-## Limites de la programmation procédurale ##
-
-![Découpage fonctionnel d'une application - évolution du logiciel](img/intro_oo/decoupage_fonctionnel_evolution.png)
+* Apparaît dès la fin des années 1950 (LISP)
+* Un programme est une **composition de fonctions** : chaque fonction transforme des données et transmet le résultat
+* Approche **déclarative** : on décrit *ce qu’on veut obtenir*, pas *comment le faire*
 
 
 ## Programmation orientée objet ##
@@ -226,9 +227,9 @@ fonction CalculerPerimetre(entite)
 ![Mastermind en orienté objet](img/intro_oo/mastermind_schema_objets.png)
 
 
-## Fonctionnel et procédural vs. orienté objet ##
+## Procédural vs. orienté objet ##
 
-* Programmation fonctionnelle / procédurale
+* Programmation procédurale
   * Approche **descendante** : on découpe le problème en fonctions puis en sous-fonctions
   * Plus intuitive
 * Programmation orientée objet
@@ -329,9 +330,9 @@ Classe Point {
    	}
 }
 
-Classe Polygon {
+Classe Polygone {
     méthode calculerSurface() {
-        retourner this.FormuleGauss();
+        retourner this.FormuleCompliquee();
     }
     méthode calculerPerimetre() {
     	retourner ...;

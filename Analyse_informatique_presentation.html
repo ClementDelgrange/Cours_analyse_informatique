@@ -166,41 +166,45 @@
 <li>Permet de découper un grand programme en <strong>tâches réutilisables</strong></li>
 <li>Facilite la lecture, mais les données restent partagées partout</li>
 </ul>
-</section>
-<section id="programmation-fonctionnelle" class="level2">
-<h2>Programmation fonctionnelle</h2>
-<ul>
-<li>Apparaît dès la fin des années 1950 (LISP)</li>
-<li>Un programme est une <strong>composition de fonctions</strong> : chaque fonction transforme des données et transmet le résultat</li>
-<li>Approche <strong>déclarative</strong> : on décrit <em>ce qu’on veut obtenir</em>, pas <em>comment le faire</em></li>
-</ul>
 <figure>
-<img src="img/intro_oo/approche_fonctionnelle.png" alt="Découpage d’un programme selon l’approche fonctionnelle" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche fonctionnelle</figcaption>
+<img src="img/intro_oo/approche_fonctionnelle.png" alt="Découpage d’un programme selon l’approche procédurale" /><figcaption aria-hidden="true">Découpage d’un programme selon l’approche procédurale</figcaption>
 </figure>
 </section>
 <section id="exemple" class="level2">
 <h2>Exemple</h2>
 <figure>
-<img src="img/intro_oo/mastermind_schema_fonctions.png" alt="Mastermind en fonctionnel" /><figcaption aria-hidden="true">Mastermind en fonctionnel</figcaption>
+<img src="img/intro_oo/mastermind_schema_fonctions.png" alt="Mastermind en procédural" /><figcaption aria-hidden="true">Mastermind en procédural</figcaption>
 </figure>
 </section>
-<section id="quand-la-programmation-procédurale-atteint-ses-limites" class="level2">
-<h2>Quand la programmation procédurale atteint ses limites</h2>
+<section id="limites-de-la-programmation-procédurale" class="level2">
+<h2>Limites de la programmation procédurale</h2>
+<figure>
+<img src="img/intro_oo/decoupage_fonctionnel.png" alt="Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque</figcaption>
+</figure>
+</section>
+<section id="limites-de-la-programmation-procédurale-1" class="level2">
+<h2>Limites de la programmation procédurale</h2>
+<figure>
+<img src="img/intro_oo/decoupage_fonctionnel_evolution.png" alt="Découpage fonctionnel d’une application - évolution du logiciel" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application - évolution du logiciel</figcaption>
+</figure>
+</section>
+<section id="limites-de-la-programmation-procédurale-2" class="level2">
+<h2>Limites de la programmation procédurale</h2>
 <p>État initial : notre système gère Point et Polygon.</p>
 <pre><code>fonction CalculerSurface(entite)
 {
     si (entite.type == &#39;POINT&#39;) {
         retourner 0
     }
-    sinon si (entite.type == &#39;POLYGON&#39;) {
-        retourner FormuleGauss(entite.coords)
+    sinon si (entite.type == &#39;POLYGONE&#39;) {
+        retourner FormuleCompliquee(entite.coords)
     } else {
         afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;)
         retourner -1
     }
 }</code></pre>
 </section>
-<section id="limites-de-la-programmation-procédurale" class="level2">
+<section id="limites-de-la-programmation-procédurale-3" class="level2">
 <h2>Limites de la programmation procédurale</h2>
 <p>État initial : notre système gère Point et Polygon.</p>
 <pre><code>fonction CalculerPerimetre(entite)
@@ -208,7 +212,7 @@
     si (entite.type == &#39;POINT&#39;) {
         retourner 0;
     }
-    sinon si (entite.type == &#39;POLYGON&#39;) {
+    sinon si (entite.type == &#39;POLYGONE&#39;) {
         retourner ...;
     } else {
         afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;);
@@ -216,7 +220,7 @@
     }
 }</code></pre>
 </section>
-<section id="limites-de-la-programmation-procédurale-1" class="level2">
+<section id="limites-de-la-programmation-procédurale-4" class="level2">
 <h2>Limites de la programmation procédurale</h2>
 <p>Evolution : gérer les lignes</p>
 <pre><code>fonction CalculerSurface(entite)
@@ -227,15 +231,15 @@
     sinon si (entite.type == &#39;LIGNE&#39;) {
         retourner 0;
     }
-    sinon si (entite.type == &#39;POLYGON&#39;) {
-        retourner FormuleGauss(entite.coords);
+    sinon si (entite.type == &#39;POLYGONE&#39;) {
+        retourner FormuleCompliquee(entite.coords);
     } else {
         afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;);
         retourner 0;
     }
 }</code></pre>
 </section>
-<section id="limites-de-la-programmation-procédurale-2" class="level2">
+<section id="limites-de-la-programmation-procédurale-5" class="level2">
 <h2>Limites de la programmation procédurale</h2>
 <p>Evolution : gérer les lignes</p>
 <pre><code>fonction CalculerPerimetre(entite)
@@ -250,7 +254,7 @@
         }
         retourner longueur_totale;
     }
-    sinon si (entite.type == &#39;POLYGON&#39;) {
+    sinon si (entite.type == &#39;POLYGONE&#39;) {
         retourner ...;
     } else {
         afficher_erreur(&quot;Type de géométrie non pris en charge.&quot;)
@@ -258,17 +262,13 @@
     }
 }</code></pre>
 </section>
-<section id="limites-de-la-programmation-procédurale-3" class="level2">
-<h2>Limites de la programmation procédurale</h2>
-<figure>
-<img src="img/intro_oo/decoupage_fonctionnel.png" alt="Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application dédiée à la gestion d’une bibliothèque</figcaption>
-</figure>
-</section>
-<section id="limites-de-la-programmation-procédurale-4" class="level2">
-<h2>Limites de la programmation procédurale</h2>
-<figure>
-<img src="img/intro_oo/decoupage_fonctionnel_evolution.png" alt="Découpage fonctionnel d’une application - évolution du logiciel" /><figcaption aria-hidden="true">Découpage fonctionnel d’une application - évolution du logiciel</figcaption>
-</figure>
+<section id="programmation-fonctionnelle" class="level2">
+<h2>Programmation fonctionnelle</h2>
+<ul>
+<li>Apparaît dès la fin des années 1950 (LISP)</li>
+<li>Un programme est une <strong>composition de fonctions</strong> : chaque fonction transforme des données et transmet le résultat</li>
+<li>Approche <strong>déclarative</strong> : on décrit <em>ce qu’on veut obtenir</em>, pas <em>comment le faire</em></li>
+</ul>
 </section>
 <section id="programmation-orientée-objet-1" class="level2">
 <h2>Programmation orientée objet</h2>
@@ -289,10 +289,10 @@
 <img src="img/intro_oo/mastermind_schema_objets.png" alt="Mastermind en orienté objet" /><figcaption aria-hidden="true">Mastermind en orienté objet</figcaption>
 </figure>
 </section>
-<section id="fonctionnel-et-procédural-vs.-orienté-objet" class="level2">
-<h2>Fonctionnel et procédural vs. orienté objet</h2>
+<section id="procédural-vs.-orienté-objet" class="level2">
+<h2>Procédural vs. orienté objet</h2>
 <ul>
-<li>Programmation fonctionnelle / procédurale
+<li>Programmation procédurale
 <ul>
 <li>Approche <strong>descendante</strong> : on découpe le problème en fonctions puis en sous-fonctions</li>
 <li>Plus intuitive</li>
@@ -414,9 +414,9 @@
     }
 }
 
-Classe Polygon {
+Classe Polygone {
     méthode calculerSurface() {
-        retourner this.FormuleGauss();
+        retourner this.FormuleCompliquee();
     }
     méthode calculerPerimetre() {
         retourner ...;
