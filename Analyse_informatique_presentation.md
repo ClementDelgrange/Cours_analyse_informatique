@@ -50,7 +50,6 @@
 1. Introduction à la programmation orientée objet
 2. Présentation d'UML
 3. Etude de plusieurs diagrammes UML
-4. Cycles de développement
 
 
 ## Organisation ##
@@ -505,8 +504,9 @@ fonction TraiterInventaire(liste_geometries) {
 
 ## Exercices ##
 
-1. identification des acteurs
-2. application d'achat de billets de train
+1. QCM identification des acteurs
+2. Système de gestion de parking
+3. Application d'achat de billets de train
 
 
 
@@ -569,7 +569,7 @@ fonction TraiterInventaire(liste_geometries) {
 
 ## Les associations ##
 
-* Types d'associations
+* 4 types d'associations
 	* association (*simple*)
 	* héritage
 	* agrégation
@@ -581,6 +581,11 @@ fonction TraiterInventaire(liste_geometries) {
 	* `1..*`
 	* `M..N`
 	* `N`
+
+
+## L'association simple ##
+
+![Association simple](img/uml_bases/classes/association_simple.png)
 
 
 ## L'association simple ##
@@ -638,7 +643,7 @@ fonction TraiterInventaire(liste_geometries) {
 ## Exercice ##
 
 1. Application d'achat de billets de train
-2. Gestion d'une ferme
+2. Gestion d'un catalogue de symboles cartographiques
 3. Gestion d'un cadastre
 
 
@@ -928,118 +933,3 @@ fonction TraiterInventaire(liste_geometries) {
 
 1. Correspondance diagramme de classes / diagramme de séquence
 2. Démineur (suite)
-
-
-# UML et méthodologie #
-
-##  ##
-
-* UML est un langage
-
-
-## Du besoin au code ##
-
-![Comment passer d'un besoin à du code](img/methodes_dvp/besoin_code.png)
-
-
-## Qualité d'un logiciel ##
-
-* Capacité fonctionnelle
-	* réponse aux besoins explicites et implicites
-* Facilité d'utilisation
-	* ergonomie, gestion des utilisations incorrectes
-* Fiabilité
-	* exactitude des résultats, tolérance aux pannes
-* Performance
-	* temps de réponse, débit
-* Maintenabilité
-	* effort nécessaire pour corriger ou transformer
-* Portabilité
-	* aptitude à fonctionner dans un nouvel environnement
-	
-
-## Cycles de développement ##
-
-![Cycle en cascade](img/methodes_dvp/cycle_cascade.png)
-
-
-## Cycles de développement ##
-
-![Cycle en V](img/methodes_dvp/cycle_v.png)
-
-
-## Méthodes de développement ##
-
-* Quelques méthodes de développement utilisant UML :
-	* Le processus unifié (PU, UP, RUP, AUP...)
-	* La méthode minimale
-	* La méthode *extreme programming* (XP)
-
-
-## Le processus unifié ##
-
-* Basé sur UML
-* Guidé par les besoins des utilisateurs
-* Centré sur l'architecture logicielle
-* Itératif et incrémental
-
-
-## Le processus unifié ##
-
-* Guidé par les besoins des utilisateurs
-	* modèles UML dérivés des cas d'utilisation 
-* Marche à suivre :
-	1. réaliser un ébauche grossière de l'application
-	2. identifier les fonctions essentielles
-	3. adapter l'architecture pour prendre en compte ces fonctionnalités
-	4. tester
-	5. recommencer
-* *S'y prendre en plusieurs fois et affiner le modèle par étapes*
-
-## Le processus unifié ##
-
-![Cycle en spirale](img/methodes_dvp/cycle_spirale.png)
-
-
-## eXtreme Programming ##
-
-* Client maîtrise d'ouvrage
-* Livraisons au plus tôt
-* Tests de toutes les fonctionnalités
-* Amélioration continue de la structure interne
-
-
-## eXtreme Programming ##
-
-* Programmation
-	* développement guidés par les tests
-	* conception simple
-	* remaniement
-* Collaboration
-	* programmation en binôme
-	* responsabilité collective du code
-	* règles de codage
-	* intégration continue
-* Gestion de projet
-	* Client sur site
-	* Rythme durable
-	* Livraisons fréquentes
-	* Planification itérative
-
-
-## Appartée sur les tests ##
-
-* Tests unitaires
-	* écrits éventuellement avant le code
-	* guider et rythmer la conception
-	* documenter le code
-* Tests fonctionnels
-	* absence d'anomalie
-	* fonctionnalités livrées
-	* = recette
-	
-
-
-
-
-

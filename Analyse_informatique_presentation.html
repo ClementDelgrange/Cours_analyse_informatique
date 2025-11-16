@@ -113,7 +113,6 @@
 <li>Introduction à la programmation orientée objet</li>
 <li>Présentation d’UML</li>
 <li>Etude de plusieurs diagrammes UML</li>
-<li>Cycles de développement</li>
 </ol>
 </section>
 <section id="organisation" class="level2">
@@ -625,8 +624,9 @@ fonction TraiterInventaire(liste_geometries) {
 <section id="exercices" class="level2">
 <h2>Exercices</h2>
 <ol type="1">
-<li>identification des acteurs</li>
-<li>application d’achat de billets de train</li>
+<li>QCM identification des acteurs</li>
+<li>Système de gestion de parking</li>
+<li>Application d’achat de billets de train</li>
 </ol>
 </section>
 </section>
@@ -702,7 +702,7 @@ fonction TraiterInventaire(liste_geometries) {
 <section id="les-associations" class="level2">
 <h2>Les associations</h2>
 <ul>
-<li>Types d’associations
+<li>4 types d’associations
 <ul>
 <li>association (<em>simple</em>)</li>
 <li>héritage</li>
@@ -721,6 +721,12 @@ fonction TraiterInventaire(liste_geometries) {
 </ul>
 </section>
 <section id="lassociation-simple" class="level2">
+<h2>L’association simple</h2>
+<figure>
+<img src="img/uml_bases/classes/association_simple.png" alt="Association simple" /><figcaption aria-hidden="true">Association simple</figcaption>
+</figure>
+</section>
+<section id="lassociation-simple-1" class="level2">
 <h2>L’association simple</h2>
 <figure>
 <img src="img/uml_bases/classes/association_roles.png" alt="Rôles d’une association" /><figcaption aria-hidden="true">Rôles d’une association</figcaption>
@@ -782,7 +788,7 @@ fonction TraiterInventaire(liste_geometries) {
 <h2>Exercice</h2>
 <ol type="1">
 <li>Application d’achat de billets de train</li>
-<li>Gestion d’une ferme</li>
+<li>Gestion d’un catalogue de symboles cartographiques</li>
 <li>Gestion d’un cadastre</li>
 </ol>
 </section>
@@ -1150,157 +1156,6 @@ fonction TraiterInventaire(liste_geometries) {
 <li>Correspondance diagramme de classes / diagramme de séquence</li>
 <li>Démineur (suite)</li>
 </ol>
-</section>
-</section>
-<section id="uml-et-méthodologie" class="level1">
-<h1>UML et méthodologie</h1>
-<section id="section-1" class="level2">
-<h2></h2>
-<ul>
-<li>UML est un langage</li>
-</ul>
-</section>
-<section id="du-besoin-au-code" class="level2">
-<h2>Du besoin au code</h2>
-<figure>
-<img src="img/methodes_dvp/besoin_code.png" alt="Comment passer d’un besoin à du code" /><figcaption aria-hidden="true">Comment passer d’un besoin à du code</figcaption>
-</figure>
-</section>
-<section id="qualité-dun-logiciel" class="level2">
-<h2>Qualité d’un logiciel</h2>
-<ul>
-<li>Capacité fonctionnelle
-<ul>
-<li>réponse aux besoins explicites et implicites</li>
-</ul></li>
-<li>Facilité d’utilisation
-<ul>
-<li>ergonomie, gestion des utilisations incorrectes</li>
-</ul></li>
-<li>Fiabilité
-<ul>
-<li>exactitude des résultats, tolérance aux pannes</li>
-</ul></li>
-<li>Performance
-<ul>
-<li>temps de réponse, débit</li>
-</ul></li>
-<li>Maintenabilité
-<ul>
-<li>effort nécessaire pour corriger ou transformer</li>
-</ul></li>
-<li>Portabilité
-<ul>
-<li>aptitude à fonctionner dans un nouvel environnement</li>
-</ul></li>
-</ul>
-</section>
-<section id="cycles-de-développement" class="level2">
-<h2>Cycles de développement</h2>
-<figure>
-<img src="img/methodes_dvp/cycle_cascade.png" alt="Cycle en cascade" /><figcaption aria-hidden="true">Cycle en cascade</figcaption>
-</figure>
-</section>
-<section id="cycles-de-développement-1" class="level2">
-<h2>Cycles de développement</h2>
-<figure>
-<img src="img/methodes_dvp/cycle_v.png" alt="Cycle en V" /><figcaption aria-hidden="true">Cycle en V</figcaption>
-</figure>
-</section>
-<section id="méthodes-de-développement" class="level2">
-<h2>Méthodes de développement</h2>
-<ul>
-<li>Quelques méthodes de développement utilisant UML :
-<ul>
-<li>Le processus unifié (PU, UP, RUP, AUP…)</li>
-<li>La méthode minimale</li>
-<li>La méthode <em>extreme programming</em> (XP)</li>
-</ul></li>
-</ul>
-</section>
-<section id="le-processus-unifié" class="level2">
-<h2>Le processus unifié</h2>
-<ul>
-<li>Basé sur UML</li>
-<li>Guidé par les besoins des utilisateurs</li>
-<li>Centré sur l’architecture logicielle</li>
-<li>Itératif et incrémental</li>
-</ul>
-</section>
-<section id="le-processus-unifié-1" class="level2">
-<h2>Le processus unifié</h2>
-<ul>
-<li>Guidé par les besoins des utilisateurs
-<ul>
-<li>modèles UML dérivés des cas d’utilisation</li>
-</ul></li>
-<li>Marche à suivre :
-<ol type="1">
-<li>réaliser un ébauche grossière de l’application</li>
-<li>identifier les fonctions essentielles</li>
-<li>adapter l’architecture pour prendre en compte ces fonctionnalités</li>
-<li>tester</li>
-<li>recommencer</li>
-</ol></li>
-<li><em>S’y prendre en plusieurs fois et affiner le modèle par étapes</em></li>
-</ul>
-</section>
-<section id="le-processus-unifié-2" class="level2">
-<h2>Le processus unifié</h2>
-<figure>
-<img src="img/methodes_dvp/cycle_spirale.png" alt="Cycle en spirale" /><figcaption aria-hidden="true">Cycle en spirale</figcaption>
-</figure>
-</section>
-<section id="extreme-programming" class="level2">
-<h2>eXtreme Programming</h2>
-<ul>
-<li>Client maîtrise d’ouvrage</li>
-<li>Livraisons au plus tôt</li>
-<li>Tests de toutes les fonctionnalités</li>
-<li>Amélioration continue de la structure interne</li>
-</ul>
-</section>
-<section id="extreme-programming-1" class="level2">
-<h2>eXtreme Programming</h2>
-<ul>
-<li>Programmation
-<ul>
-<li>développement guidés par les tests</li>
-<li>conception simple</li>
-<li>remaniement</li>
-</ul></li>
-<li>Collaboration
-<ul>
-<li>programmation en binôme</li>
-<li>responsabilité collective du code</li>
-<li>règles de codage</li>
-<li>intégration continue</li>
-</ul></li>
-<li>Gestion de projet
-<ul>
-<li>Client sur site</li>
-<li>Rythme durable</li>
-<li>Livraisons fréquentes</li>
-<li>Planification itérative</li>
-</ul></li>
-</ul>
-</section>
-<section id="appartée-sur-les-tests" class="level2">
-<h2>Appartée sur les tests</h2>
-<ul>
-<li>Tests unitaires
-<ul>
-<li>écrits éventuellement avant le code</li>
-<li>guider et rythmer la conception</li>
-<li>documenter le code</li>
-</ul></li>
-<li>Tests fonctionnels
-<ul>
-<li>absence d’anomalie</li>
-<li>fonctionnalités livrées</li>
-<li>= recette</li>
-</ul></li>
-</ul>
 </section>
 </section>
             </div>

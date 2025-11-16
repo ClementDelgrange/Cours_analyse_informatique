@@ -3,7 +3,7 @@
 % novembre 2025
 
 
-# Système de gestion de parking
+# Système de gestion de parking #
 
 Le système gère un parking à barrières automatisées.
 
@@ -58,12 +58,12 @@ L'application doit également permettre de calculer la taxe foncière due par ch
 Nous développons une application qui doit gérer l'affichage d'un catalogue de symboles pour la cartographie. Une entité géographique (point, ligne ou polygone) est affichée sur la carte avec un style de rendu précis.
 
 Chaque entité, par exemple, une rivière ou une route départementale, est caractérisée individuellement par :
-- Un identifiant unique (ID);
-- Sa géométrie.
+* Un identifiant unique (ID);
+* Sa géométrie.
 
 Le style de rendu (couleur, épaisseur de trait, symbole de point) est cependant le même pour toutes les rivières d'un même jeu de données, et le même pour toutes les routes départementales. Ce style est défini par le cartographe et doit pouvoir être mis à jour dynamiquement dans le système (par exemple, changer la couleur de toutes les rivières d'un bleu clair à un bleu foncé).
 
-Nous avons initialement deux types d'entités Linéaires : Rivière et RouteDépartementale.
+Nous avons initialement deux types d'entités linéaires : Rivière et RouteDépartementale.
 
 Le système doit permettre de calculer la longueur de chaque entité.
 
@@ -253,12 +253,12 @@ Dans cette deuxième version, nous avons également fait apparaître les méthod
 
 Pour s'assurer que le sens de notre modélisation est bien compris, nous utilisons un diagramme d'objets qui illustrera un exemple de situation.
 
-![Diagramme de classes - Cadastre](img/exo_uml/cadastre_objets.png)
+![Diagramme d'objets - Cadastre](img/exo_uml/cadastre_objets.png)
 
 \newpage
 
 
-## Gestion d'un catalogue de symboles cartographiques  ##
+## Gestion d'un catalogue de symboles cartographiques ##
 
 ![Diagramme de classes - Gestion d'un catalogue de symboles cartographiques](img/exo_uml/catalogue_symbole_carto_classes.png)
 
