@@ -75,3 +75,72 @@ classDiagram
     Ambassadeur --|> Client
     Réservation *-- Paiement
 ```
+
+Diagramme de paquetage :
+```plantuml
+@startuml Application Vente Billets
+skinparam packageStyle rect
+
+' Définition des Paquetages
+package "Interface Utilisateur" as UI {
+    ' Les classes UI peuvent être implicites ou non détaillées ici
+}
+
+package "Domaine Paiement" as Paiement {
+    class Paiement
+    class KYC
+    class PaiementOrchestrateur
+    class PayPalClient
+    class StripeClient
+}
+
+package "Domaine Métier" as Metier {
+    ' Classes du domaine Métier
+    class Trajet{
+        -horaire_depart: datetime
+        -horaire_arrivee: datetime
+        -gare_depart: Gare
+        -gare_arrivee: Gare
+        -correspondances: Gare[*]
+        +correspond(r: Reservation): boolean
+    }
+    class Gare{
+        +nom: string
+    }
+    class Ville{
+        +nom: string
+    }
+    class Client{
+        +numero: integer
+        +nom: string
+        +prenom: string
+        +email: string
+    }
+    class Ambassadeur
+    class Réservation{
+        +depart: Ville
+        +arrivee: Ville
+        +date: date
+        -calculer_prix(): float
+        +afficher(): string
+        +selectionner(t: Trajet): Paiement
+        +annuler()
+    }
+
+    ' Relations internes au paquetage Métier
+    Trajet "*" -- "1" Gare: a pour départ
+    Trajet "*" -- "1" Gare: a pour arrivée
+    Trajet "*" -- "*" Gare: effectue une escale
+    Gare "*" -- "1..*" Ville: dessert
+
+    Réservation "*" -- "1" Trajet: concerne
+    Client "*" -- "1" Réservation: effectue
+    Ambassadeur --|> Client
+}
+
+' Dépendances entre Paquetages (vue de haut niveau)
+UI --> Metier : interagit avec
+Réservation --> Paiement: utilise
+
+@enduml
+```

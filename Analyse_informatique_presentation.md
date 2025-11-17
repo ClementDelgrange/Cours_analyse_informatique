@@ -647,13 +647,48 @@ fonction TraiterInventaire(liste_geometries) {
 3. Gestion d'un cadastre
 
 
+# Le diagramme de paquetage #
+
+## Le diagramme de paquetages ##
+
+* **Organiser les ensembles de classes et visualiser les dépendances entre groupes**
+	* paquetage ou module = ensemble d'éléments UML (classes essentiellement) fournissant un service cohérent
+	* gérer la complexité des grands projets en fournissant une vue de haut niveau de l'architecture
+
+![Représentation interne d'un paquetage](img/uml_bases/paquetages/paquetage_vue_interne.png)
+
+
+## Sous-paquetages ##
+<br/>
+
+![Paquetages et sous-paquetages](img/uml_bases/paquetages/sous_paquetages.png)
+
+
+## Architecture en couche ##
+<br/>
+
+![Architecture en couche](img/uml_bases/paquetages/archi_couches.png)
+
+
+## Exemple ##
+
+![Application de billets de train - diagramme de paquetages](img/exo_uml/appli_billets_train_paquetages_1.png)
+
+
+## Exemple ##
+<br/>
+
+![Application de billets de train - diagramme de paquetages](img/exo_uml/appli_billets_train_paquetages_2.png)
+
+
+
 # Le diagramme d'objets #
 
 ## Le diagramme d'objets ##
 
-* **Représenter les objets du système à un instant donné**
-	* illustrer le diagramme de classe
-	* détailler un aspect particulier
+* **Fournir une vue instantanée des objets du système à un instant donné**
+	* illustrer le diagramme de classes
+	* détailler un aspect complexe ou un scénario précis
 	
 ![Diagramme d'objets](img/uml_miniatures/objets.png)
 
@@ -685,7 +720,7 @@ fonction TraiterInventaire(liste_geometries) {
 
 <br/>
 
-![Un diagramme d'objet correspondant](img/uml_bases/objets/objets_pays_langue.png)
+![Un diagramme d'objets correspondant](img/uml_bases/objets/objets_pays_langue.png)
 
 
 ## Exemple ##
@@ -703,63 +738,44 @@ fonction TraiterInventaire(liste_geometries) {
 
 
 
-# Le diagramme de paquetage #
-
-## Le diagramme de paquetage ##
-
-* **Représenter l'organisation en paquetages**
-	* paquetage = ensemble d'éléments UML fournissant un service cohérent
-	* utile pour structurer les gros projets
-
-<br/>
-
-![Représentation interne d'un paquetage](img/uml_bases/paquetages/paquetage_vue_interne.png)
-
-
-## Dépendances entre paquetages ##
-<br/>
-
-![Dépendance entre deux paquetages](img/uml_bases/paquetages/paquetage_dependance.png)
-
-<br/>
-
-![Import d'un paquetage](img/uml_bases/paquetages/paquetage_import.png)
-
-
-## Exemple ##
-<br/>
-
-![Séparation IHM - code métier](img/uml_bases/paquetages/separation_ihm_metier.png)
-
-
-## Exemple ##
-<br/>
-
-![Architecture en couches](img/uml_bases/paquetages/archi_couches.png)
-
-
-
 # Le diagramme de déploiement #
 
 ## Diagramme de déploiement ##
 
 * **Décrire la configuration physique des matériels**
-	* répartition des composants
-	* interractions entre noeuds
+	* répartition des composants logiciels sur les noeuds matériels
+	* interactions entre noeuds
 
 <br/>
 
 ![Diagramme de déploiement](img/uml_miniatures/deploiement.png)
 
 
-## Noeuds et composants ##
+## Eléments de base ##
 
-* Noeud = élément physique du système
-* Composant = unité logicielle autonome
-	* *diagramme de composant : vue de haut niveau sur un système*
-* Artifact = fichier présent sur un noeud et matérialisant la présence d'un composant
+* Noeud
+  * Machine physique ou virtuelle (PC, serveur, téléphone)
+  * Représente le support d'exécution physique qui héberge le code
+
+![Exemples de noeuds](img/uml_bases/deploiement/noeuds_exemples.png)
+
+
+## Eléments de base ##
+
+* Artéfact
+  * Un fichier (un .exe, .html, .py...)
+  * Représente l'entité logicielle concrète qui est déployée sur le noeud
+* Relation de manifestation
+  * L'action d'installer ou de copier-coller un fichier sur une machine
+  * Indique que l'artéfact est hébergé et exécuté par le noeud
 
 ![Présente d'un composant sur un noeud](img/uml_bases/deploiement/artifact.png)
+
+
+## Exemple ##
+<br/>
+
+![Exemple: app mobiles -> backend -> bdd](img/uml_bases/deploiement/application_mobile.png)
 
 
 ## Exercice ##
@@ -921,7 +937,7 @@ fonction TraiterInventaire(liste_geometries) {
 
 ## Exemple ##
 
-![Diagramme de classe d'un ascenceur](img/uml_bases/sequence/diag_class_ascenceur.png)
+![Diagramme de classes d'un ascenceur](img/uml_bases/sequence/diag_class_ascenceur.png)
 
 
 ## Exemple ##

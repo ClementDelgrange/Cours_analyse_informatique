@@ -793,15 +793,58 @@ fonction TraiterInventaire(liste_geometries) {
 </ol>
 </section>
 </section>
+<section id="le-diagramme-de-paquetage" class="level1">
+<h1>Le diagramme de paquetage</h1>
+<section id="le-diagramme-de-paquetages" class="level2">
+<h2>Le diagramme de paquetages</h2>
+<ul>
+<li><strong>Organiser les ensembles de classes et visualiser les dépendances entre groupes</strong>
+<ul>
+<li>paquetage ou module = ensemble d’éléments UML (classes essentiellement) fournissant un service cohérent</li>
+<li>gérer la complexité des grands projets en fournissant une vue de haut niveau de l’architecture</li>
+</ul></li>
+</ul>
+<figure>
+<img src="img/uml_bases/paquetages/paquetage_vue_interne.png" alt="Représentation interne d’un paquetage" /><figcaption aria-hidden="true">Représentation interne d’un paquetage</figcaption>
+</figure>
+</section>
+<section id="sous-paquetages" class="level2">
+<h2>Sous-paquetages</h2>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/paquetages/sous_paquetages.png" alt="Paquetages et sous-paquetages" /><figcaption aria-hidden="true">Paquetages et sous-paquetages</figcaption>
+</figure>
+</section>
+<section id="architecture-en-couche" class="level2">
+<h2>Architecture en couche</h2>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/paquetages/archi_couches.png" alt="Architecture en couche" /><figcaption aria-hidden="true">Architecture en couche</figcaption>
+</figure>
+</section>
+<section id="exemple-5" class="level2">
+<h2>Exemple</h2>
+<figure>
+<img src="img/exo_uml/appli_billets_train_paquetages_1.png" alt="Application de billets de train - diagramme de paquetages" /><figcaption aria-hidden="true">Application de billets de train - diagramme de paquetages</figcaption>
+</figure>
+</section>
+<section id="exemple-6" class="level2">
+<h2>Exemple</h2>
+<p><br/></p>
+<figure>
+<img src="img/exo_uml/appli_billets_train_paquetages_2.png" alt="Application de billets de train - diagramme de paquetages" /><figcaption aria-hidden="true">Application de billets de train - diagramme de paquetages</figcaption>
+</figure>
+</section>
+</section>
 <section id="le-diagramme-dobjets" class="level1">
 <h1>Le diagramme d’objets</h1>
 <section id="le-diagramme-dobjets-1" class="level2">
 <h2>Le diagramme d’objets</h2>
 <ul>
-<li><strong>Représenter les objets du système à un instant donné</strong>
+<li><strong>Fournir une vue instantanée des objets du système à un instant donné</strong>
 <ul>
-<li>illustrer le diagramme de classe</li>
-<li>détailler un aspect particulier</li>
+<li>illustrer le diagramme de classes</li>
+<li>détailler un aspect complexe ou un scénario précis</li>
 </ul></li>
 </ul>
 <figure>
@@ -837,17 +880,17 @@ fonction TraiterInventaire(liste_geometries) {
 </ul></li>
 </ul>
 </section>
-<section id="exemple-5" class="level2">
+<section id="exemple-7" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/objets/classes_pays_langue.png" alt="Classes Pays et Langue" /><figcaption aria-hidden="true">Classes <code>Pays</code> et <code>Langue</code></figcaption>
 </figure>
 <p><br/></p>
 <figure>
-<img src="img/uml_bases/objets/objets_pays_langue.png" alt="Un diagramme d’objet correspondant" /><figcaption aria-hidden="true">Un diagramme d’objet correspondant</figcaption>
+<img src="img/uml_bases/objets/objets_pays_langue.png" alt="Un diagramme d’objets correspondant" /><figcaption aria-hidden="true">Un diagramme d’objets correspondant</figcaption>
 </figure>
 </section>
-<section id="exemple-6" class="level2">
+<section id="exemple-8" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/objets/diagramme_classes_pays_region.png" alt="Diagramme de classes" /><figcaption aria-hidden="true">Diagramme de classes</figcaption>
@@ -866,48 +909,6 @@ fonction TraiterInventaire(liste_geometries) {
 </ol>
 </section>
 </section>
-<section id="le-diagramme-de-paquetage" class="level1">
-<h1>Le diagramme de paquetage</h1>
-<section id="le-diagramme-de-paquetage-1" class="level2">
-<h2>Le diagramme de paquetage</h2>
-<ul>
-<li><strong>Représenter l’organisation en paquetages</strong>
-<ul>
-<li>paquetage = ensemble d’éléments UML fournissant un service cohérent</li>
-<li>utile pour structurer les gros projets</li>
-</ul></li>
-</ul>
-<p><br/></p>
-<figure>
-<img src="img/uml_bases/paquetages/paquetage_vue_interne.png" alt="Représentation interne d’un paquetage" /><figcaption aria-hidden="true">Représentation interne d’un paquetage</figcaption>
-</figure>
-</section>
-<section id="dépendances-entre-paquetages" class="level2">
-<h2>Dépendances entre paquetages</h2>
-<p><br/></p>
-<figure>
-<img src="img/uml_bases/paquetages/paquetage_dependance.png" alt="Dépendance entre deux paquetages" /><figcaption aria-hidden="true">Dépendance entre deux paquetages</figcaption>
-</figure>
-<p><br/></p>
-<figure>
-<img src="img/uml_bases/paquetages/paquetage_import.png" alt="Import d’un paquetage" /><figcaption aria-hidden="true">Import d’un paquetage</figcaption>
-</figure>
-</section>
-<section id="exemple-7" class="level2">
-<h2>Exemple</h2>
-<p><br/></p>
-<figure>
-<img src="img/uml_bases/paquetages/separation_ihm_metier.png" alt="Séparation IHM - code métier" /><figcaption aria-hidden="true">Séparation IHM - code métier</figcaption>
-</figure>
-</section>
-<section id="exemple-8" class="level2">
-<h2>Exemple</h2>
-<p><br/></p>
-<figure>
-<img src="img/uml_bases/paquetages/archi_couches.png" alt="Architecture en couches" /><figcaption aria-hidden="true">Architecture en couches</figcaption>
-</figure>
-</section>
-</section>
 <section id="le-diagramme-de-déploiement" class="level1">
 <h1>Le diagramme de déploiement</h1>
 <section id="diagramme-de-déploiement" class="level2">
@@ -915,8 +916,8 @@ fonction TraiterInventaire(liste_geometries) {
 <ul>
 <li><strong>Décrire la configuration physique des matériels</strong>
 <ul>
-<li>répartition des composants</li>
-<li>interractions entre noeuds</li>
+<li>répartition des composants logiciels sur les noeuds matériels</li>
+<li>interactions entre noeuds</li>
 </ul></li>
 </ul>
 <p><br/></p>
@@ -924,18 +925,42 @@ fonction TraiterInventaire(liste_geometries) {
 <img src="img/uml_miniatures/deploiement.png" alt="Diagramme de déploiement" /><figcaption aria-hidden="true">Diagramme de déploiement</figcaption>
 </figure>
 </section>
-<section id="noeuds-et-composants" class="level2">
-<h2>Noeuds et composants</h2>
+<section id="eléments-de-base" class="level2">
+<h2>Eléments de base</h2>
 <ul>
-<li>Noeud = élément physique du système</li>
-<li>Composant = unité logicielle autonome
+<li>Noeud
 <ul>
-<li><em>diagramme de composant : vue de haut niveau sur un système</em></li>
+<li>Machine physique ou virtuelle (PC, serveur, téléphone)</li>
+<li>Représente le support d’exécution physique qui héberge le code</li>
 </ul></li>
-<li>Artifact = fichier présent sur un noeud et matérialisant la présence d’un composant</li>
+</ul>
+<figure>
+<img src="img/uml_bases/deploiement/noeuds_exemples.png" alt="Exemples de noeuds" /><figcaption aria-hidden="true">Exemples de noeuds</figcaption>
+</figure>
+</section>
+<section id="eléments-de-base-1" class="level2">
+<h2>Eléments de base</h2>
+<ul>
+<li>Artéfact
+<ul>
+<li>Un fichier (un .exe, .html, .py…)</li>
+<li>Représente l’entité logicielle concrète qui est déployée sur le noeud</li>
+</ul></li>
+<li>Relation de manifestation
+<ul>
+<li>L’action d’installer ou de copier-coller un fichier sur une machine</li>
+<li>Indique que l’artéfact est hébergé et exécuté par le noeud</li>
+</ul></li>
 </ul>
 <figure>
 <img src="img/uml_bases/deploiement/artifact.png" alt="Présente d’un composant sur un noeud" /><figcaption aria-hidden="true">Présente d’un composant sur un noeud</figcaption>
+</figure>
+</section>
+<section id="exemple-9" class="level2">
+<h2>Exemple</h2>
+<p><br/></p>
+<figure>
+<img src="img/uml_bases/deploiement/application_mobile.png" alt="Exemple: app mobiles -&gt; backend -&gt; bdd" /><figcaption aria-hidden="true">Exemple: app mobiles -&gt; backend -&gt; bdd</figcaption>
 </figure>
 </section>
 <section id="exercice-1" class="level2">
@@ -960,7 +985,7 @@ fonction TraiterInventaire(liste_geometries) {
 <img src="img/uml_miniatures/activite.png" alt="Diagramme d’activité" /><figcaption aria-hidden="true">Diagramme d’activité</figcaption>
 </figure>
 </section>
-<section id="eléments-de-base" class="level2">
+<section id="eléments-de-base-2" class="level2">
 <h2>Eléments de base</h2>
 <p><br/></p>
 <figure>
@@ -997,13 +1022,13 @@ fonction TraiterInventaire(liste_geometries) {
 <img src="img/uml_bases/activite/parallele.png" alt="Transitions concurrentes" /><figcaption aria-hidden="true">Transitions concurrentes</figcaption>
 </figure>
 </section>
-<section id="exemple-9" class="level2">
+<section id="exemple-10" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/activite/diagramme_inserer_cheque.png" alt="Activité insérer un chèque" /><figcaption aria-hidden="true">Activité insérer un chèque</figcaption>
 </figure>
 </section>
-<section id="exemple-10" class="level2">
+<section id="exemple-11" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/activite/diagramme_distributeur_billets.png" alt="Diagramme d’activité composé d’autres diagrammes" /><figcaption aria-hidden="true">Diagramme d’activité composé d’autres diagrammes</figcaption>
@@ -1138,13 +1163,13 @@ fonction TraiterInventaire(liste_geometries) {
 </ul></li>
 </ul>
 </section>
-<section id="exemple-11" class="level2">
+<section id="exemple-12" class="level2">
 <h2>Exemple</h2>
 <figure>
-<img src="img/uml_bases/sequence/diag_class_ascenceur.png" alt="Diagramme de classe d’un ascenceur" /><figcaption aria-hidden="true">Diagramme de classe d’un ascenceur</figcaption>
+<img src="img/uml_bases/sequence/diag_class_ascenceur.png" alt="Diagramme de classes d’un ascenceur" /><figcaption aria-hidden="true">Diagramme de classes d’un ascenceur</figcaption>
 </figure>
 </section>
-<section id="exemple-12" class="level2">
+<section id="exemple-13" class="level2">
 <h2>Exemple</h2>
 <figure>
 <img src="img/uml_bases/sequence/diag_seq_ascenceur.png" alt="Diagramme de séquence - Utiliser l’ascenceur pour se déplacer" /><figcaption aria-hidden="true">Diagramme de séquence - Utiliser l’ascenceur pour se déplacer</figcaption>
