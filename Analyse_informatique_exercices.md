@@ -53,11 +53,12 @@ L'application doit également permettre de calculer la taxe foncière due par ch
 => Illustrez votre diagramme de classes à l'aide d'un diagramme d'objets
 
 
-## Gestion d'un catalogue de symboles cartographiques  ##
+# Gestion d'un catalogue de symboles cartographiques  #
 
 Nous développons une application qui doit gérer l'affichage d'un catalogue de symboles pour la cartographie. Une entité géographique (point, ligne ou polygone) est affichée sur la carte avec un style de rendu précis.
 
 Chaque entité, par exemple, une rivière ou une route départementale, est caractérisée individuellement par :
+
 * Un identifiant unique (ID);
 * Sa géométrie.
 
@@ -198,7 +199,7 @@ Pour vendre un objet, le vendeur (connecté avec un compte acheteur-vendeur) doi
 
 # Corrections #
 
-## Système de gestion de parking
+## Système de gestion de parking ##
 
 1. Identification des acteurs : conducteur, technicien de maintenance et système de paiement externe
 2. Identification des cas d'utilisation
