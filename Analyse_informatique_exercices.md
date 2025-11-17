@@ -77,6 +77,12 @@ Nous réalisons une mini station météo à l'aide d'un Raspberry Pi. Le montage
 => Réalisez le diagramme de déploiement de la station météo.
 
 
+# Système de suivi GPS de flotte de véhicules #
+Modélisez un système de suivi de véhicules d'entreprise. Chaque véhicule est équipé d'un Boîtier GPS/4G. Ce boîtier exécute un fichier `firmware_tracker.bin`. Il envoie les positions via le réseau 4G à un serveur central. Le serveur exécute un programme en Java (`ServiceDeFlotte.jar`) et stocke les données dans une base de données. Un opérateur utilise un poste de supervision pour se connecter au serveur et monitorer la position des véhicules.
+
+=> Réalisez le diagramme de déploiement de ce système.
+
+
 # Recette de la mousse au chocolat #
 Proposez un diagramme d'activité pour la recette ci-dessous. Optimisez-le en supposant être assez nombreux pour pouvoir paralléliser au maximum les différentes tâches.
 
