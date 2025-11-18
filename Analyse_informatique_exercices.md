@@ -235,9 +235,7 @@ La partie du modèle traitant de la partie réservation (une réservation concer
 
 ![Diagramme de classes - Application d'achat de billets de train](img/exo_uml/appli_billets_train_classes.png) 
 
-
 \newpage
-
 
 ## Gestion du cadastre ##
 Le diagramme de cas d'utilisation comporte deux grandes fonctionnalités : gérer les parcelles et calculer les impôts. La fonctionnalité de gestion des parcelles est décomposées en plusieurs fonctionnalités optionnelles qui correspondent aux différentes tâches exprimées dans l'énoncé.
@@ -248,7 +246,7 @@ Dans une première approche, nous pouvons proposer le diagramme de classes suiva
 
 ![Diagramme de classes v0 - Cadastre](img/exo_uml/cadastre_classes_v0.png)
 
-Mais cette version ne répond pas à la problématique de généricité demandée : il est nécessaire d'ajouter de nouvelles classes à chaque sous-niveau que nous voulons prendre en compte. Pour faire évoluer le modèle, nous proposons donc d'introduire une nouvelle classe `ZoneCadastrale` qui possède trois attributs `id`, `niveau` et `nom_niveau`, qui représentent respectivement l'identifiant de la zone, son numéro de niveau (1 pour une commune, 2 pour une section, 3 pour une sous-section...) et le libellé du niveau. 
+Mais cette version ne répond pas à la problématique de généricité demandée : il est nécessaire d'ajouter de nouvelles classes à chaque sous-niveau que nous voulons prendre en compte. Pour faire évoluer le modèle, nous proposons donc d'introduire une nouvelle classe `ZoneCadastrale` qui possède trois attributs `code`, `niveau` et `nom`, qui représentent respectivement l'identifiant de la zone, son numéro de niveau (1 pour une commune, 2 pour une section, 3 pour une sous-section...) et un nom optionnel pour la zone (ex : le nom de la commune).
 
 Par ailleurs, nous indiquons qu'une zone cadastrale est une composition de zones cadastrales. De cette manière, nous conservons les relations de type *une commune est composées de sections*, *une section est composée de sous-sections*, etc.
 
@@ -256,14 +254,15 @@ Cette modélisation nous permet de reconstruire une hiérarchie dans les différ
 
 ![Diagramme de classes - Cadastre](img/exo_uml/cadastre_classes.png)
 
-Dans cette deuxième version, nous avons également fait apparaître les méthodes les plus importantes.
+Dans cette deuxième version, nous avons également fait apparaître les méthodes pour manipuler des parcelles depuis une zone cadastrale. Nous faisons le choix de faire porter ces méthodes par la classe zone cadastrale pour représenter le fait qu'une parcelle appartient à une zone cadastrale. D'autres modélisations pourraient ajouter ces méthodes dans une classe "gestionnaire", ou encore laisser le programme créer les objets `Parcelle` quand il en a besoin.
+
+Des méthodes pour calculer les taxes sont également ajoutées dans les classes `Parcelle` et `Proprietaire`.
 
 Pour s'assurer que le sens de notre modélisation est bien compris, nous utilisons un diagramme d'objets qui illustrera un exemple de situation.
 
 ![Diagramme d'objets - Cadastre](img/exo_uml/cadastre_objets.png)
 
 \newpage
-
 
 ## Gestion d'un catalogue de symboles cartographiques ##
 
@@ -279,7 +278,6 @@ Concrêtement, nous avons opté pour la modélisation suivante :
 * pour indiquer que cet attribut est un attribut de classe (donc partagé par l'ensemble des instances), la notation UML standard consiste à le souligner (ce que le logiciel utilisé ne supporte pas). C'est le marqueur graphique le plus important de cette solution.
 
 \newpage
-
 
 ## Station météo ##
 

@@ -778,9 +778,10 @@ fonction TraiterInventaire(liste_geometries) {
 ![Exemple: app mobiles -> backend -> bdd](img/uml_bases/deploiement/application_mobile.png)
 
 
-## Exercice ##
+## Exercices ##
 
-1. Station météo
+1. Système de suivi GPS de flotte de véhicules
+2. Station météo
 
 
 
