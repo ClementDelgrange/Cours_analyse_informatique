@@ -90,13 +90,23 @@ Proposez un diagramme d'activité pour la recette ci-dessous. Optimisez-le en su
 
 
 # Application de navigation GPS #
-Nous souhaitons réaliser une application de navigation GPS. Cette application doit permettre à l'utilisateur d'afficher une carte. Lorsque la position de la voiture est détectée, la carte sera centrée cette position. L'application doit également permettre d'afficher la vitesse de déplacement de la voiture. Enfin l'application est utilisée avant tout pour guider le conducteur (calculer et afficher des itinéraires).
+Nous souhaitons concevoir le système logiciel d'une application de navigation GPS embarquée.
 
-Pour calculer la position de la voiture, le GPS doit recevoir les signaux d'au moins 4 satellites.
+Fonctionnalités principales : l'application permet au conducteur de visualiser sa position en temps réel sur une carte. La carte, stockée dans une base de données locale, est composée de segments de routes, de villes et de points d'intérêt (stations-service, parkings).
+
+Guidage et itinéraire : pour lancer le guidage, le conducteur doit définir une destination (soit en saisissant une adresse, soit en choisissant parmi ses "Lieux favoris"). Le système calcule alors l'itinéraire selon les préférences de l'utilisateur (le plus court ou le plus rapide) et affiche les instructions de navigation étape par étape.
+
+Gestion du GPS et Capteurs : Le système s'appuie sur un récepteur GPS interne.
+
+* Pour déterminer une position valide (latitude, longitude, altitude), le récepteur doit capter les signaux d'au moins 4 satellites simultanément.
+* Si le signal est insuffisant (moins de 4 satellites), l'application doit alerter l'utilisateur via un message "Signal GPS perdu" et suspendre le guidage jusqu'au rétablissement du signal.
+* La vitesse de déplacement affichée à l'écran est calculée directement par le système à partir de l'évolution de la position GPS.
+
+Comportement dynamique : durant le guidage, si le conducteur ne suit pas l'itinéraire indiqué (écart de plus de 50 mètres), le système doit automatiquement déclencher un re-calcul de l'itinéraire vers la destination depuis la nouvelle position.
 
 1. Réalisez le diagramme de cas d'utilisation pour ce système.
 2. Proposez un diagramme d'activité pour l'activité de guidage du conducteur.
-3. Concevez un diagramme de classes permettant de modéliser le système.
+3. Concevez un diagramme de classes centré sur les données manipulées. On attend notamment de voir comment sont structurés une carte et un itinéraire, et le lien entre une adresse et une position GPS.
 4. Complétez votre diagramme d'activité en précisant les entités du système responsable des différentes activités.
 
 
@@ -296,30 +306,35 @@ Pour optimiser la réalisation de la recette, nous parallélisons toutes les tâ
 ## Application de navigation GPS ##
 Le système étudié est une application de navigation GPS.
 
-Nous identifions trois cas d'utilisation principaux :
+Nous identifions deux cas d'utilisation principaux :
 
 * afficher une carte;
-* afficher la vitesse de déplacement;
-* guider le conducteur, ce qui inclut de calculer et d'afficher des itinéraires.
+* se faire guider, ce qui inclut de saisir une destination et calculer la position courante, puis de calculer un itinéraire. Optionellement, l'itinéraire peut être recalculé.
 
-Pour calculer la vitesse de déplacement et des itinéraires, le GPS a besoin de détecter la position de la voiture, ce qui fait appel à des satellites (acteur secondaire du système). La détection de la position de la voiture est une option de la fonctionnalité d'affichage de la carte.
+Pour calculer la position courante, le système fait appel à des acteurs secondaires : les satellites.
 
 ![Diagramme de cas d'utilisation - GPS routier](img/exo_uml/gps_cas_utilisation.png)
 
-Lors de la réalisation de l'activité *Etre guidé*, le conducteur commence par allumer le GPS. Celui-ci cherche alors à détecter les satellites pour pouvoir calculer la position du véhicule. Le conducteur peut alors indiquer sa destination pour que l'application puisse calculer un itinéraire. Lorsque l'itinéraire est calculé, il s'affiche dans l'application et plusieurs cas sont alors possibles :
+Lors de la réalisation de l'activité *Se faire guider*, le conducteur commence par allumer le GPS. Celui-ci cherche alors à détecter les satellites pour pouvoir calculer la position du véhicule. Le conducteur peut alors indiquer sa destination pour que l'application puisse calculer un itinéraire. Lorsque l'itinéraire est calculé, il s'affiche dans l'application et plusieurs cas sont alors possibles :
 
 * soit le conducteur suit correctement la route indiquée : l'application lui indique alors simplement la route à suivre jusqu'à arriver à destination
 * soit le conducteur ne respecte pas l'itinéraire indiqué : l'application recalcule alors un nouvel itinéraire en tenant compte de la nouvelle position et met à jour l'affichage de la route à suivre.
 
+Le diagramme d'activité prévoit une autre éventualité : celle où le signal GPS est perdu (moins de 4 satellites). Dans ce cas on revient systématiquement sur l'activité de vérification du signal GPS.
+
 ![Diagramme de l'activité *être guidé* - GPS routier](img/exo_uml/gps_activite.png)
 
-Notre analyse du système nous conduit pour commencer à identifier trois structures d'objets contribuant à son fonctionnement : l'adresse de destination, l'itinéraire et la position GPS de la voiture.
-
-L'adresse de destination est traduite en position (coordonnées x,y) pour être utilisée dans le système. Un itinéraire est quand à lui composé d'une suite ordonnée de positions. Nous ajoutons donc cette classe à notre modèle et définissons la position GPS de la voiture comme un type particulier de position.
-
-Enfin, nous ajoutons une classe affichage qui utilise la position GPS pour centrer la carte dessus et l'itinéraire pour le représenter sur le fond de carte et guider le conducteur.
+Enfin, nous établissons le diagramme de classe suivant :
 
 ![Diagramme de classes - GPS routier](img/exo_uml/gps_classes.png)
+
+Les points clés de ce diagramme sont les suivants :
+
+* Séparation matériel/logiciel : le diagramme isole clairement le composant physique (`RecepteurGPS`), qui ne fait que produire des données brutes, du cerveau de l'application (`SystemeNavigation`), qui orchestre la logique de guidage. 
+* Structure de la carte : il révèle que la `Carte` n'est pas une simple image de fond, mais une base de données structurée composée de multiples `SegmentsRoute` (graphe), ce qui est indispensable pour qu'un algorithme puisse calculer un chemin. 
+* Nature de l'itinéraire : l'`Itineraire` est défini comme une agrégation ordonnée de ces `SegmentsRoute` existants, montrant que le trajet est une sélection dynamique d'éléments statiques de la carte. 
+* Distinction adresse/position : en séparant la classe `Adresse` (saisie humaine textuelle) de la classe `Position` (coordonnées mathématiques), le modèle force à prendre en compte l'étape de conversion (géocodage) nécessaire avant tout guidage. 
+* Rôle pivot de la position : la classe `Position` sert de "monnaie d'échange" universelle dans le système : elle est produite par le capteur, extraite d'une adresse cible, et comparée en permanence pour calculer les écarts de route.
 
 
 \newpage
