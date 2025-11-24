@@ -835,7 +835,7 @@ fonction TraiterInventaire(liste_geometries) {
 ![Activité insérer un chèque](img/uml_bases/activite/diagramme_inserer_cheque.png)
 
 
-## Exemple ##
+## Composition de diagrammes ##
 
 ![Diagramme d'activité composé d'autres diagrammes](img/uml_bases/activite/diagramme_distributeur_billets.png)
 
@@ -886,7 +886,8 @@ fonction TraiterInventaire(liste_geometries) {
 
 ## Exercice ##
 
-1. Démineur
+1. Réveil-matin
+2. Démineur
 
 
 # Le diagramme de séquence #

@@ -129,27 +129,57 @@ Construisez un diagramme de classe cohérent avec le diagramme de séquence ci-d
 ![Diagramme de séquence](img/exo_uml/corresp_sequence.png)
 
 
+# Commande d'un VTC #
+Considérons une application de type VTC (Uber, Bolt, Lyft), représenté à l'aide du diagramme de classes suivant.
+
+![Diagramme de classes](img/exo_uml/commande_vtc_classes.png)
+
+Un utilisateur commande une course et un chauffeur accepte.
+
+1. L'utilisateur ouvre l'application et entre sa destination.
+2. L'application demande à un service de localisation de récupérer la position actuelle de l'utilisateur. 
+3. Le service de localisation retourne les coordonnées (latitude/longitude) à l'application. 
+4. L'application envoie la requête de course (départ, destination, type de véhicule) au serveur de matching.
+5. Le serveur de matching filtre les chauffeurs en fonction de leur proximité géographique par rapport au point de départ. 
+6. Le serveur de matching envoie une notification de nouvelle course au chauffeur le plus proche. 
+7. Le chauffeur accepte la course. 
+8. Le serveur de matching envoie les informations du chauffeur (nom, plaque, temps d'arrivée estimé – ETA) à l'application. 
+9. L'application affiche la confirmation à l'utilisateur.
+
+
 # Démineur #
-Nous nous proposons dans ce sujet de modéliser un jeu de démineur. Le but de ce jeu est de trouver le plus rapidement possible, sans les toucher, toutes les cases d'une grille contenant des mines.
+Nous souhaitons modéliser le moteur logique (le "backend") d'un jeu de Démineur classique. Le système devra être capable d'être utilisé par n'importe quelle interface graphique par la suite.
 
-Nous nous contenterons ici d'une version simplifiée du jeu, sans chronomètre. Notre jeu est donc composé d'un compteur de mines cachées et d'une grille rectangulaire, la grille étant un assemblage de cases. Au début de la partie toutes les cases du plateau sont cachées. A chaque tour, le joueur peut afficher le contenu d'une case. Son contenu peut être : rien, une mine ou un nombre indiquant le nombre de mines dans les cases voisines. Il peut également signaler la position d'une mine en posant un drapeau sur une case (les drapeaux peuvent être enlevés à n'importe quel tour).
+Le jeu se déroule sur une grille rectangulaire composée de cases. La partie commence par une phase de configuration où le joueur définit les dimensions de la grille et le nombre total de mines. Les mines sont ensuite réparties aléatoirement.
 
-Avant de commencer une partie, le joueur peut configurer la partie (nombre de mines et taille de la grille).
+Au départ, toutes les cases sont masquées. Une case possède un état de visibilité et un contenu. 
+
+* Le contenu (fixé au départ) : une case contient soit une mine, soit une valeur (nombre entier représentant le nombre de mines dans les 8 cases adjacentes). Si une case n'a aucune mine voisine, sa valeur est 0. 
+* L'état joueur (évolutif) : une case peut être masquée, dévoilée, ou marquée (avec un drapeau).
+
+À chaque tour, le joueur peut effectuer deux actions sur une case masquée :
+
+* Dévoiler la case :
+  * Si la case contient une mine la partie est immédiatement perdue. 
+  * Si la case contient une valeur > 0, la case passe à l'état dévoilée et affiche son chiffre. 
+  * Si la case contient la valeur 0, la case est dévoilée, et le jeu déclenche automatiquement le dévoilement de toutes les cases voisines (propagation récursive).
+* Marquer / démarquer la case :
+  * Le joueur pose un drapeau pour signaler une mine supposée. La case passe à l'état marquée. Une case marquée est protégée : elle ne peut pas être dévoilée tant que le drapeau n'est pas retiré. 
+  * Si la case est déjà marquée, l'action retire le drapeau (la case redevient masquée).
+
+Un Compteur de mines restantes est affiché. Il est égal au "Nombre total de mines" moins "Nombre de drapeaux posés". Il peut être négatif si le joueur pose trop de drapeaux.
+
+Condition de victoire : la partie est gagnée lorsque toutes les cases ne contenant pas de mine sont passées à l'état dévoilée.
 
 ![Interface du jeu du démineur](img/exo_uml/demineur.jpg)
 
-Plusieurs scénarios sont possibles en fonction du contenu d'une case découverte :
+Pour modéliser ce système, vous devrez réaliser les diagrammes suivants :
 
-* une mine : le joueur a perdu, la partie est terminée;
-* un chiffre : il ne se passe rien;
-* case vide : toutes les cases voisines sont dévoilées, sauf celles signalées par un drapeau. Si une des cases voisines ne contient rien, le processus continue à partir de cette case.
-
-Lorsqu'une case est marquée à l'aide d'un drapeau, le compteur décrémente le nombre de mines de un. Une case marquée d'un drapeau ne peut pas être découverte (impossible d'afficher son contenu).
-
-1. Réalisez le diagramme de cas d'utilisation pour notre jeu de démineur.
-2. Réalisez un diagramme d'activité ou de séquence pour chaque cas d'utilisation.
-3. Ecrivez un diagramme de classe pour le jeu de démineur.
-4. Sans chercher à les développer, indiquez quelle(s) autre(s) diagramme(s) UML pourrai(en)t être intéressant(s) pour compléter la modélisation (justifiez votre réponse).
+1. Diagramme de cas d'utilisation : identifiez les acteurs et les fonctionnalités offertes par le système.
+2. Diagramme de classes : proposez une structure statique du moteur de jeu. Attention : réfléchissez aux relations entre la grille et les cases, et aux attributs nécessaires pour gérer l'état et le contenu. 
+3. Diagramme d'activité : modélisez l'algorithme complexe du "Dévoilement d'une case". Ce diagramme doit gérer les trois issues possibles (mine, chiffre, 0 avec propagation) ainsi que la vérification de la victoire ou de la défaite après le coup. 
+4. Diagramme de séquence : représentez le scénario suivant : le joueur demande à dévoiler une case (x,y) qui contient la valeur 0 (case vide). Le système dévoile cette case, puis dévoile une case voisine contenant un chiffre. Montrez les interactions entre le joueur, la grille et les cases. 
+5. Diagramme d'états-transitions : modélisez le cycle de vie d'une case unique.
 
 Pour chacun des diagrammes, vous n'oublierez pas d'expliquer vos diagrammes et de justifier les choix effectués.
 
@@ -351,12 +381,17 @@ Les points clés de ce diagramme sont les suivants :
 
 \newpage
 
+## Commande d'un VTC ##
+
+![Diagramme de séquence](img/exo_uml/commande_vtc_sequence.png)
+
+
 ## Démineur ##
 Nous identifions deux fonctionnalités principales : configurer une partie et jouer une partie. *Configurer une partie* signifie choisir le nombre de cases et/ou le nombre de mines. Quant au cas d'utilisation *Jouer une partie*, il comprend les sous-fonctionnalités *poser un drapeau* et *découvrir une case*. Comme il n'est pas obligatoire de poser des drapeaux pour pouvoir jouer cette sous-fonctionnalité est optionnelle. En revanche il est obligatoire de découvrir au moins une case à un moment de la partie (sinon elle ne se termine jamais) : cette fonctionnalité est donc obligatoire.
 
 ![Diagramme de cas d'utilisation du démineur](img/exo_uml/demineur_cas_utilisation.png)
 
-Les trois grandes classes que nous identifions sont `Partie`, `Grille` et `Case`. Une partie se joue sur une grille qui est composée de cases. Dans la classe `Partie`, nous prévoyons des attributs `nb_mines_initiales` contenant le nombre de mines que le joueur souhaite inclure dans sa grille et `taille_grille` qui renseignera la taille de la grille utilisée. Nous ajoutons également un attribut dérivé `nb_mines_restantes` qui nous permettra de déterminer si la partie est gagnée. Enfin la classe `Partie` contient des méthodes permettant de jouer (marquer et découvrir une case).
+Les trois grandes classes que nous identifions sont `Partie`, `Grille` et `Case`. Une partie se joue sur une grille qui est composée de cases. Dans la classe `Partie`, nous prévoyons des attributs `nbMines` contenant le nombre de mines que le joueur souhaite inclure dans sa grille et `tailleX` / `tailleY` qui renseigneront la taille de la grille utilisée. Nous ajoutons également un attribut dérivé `nbMinesRestantes` qui nous permettra d'afficher un compteur pour al partie en cours. Enfin la classe `Partie` contient des méthodes permettant de jouer (marquer et découvrir une case).
 
 Le plateau est composé de cases qui sont positionnées à l'aide de leur numéro de ligne et de colonne. Les cases peuvent être de trois types différents : minées, vides ou numérotées (lorsqu'elles sont à côté d'une case minée). Le type de la case influe sur le comportement de la méthode `decouvrir()` : respectivement partie perdue, démasquage des cases voisines et démasquage de la seule case. Le comportement des méthodes de la classe `Case` dépend également de l'état de celle-ci : il ne se passe pas la même chose lorsque l'on essaye de marquer une case déjà marquée ou une case découverte par exemple.
 
