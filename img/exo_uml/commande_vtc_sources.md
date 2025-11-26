@@ -57,28 +57,33 @@ Diagramme de sequence :
 sequenceDiagram
     actor Utilisateur
     participant AppVTC as Application VTC
-    participant ServLoc as Service Localisation (GPS)
+    participant ServLoc as Service Localisation
+    participant DBLoc as BDD localisation
     participant ServMatch as Serveur Matching
-    participant Course as Objet Course
-    participant Chauffeur
+    participant DBMatch as BDD matching
+    participant Chauffeur as Application Chauffeur
     
     title Processus de Commande VTC (avec Objet Course)
     
     Utilisateur->>AppVTC: Entrer Destination
     
     activate AppVTC
-    AppVTC->>ServLoc: Demander Position GPS
+    AppVTC->>ServLoc: Demander position GPS
     activate ServLoc
-    ServLoc-->>AppVTC: Retourner Coordonnées Départ (Localisation)
+    ServLoc->>DBLoc: Récupérer dernière position utilisateur
+    activate DBLoc
+    DBLoc-->>ServLoc: Position
+    deactivate DBLoc
+    ServLoc-->>AppVTC: Coordonnées départ
     deactivate ServLoc
 
     AppVTC->>ServMatch: Requête Création Course
     
     activate ServMatch
-    ServMatch->>Course: Créer(Départ, Destination)
-    activate Course
-    Course-->>ServMatch: Course ID
-    deactivate Course
+    ServMatch->>DBMatch: Créer(Départ, Destination)
+    activate DBMatch
+    DBMatch-->>ServMatch: Course ID
+    deactivate DBMatch
     
     ServMatch->>ServMatch: Filtrer chauffeurs par proximité géographique
     
@@ -88,9 +93,9 @@ sequenceDiagram
     Chauffeur->>ServMatch: Accepter Course (Chauffeur ID)
     deactivate Chauffeur
     
-    ServMatch->>Course: MettreAJour(Chauffeur ID, Statut=EN_COURS)
-    activate Course
-    deactivate Course
+    ServMatch->>DBMatch: MettreAJour(Chauffeur ID, Statut=EN_COURS)
+    activate DBMatch
+    deactivate DBMatch
     
     ServMatch-->>AppVTC: Infos Chauffeur + ETA
     deactivate ServMatch

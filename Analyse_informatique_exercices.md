@@ -130,19 +130,16 @@ Construisez un diagramme de classe cohérent avec le diagramme de séquence ci-d
 
 
 # Commande d'un VTC #
-Considérons une application de type VTC (Uber, Bolt, Lyft), représenté à l'aide du diagramme de classes suivant.
-
-![Diagramme de classes](img/exo_uml/commande_vtc_classes.png)
-
-Un utilisateur commande une course et un chauffeur accepte.
+Considérons une application de type VTC (Uber, Bolt, Lyft). Nous souhaitons représenter sous forme de diagramme de séquence le cas d'utilisation "Commander une course", dont la description est la suivante :
 
 1. L'utilisateur ouvre l'application et entre sa destination.
-2. L'application demande à un service de localisation de récupérer la position actuelle de l'utilisateur. 
-3. Le service de localisation retourne les coordonnées (latitude/longitude) à l'application. 
-4. L'application envoie la requête de course (départ, destination, type de véhicule) au serveur de matching.
+2. L'application demande à un service de localisation de récupérer la position actuelle de l'utilisateur (un processus indépendant a permis au service de localisation de stocker les positions des utilisateurs).
+3. Le service de localisation retrouve la dernière localisation de l'utilisateur dans sa base de donnée, et retourne les coordonnées (latitude/longitude) à l'application. 
+4. L'application envoie la requête de course (départ, destination, type de véhicule) au serveur de matching, qui enregistre cette requête en base de données.
 5. Le serveur de matching filtre les chauffeurs en fonction de leur proximité géographique par rapport au point de départ. 
 6. Le serveur de matching envoie une notification de nouvelle course au chauffeur le plus proche. 
 7. Le chauffeur accepte la course. 
+8. L'information est sauvegardée.
 8. Le serveur de matching envoie les informations du chauffeur (nom, plaque, temps d'arrivée estimé – ETA) à l'application. 
 9. L'application affiche la confirmation à l'utilisateur.
 
@@ -377,7 +374,7 @@ Les points clés de ce diagramme sont les suivants :
 
 ## Cohérence de diagrammes de classes et de séquence ##
 
-![Diagramme de séquence](img/exo_uml/corresp_classes.png)
+![Diagramme de classes](img/exo_uml/corresp_classes.png)
 
 \newpage
 
