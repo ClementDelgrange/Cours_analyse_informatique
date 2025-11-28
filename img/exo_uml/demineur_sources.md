@@ -1,3 +1,21 @@
+Diagramme de cas d'utilisation :
+```plantuml
+@startuml
+left to right direction
+actor Joueur as j
+package Démineur {
+  usecase "Configurer une partie" as UC1
+  usecase "Jouer une partie" as UC2
+  usecase "Découvrir une case" as UC3
+  usecase "Poser un drapeau" as UC4
+}
+j -- UC1
+j -- UC2
+UC2 ..> UC3: <<include>>
+UC2 <.. UC4: <<extend>>
+@enduml
+```
+
 Diagramme de classes:
 ```mermaid
 %% Diagramme de Classes - Démineur

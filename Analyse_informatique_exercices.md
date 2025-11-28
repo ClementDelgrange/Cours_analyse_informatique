@@ -152,7 +152,7 @@ Le jeu se déroule sur une grille rectangulaire composée de cases. La partie co
 Au départ, toutes les cases sont masquées. Une case possède un état de visibilité et un contenu. 
 
 * Le contenu (fixé au départ) : une case contient soit une mine, soit une valeur (nombre entier représentant le nombre de mines dans les 8 cases adjacentes). Si une case n'a aucune mine voisine, sa valeur est 0. 
-* L'état joueur (évolutif) : une case peut être masquée, dévoilée, ou marquée (avec un drapeau).
+* L'état (évolutif) : une case peut être masquée, dévoilée, ou marquée (avec un drapeau).
 
 À chaque tour, le joueur peut effectuer deux actions sur une case masquée :
 
